@@ -125,7 +125,7 @@
 </html>
 
 <script>
-
+	
 	$('#datepicker').datepicker({
             format: 'yyyy/mm/dd'
         });
@@ -168,13 +168,14 @@ function creates(){
         data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
 		dataType:"text",
         success: function(html) {
-            return alert("inserted OK");
+            $('#viewCustomer').load('customer_show.php').fadeIn(1000)
         },
 		
     });
 	
 }
-$('#viewCustomer').load('customer_show.php').fadeIn('slow')
+$('#viewCustomer').load('customer_show.php')
+
 </script>
 
 

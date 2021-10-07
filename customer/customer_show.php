@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $query);
       <th>DEALER</th>
       <th>WE</th>
       <th>SUPPLIER</th>
-      <th>DELETE</th>
+      <th>ACTION</th>
     </tr>
   </thead>
   <tbody>
@@ -61,7 +61,9 @@ $result = mysqli_query($conn, $query);
         <td width="12%" align="center"><?php echo $row["DEALER"]; ?></td>
         <td width="5%" align="center"><?php echo $row["WE"]; ?></td>
         <td width="5%" align="center"><?php echo $row["SUPPLIER"]; ?></td>
-        <td><button class="btn btn-danger btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
+        <td colspand='2'><button class="btn btn-danger btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button>
+        	<button class="btn btn-info btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button>
+        </td>
 		</tr>
 		<?php
 	$idx=$idx+1;
@@ -83,9 +85,11 @@ function del(ID)
 			type:"POST",
 			data : {"ID":ID},
 			success:function(res){
-					$("#delete"+id).hide(800)
+					$("#delete"+id).hide()
+					
 				}
 			})
 	}
+	window.location.href = "customer.php"
 }
 </script>
