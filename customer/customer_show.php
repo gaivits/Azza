@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $query);
       <th>DEALER</th>
       <th>WE</th>
       <th>SUPPLIER</th>
-      <th>ACTION</th>
+      <th colspan="2">ACTION</th>
     </tr>
   </thead>
   <tbody>
@@ -61,9 +61,9 @@ $result = mysqli_query($conn, $query);
         <td width="12%" align="center"><?php echo $row["DEALER"]; ?></td>
         <td width="5%" align="center"><?php echo $row["WE"]; ?></td>
         <td width="5%" align="center"><?php echo $row["SUPPLIER"]; ?></td>
-        <td colspand='2'><button class="btn btn-danger btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button>
-        	<button class="btn btn-info btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button>
-        </td>
+        <td width="4%"><button class="btn btn-danger btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
+        <td width="4%"><button class="btn btn-info btn-sm" >EDIT</button></td>
+        
 		</tr>
 		<?php
 	$idx=$idx+1;
@@ -78,7 +78,7 @@ $result = mysqli_query($conn, $query);
 <script>
 function del(ID)
 {
-	if(confirm('Do you want to delete?') )
+	if(confirm('คุณต้องการลบหรือไม่?') )
 	{
 		$.ajax({
 			url : "customer_del.php",
