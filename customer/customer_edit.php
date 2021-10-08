@@ -1,6 +1,4 @@
-
-   
-	<?php
+<?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
 	$conn = $conn->__construct();
@@ -31,13 +29,13 @@
   <div class="collapse navbar-collapse order-last order-md-0" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#"></a>
+        <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"></a>
+        <a class="nav-link" href="#">Add</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"></a>
+        <a class="nav-link" href="#">Link</a>
       </li>
     </ul>
   </div>
@@ -57,7 +55,7 @@
       <div class="modal-content">
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
-    	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD" >
+    	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD">
         <br>
         <input id="timepicker" width="180">
         <br>
@@ -125,59 +123,3 @@
 	</div>
 </body>
 </html>
-
-<script>
-	
-	$('#datepicker').datepicker({
-            format: 'yyyy/mm/dd'
-        });
-	 $('#timepicker').timepicker({
-            uiLibrary: 'bootstrap4'
-        });
-function creates(){
-	var DATE = $('#datepicker').val()
-	var TIME = $('#timepicker').val()
-	var AMOUNT = $('#AMOUNT').val()
-	var JOB = $('#JOB').val()
-	var EQUIPMENT = $('#EQUIPMENT').val()
-	var USER = $('#USER').val()
-	var DEALER = $('#DEALER').val()
-	var WE = $('#WE').val()
-	var SUPPLIER = $('#SUPPLIER').val()
-	if(DATE==='')
-	{
-		alert('Enter Date')
-	}
-	if(TIME==='')
-	{
-		alert('Enter TIME')
-	}
-	if(AMOUNT==='')
-	{
-		alert('Enter AMOUNT')
-	}
-	if(JOB==='')
-	{
-		alert('Enter JOB')
-	}
-	if(EQUIPMENT==='')
-	{
-		alert('Enter EQUIPMENT')
-	}
-	$.ajax({
-        type: "POST",
-        url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
-		dataType:"text",
-        success: function(html) {
-            $('#viewCustomer').load('customer_show.php').fadeIn(1000)
-        },
-		
-    });
-	
-}
-$('#viewCustomer').load('customer_show.php')
-
-</script>
-
-

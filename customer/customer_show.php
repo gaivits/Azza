@@ -25,7 +25,80 @@ $result = mysqli_query($conn, $query);
 <title>Customer</title>
 </head>
 
+
 <body>
+	
+	<div class="modal fade" id="myModal2" role="dialog">
+    
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+ 	
+        <form id="CUSTOMER" name="CUSTOMER" method="POST">
+    	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD">
+        <br>
+        <input id="timepicker" width="180">
+        <br>
+        <input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
+        <br>
+        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="JOB" maxlength="255" >
+        <br>
+        <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="EQUIPMENT" maxlength="255">
+        <br>
+        
+    	<select id="USER" name="USER">
+        <br>
+    	<option value="">--SELECT USER--</option>
+        
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+			
+		}	
+    	?>  
+  		</select>
+        <br>
+        <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
+        <br>
+        <select id="DEALER" name="DEALER">
+    	<option value="">--SELECT DEALER--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+		}	
+    	?>  
+  		</select>
+       
+        <select id="SUPPLIER" name="SUPPLIER" >
+    	<option value="">--SELECT SUPPLIER--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+			
+		}	
+    	?>
+  		</select>
+               
+    	</form>
+  		</div>
+       
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
 
 	<table border='1' style="width:80%;margin-left:15%" class="table table-striped">
   <thead align="center">
@@ -61,8 +134,8 @@ $result = mysqli_query($conn, $query);
         <td width="12%" align="center"><?php echo $row["DEALER"]; ?></td>
         <td width="5%" align="center"><?php echo $row["WE"]; ?></td>
         <td width="5%" align="center"><?php echo $row["SUPPLIER"]; ?></td>
-        <td width="4%"><button class="btn btn-danger btn-sm" onclick="del(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%"><button class="btn btn-info btn-sm" >EDIT</button></td>
+        <td width="4%"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
+        <td width="4%"><button type="button" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal2">EDIT</button></td>
         
 		</tr>
 		<?php
@@ -73,10 +146,11 @@ $result = mysqli_query($conn, $query);
     
   </tbody>
 </table>
+
 </body>
 </html>
 <script>
-function del(ID)
+function dels(ID)
 {
 	if(confirm('คุณต้องการลบหรือไม่?') )
 	{
@@ -91,5 +165,9 @@ function del(ID)
 			})
 	}
 	window.location.href = "customer.php"
+}
+function edits(ID)
+{
+	$('#myModal2').modal('show')
 }
 </script>
