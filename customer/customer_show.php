@@ -1,10 +1,11 @@
 <?php
-//fetch.php
 include "C:/xampp/htdocs/xampp/Azza/connects.php";
+
 $conn=new Databases;
 $conn = $conn->__construct();
 $query = "SELECT * FROM customer";
 $result = mysqli_query($conn, $query);
+
 
 ?>
 	
@@ -27,15 +28,14 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
-	
-	<div class="modal fade" id="myModal2" role="dialog">
-    
+	 <!-- Modal -->
+  
+<div class="modal fade" id="myModal-2" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-body">
- 	
-        <form id="CUSTOMER" name="CUSTOMER" method="POST">
+        <form id="CUSTOMER" name="CUSTOMER">
     	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD">
         <br>
         <input id="timepicker" width="180">
@@ -83,14 +83,14 @@ $result = mysqli_query($conn, $query);
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 			
 		}	
-    	?>
+    	?>  
   		</select>
-               
+        
     	</form>
   		</div>
        
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="">OK</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -98,8 +98,9 @@ $result = mysqli_query($conn, $query);
     </div>
   </div>
   
-</div>
-
+  
+ 
+  
 	<table border='1' style="width:80%;margin-left:15%" class="table table-striped">
   <thead align="center">
     <tr>
@@ -124,18 +125,18 @@ $result = mysqli_query($conn, $query);
 		{$idx=0;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
-    	<td width="5%" align="center"><?php echo $row[$idx]; ?></td>
-    	<td width="5%" align="center"><?php echo $row["CREATE_DATE"]; ?></td>
-    	<td width="5%" align="center"><?php echo $row["TIME"]; ?></td>
-    	<td width="7%" align="right"><?php echo number_format($row["AMOUNT"],2); ?></td>
-    	<td width="10%" align="left"><?php echo $row["JOB"]; ?></td>
-        <td width="10%" align="left"><?php echo $row["EQUIPMENT"]; ?></td>
-        <td width="6%" align="center"><?php echo $row["USER"]; ?></td>
-        <td width="12%" align="center"><?php echo $row["DEALER"]; ?></td>
-        <td width="5%" align="center"><?php echo $row["WE"]; ?></td>
-        <td width="5%" align="center"><?php echo $row["SUPPLIER"]; ?></td>
+    	<td width="5%" align="center"><nobr><?php echo $row[$idx]; ?></nobr></td>
+    	<td width="5%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
+    	<td width="5%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
+    	<td width="7%" align="right"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
+    	<td width="10%" align="left"><nobr><?php echo $row["JOB"]; ?></nobr></td>
+        <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
+        <td width="6%" align="center"><nobr><?php echo $row["USER"]; ?></nobr></td>
+        <td width="12%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
         <td width="4%"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%"><button type="button" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal2">EDIT</button></td>
+        <td width="4%"><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
         
 		</tr>
 		<?php
@@ -150,6 +151,12 @@ $result = mysqli_query($conn, $query);
 </body>
 </html>
 <script>
+$('#datepicker').datepicker({
+            format: 'yyyy/mm/dd'
+        });
+	 $('#timepicker').timepicker({
+            uiLibrary: 'bootstrap4'
+        });
 function dels(ID)
 {
 	if(confirm('คุณต้องการลบหรือไม่?') )
@@ -168,6 +175,15 @@ function dels(ID)
 }
 function edits(ID)
 {
-	$('#myModal2').modal('show')
+	$.ajax({
+			url : "customer_edit.php",
+			type:"GET",
+			data : {"ID":ID},
+			success:function(res){
+					alert(res)
+					
+				}
+			})
+		window.location.href = "customer.php"
 }
 </script>

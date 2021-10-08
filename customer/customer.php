@@ -48,7 +48,7 @@
 <div class="container">
   <h2>AZZA-CUSTOMER-REGISTRATION</h2>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Add</button>
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
   
 	  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -115,8 +115,7 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
-    </div>
+     </div>
   </div>
   
 </div>
@@ -127,7 +126,6 @@
 </html>
 
 <script>
-	
 	$('#datepicker').datepicker({
             format: 'yyyy/mm/dd'
         });
@@ -168,7 +166,6 @@ function creates(){
         type: "POST",
         url: "customer_create.php",
         data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
-		dataType:"text",
         success: function(html) {
             $('#viewCustomer').load('customer_show.php').fadeIn(1000)
         },
