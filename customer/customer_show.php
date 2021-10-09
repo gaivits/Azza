@@ -28,15 +28,21 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
-	 <!-- Modal -->
+	 <!-- Modal --><div id="editCustomer">
+</div>
   
-<div class="modal fade" id="myModal-2" role="dialog">
+<div class="container">
+  
+  <!-- Trigger the modal with a button -->
+  
+	  <!-- Modal -->
+  <div class="modal fade" id="myModal-2" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-body">
-        <form id="CUSTOMER" name="CUSTOMER">
-    	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD">
+        <form id="CUSTOMER" name="CUSTOMER" method="POST">
+    	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD" >
         <br>
         <input id="timepicker" width="180">
         <br>
@@ -87,17 +93,20 @@ $result = mysqli_query($conn, $query);
   		</select>
         
     	</form>
-  		</div>
-       
+        
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="">OK</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
-    </div>
+     </div>
   </div>
   
+</div>
+
+
+</body>
   
  
   
@@ -175,15 +184,18 @@ function dels(ID)
 }
 function edits(ID)
 {
-	$.ajax({
+	
+		$.ajax({
 			url : "customer_edit.php",
-			type:"GET",
+			type:"POST",
 			data : {"ID":ID},
-			success:function(res){
-					alert(res)
-					
-				}
-			})
-		window.location.href = "customer.php"
+			success: function(res) {
+            $('#editCustomer').load('customer_edit.php')
+        },
+		
+    });
+	
 }
+
+
 </script>
