@@ -28,7 +28,8 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
-	 <!-- Modal --><div id="editCustomer">
+	 <!-- Modal -->
+<div id="editCustomer">
 </div>
   
 <div class="container">
