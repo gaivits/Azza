@@ -97,7 +97,7 @@ $result = mysqli_query($conn, $query);
         
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="">OK</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="">OK</button><br>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -135,18 +135,18 @@ $result = mysqli_query($conn, $query);
 		{$idx=0;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
-    	<td width="5%" align="center"><nobr><?php echo $row[$idx]; ?></nobr></td>
-    	<td width="5%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
-    	<td width="5%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
-    	<td width="7%" align="right"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
+    	<td width="2%" align="center"><nobr><?php echo $row[$idx]; ?></nobr></td>
+    	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
+    	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
+    	<td width="5%" align="right"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
     	<td width="10%" align="left"><nobr><?php echo $row["JOB"]; ?></nobr></td>
         <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
         <td width="6%" align="center"><nobr><?php echo $row["USER"]; ?></nobr></td>
-        <td width="12%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
+        <td width="10%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
-        <td width="4%"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%"><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
+        <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
+        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
         
 		</tr>
 		<?php
@@ -185,17 +185,17 @@ function dels(ID)
 }
 function edits(ID)
 {
-	
-		$.ajax({
-			url : "customer_edit.php",
-			type:"POST",
-			data : {"ID":ID},
-			success: function(res) {
-            $('#editCustomer').load('customer_edit.php')
-        },
-		
-    });
-	
+	$.ajax({
+		url : "customer_edit.php",
+		type : "POST",
+		dataType:'html',
+		data : {"ID":ID},
+		success : function()
+		{
+			$('#editCustomer').load('customer_edit.php')
+			}
+		})
+		$('#editCustomer').load('customer_edit.php')
 }
 
 

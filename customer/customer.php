@@ -57,6 +57,7 @@
       <div class="modal-content">
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
+    	           <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	<input type="text" id="datepicker" width="180" name="DATE" placeholder="YYYY/MM/DD" >
         <br>
         <input id="timepicker" width="180">
@@ -107,6 +108,7 @@
     	?>  
   		</select>
         
+    	</form>
     	</form>
         
         </div>
