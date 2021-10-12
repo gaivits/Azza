@@ -35,8 +35,9 @@
     <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-body">
-        <form id="CUSTOMER" name="CUSTOMER" method="POST">
-    	<input data-date-format="yyyy/mm/dd" id="datepicker" placeholder="yyyy/mm/dd" value=<?php echo $row['CREATE_DATE'] ;?>>
+        <form id="CUSTOMER" name="CUSTOMER" >
+        <input type="hidden" id="ID" name="ID" value=<?php echo $ID ;?>>
+    	<input data-date-format="yyyy/mm/dd" id="datepicker" name='datepicker' placeholder="yyyy/mm/dd" value=<?php echo $row['CREATE_DATE'] ;?>>
              
         <input type="text" id="TIME" name="TIME" value=<?php echo $row['TIME'] ;?>  />
         <br>
@@ -51,12 +52,13 @@
         
     	<select id="USER" name="USER">
         <br>
-    	<option value="">--SELECT USER--</option>
+    	<option value='". $row['USER'] ."'><?php echo $row['USER'] ;?></option>
         
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
+			
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 			
 		}	
@@ -66,7 +68,8 @@
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <br>
         <select id="DEALER" name="DEALER">
-    	<option value="">--SELECT DEALER--</option>
+    	
+        <option value='". $row['DEALER'] ."'><?php echo $row['DEALER'] ;?></option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
 		
@@ -78,7 +81,8 @@
   		</select>
        
         <select id="SUPPLIER" name="SUPPLIER" >
-    	<option value="">--SELECT SUPPLIER--</option>
+    	
+        <option value='". $row['SUPPLIER'] ."'><?php echo $row['SUPPLIER'] ;?></option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
@@ -93,7 +97,7 @@
        
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="update()">OK</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="updates(<?php echo $ID ;?>)">OK</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -111,9 +115,11 @@
 <script>
 	$("#myModal-3").modal().fadeIn('fast')
 	
-function update()
+function updates(ID)
 	{
+	var ID = $('#ID').val()
 	var DATE = $('#datepicker').val()
+	
 	var TIME = $('#TIME').val()
 	var AMOUNT = $('#AMOUNT').val()
 	var JOB = $('#JOB').val()
@@ -125,9 +131,9 @@ function update()
 	$.ajax({
         type: "POST",
         url: "customer_update.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
-        success: function(res) {
-            window.location.href="customer_update.php";
+        data: {ID:ID,"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
+        success: function(data) {
+          alert(data)
         },
 		
     });

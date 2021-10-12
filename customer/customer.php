@@ -37,7 +37,7 @@
       <div class="modal-content">
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
-    	<input data-date-format="yyyy/mm/dd" id="datepicker" placeholder="DATE">
+    	<input data-date-format="yyyy/mm/dd" id="datepicker" autocomplete="off" placeholder="DATE">
         
         <input type="time" id="TIME">
         
