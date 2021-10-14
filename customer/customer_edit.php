@@ -4,10 +4,9 @@
 	$ID = $_POST['ID'];
 	$conn=new Databases;
 	$conn = $conn->__construct();
-	$query = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID=$ID";
-	$result = mysqli_query($conn,$query);
-	$row = mysqli_fetch_assoc($result);
-	print_r($row);
+	$sql = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID=$ID";
+	$result = mysqli_query($conn,$sql);
+	print_r($result);
  	?>
 
 <!DOCTYPE html>
@@ -42,9 +41,9 @@
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="text" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE" value=<?=$row['CREATE_DATE']?>>
+		<input type="text" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE" value=<?php echo $row['CREATE_DATE'] ;?>>
         <br>
-        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
+        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME" <?=$row['TIME']?>>
         <br>
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <br>
