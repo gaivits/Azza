@@ -1,6 +1,4 @@
-
-   
-	<?php
+<?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
 	$conn = $conn->__construct();
@@ -16,9 +14,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 
@@ -37,11 +35,12 @@
       <div class="modal-content">
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
-    	<input data-date-format="yyyy/mm/dd" id="datepicker" autocomplete="off" placeholder="DATE">
-        
-        <input type="time" id="TIME">
-        
-        <input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
+    	
+		<input type="text" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE">
+        <br>
+        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
+        <br>
+		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <br>
         <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="JOB" maxlength="255" >
         <br>
@@ -57,7 +56,10 @@
 		while($data = mysqli_fetch_assoc($records))
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
+		}
+		if($data['USER']=='มหาวิทยาลัย')
+		{
+				
 		}	
     	?>  
   		</select>
@@ -108,14 +110,18 @@
 </html>
 
 <script>
-$(function() {
-    $("#datepicker").datepicker({
-    	
+$(function(){
+   $('.datepicker').datepicker({
+      format: 'yyyy/mm/dd'
     });
-  });
+});
+ $('#timepicker').timepicker({
+            uiLibrary: 'bootstrap4'
+        });
+ 
 function creates(){
 	var DATE = $('#datepicker').val()
-	var TIME = $('#TIME').val()
+	var TIME = $('#timepicker').val()
 	var AMOUNT = $('#AMOUNT').val()
 	var JOB = $('#JOB').val()
 	var EQUIPMENT = $('#EQUIPMENT').val()
@@ -126,22 +132,27 @@ function creates(){
 	if(DATE==='')
 	{
 		alert('Enter Date')
+		return false;
 	}
 	if(TIME==='')
 	{
 		alert('Enter TIME')
+		return false;
 	}
 	if(AMOUNT==='')
 	{
 		alert('Enter AMOUNT')
+		return false;
 	}
 	if(JOB==='')
 	{
 		alert('Enter JOB')
+		return false;
 	}
 	if(EQUIPMENT==='')
 	{
 		alert('Enter EQUIPMENT')
+		return false;
 	}
 	$.ajax({
         type: "POST",
@@ -156,5 +167,3 @@ function creates(){
 $('#viewCustomer').load('customer_show.php')
 
 </script>
-
-

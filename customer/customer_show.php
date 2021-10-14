@@ -3,7 +3,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 
 $conn=new Databases;
 $conn = $conn->__construct();
-$query = "SELECT * FROM customer ";
+$query = "SELECT * FROM customer";
 $result = mysqli_query($conn, $query);
 
 
@@ -17,8 +17,9 @@ $result = mysqli_query($conn, $query);
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> 
 <title>Customer</title>
 </head>
 
@@ -59,7 +60,7 @@ $result = mysqli_query($conn, $query);
         <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
+        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" data-toggle="modal" data-target="#myModal-3" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
         
 		</tr>
 		<?php
@@ -70,19 +71,17 @@ $result = mysqli_query($conn, $query);
     
   </tbody>
 </table>
-<div id="editCustomer">
-</div>
+
 
 </body>
   
- 
+<div id="editCustomer"></div>
   
 	
 </body>
 </html>
 <script>
 
-	 
 function dels(ID)
 {
 	if(confirm('คุณต้องการลบหรือไม่?') )
@@ -107,7 +106,7 @@ function edits(ID)
 			$('#editCustomer').html(res)
 		})
 }
-
+$('#editCustomer').load("customer_edit.php")
 
 
 
