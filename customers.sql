@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2021 at 10:58 AM
+-- Generation Time: Oct 15, 2021 at 08:27 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `customer` (
   `CUSTOMER_ID` int(9) NOT NULL,
-  `CREATE_DATE` varchar(255) NOT NULL DEFAULT current_timestamp(),
-  `TIME` time NOT NULL,
+  `CREATE_DATE` varchar(255) NOT NULL,
+  `TIME` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
   `JOB` varchar(255) NOT NULL,
   `EQUIPMENT` varchar(255) NOT NULL,
@@ -45,9 +45,16 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `JOB`, `EQUIPMENT`, `USER`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-(7, '2021/10/14', '15:15:00', 54321.2, 'ประชุมออนไลน์', 'Server-Linux', 'ร้านค้า', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'LG'),
-(9, '2021/10/20', '16:16:00', 1.2, 'แข่งACM', 'PC RAM8GB 10 เครื่อง', 'มหาวิทยาลัย', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'LG'),
-(11, '2021/12/30', '18:30:00', 1.5, 'แข่งเขียนโปรแกรม', 'AT-MEGA8BIT', 'โรงแรม', 'เอสเอ็นไอที', 'Azza', 'HISENSE');
+(1, '2021/10/02', '12:05', 0.04, 'ประชุมออนไลน์', 'PC10ea', 'โรงเรียน', 'เอสเอ็นไอที', 'Azza', 'MDEC'),
+(2, '2021/10/12', '15:30', 0.04, 'แข่งACM', 'SERVER10ea', 'มหาวิทยาลัย', 'เอสเอ็นไอที', 'Azza', 'MDEC'),
+(3, '2021/11/30', '15:43', 15.3, 'hello', 'Linux', 'โรงเรียน', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
+(4, '2021/10/27', '22:05', 15.5, 'hello', 'Fedora', 'โรงเรียน', 'ไอเอ็มไอ', 'Azza', 'LG'),
+(5, '2021/10/28', '07:30', 3.25, 'ประชุมโรงเรียน', 'ubuntu', 'มหาวิทยาลัย', 'ไอเอ็มไอ', 'Azza', 'MDEC'),
+(6, '2021/10/29', '08:00', 3.25, 'ประชุมโรงงาน', 'lubuntu', 'โรงเรียน', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
+(7, '2021/10/30', '09:00', 4.25, 'ประชุมโรงครัว', 'mint', 'โรงเรียน', 'ไอเอ็มไอ', 'Azza', 'VST'),
+(8, '2021/10/02', '05:30', 4.25, 'ประชุมโรงฆ่าสัตว์', 'Arch', 'โรงพยาบาล', 'เอสเอ็นไอที', 'Azza', 'INGRAM'),
+(9, '2021/10/15', '03:30', 5.25, 'ประชุมโรงเลี้ยง', 'Biotonic', 'ราชการ', 'เอสเอ็นไอที', 'Azza', 'LG'),
+(10, '2021/10/02', '20:00', 5.25, 'ประชุมโรงไม้', 'Cent', 'บุคคลทั่วไป', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'HISENSE');
 
 -- --------------------------------------------------------
 
@@ -109,7 +116,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `CUSTOMER_ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
