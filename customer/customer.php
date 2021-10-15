@@ -19,7 +19,6 @@
 
 </head>
 
-
 <body>
 <!-- Modal -->
 
@@ -99,7 +98,6 @@
       </div>
      </div>
   </div>
-  
 </div>
 	<br>
 	<div id="viewCustomer">

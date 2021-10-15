@@ -103,9 +103,10 @@ function edits(ID)
 	var url = "customer_edit.php"
 	var SETDATA = {ID:ID}
     $.post(url,SETDATA,function(res){
-			alert(res)
+		$('#editCustomer').html(res)
+			
 		})
-	$('#editCustomer'+ID).load('customer_edit.php')
+	$('#editCustomer').html(res)
 }
 
 
