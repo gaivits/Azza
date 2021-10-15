@@ -20,9 +20,11 @@
 	}
 	?>
 
-  
-
-  
+<div class="modal fade" id="myModal-2" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
         <form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
     	
 		<input type="date" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE" value=<?=$DATE?>>
@@ -77,9 +79,12 @@
   		</select>
         <br>
         <input type = "submit" value="update" class="btn btn-success">
-        <button class = "btn btn-default"><a href="http://127.0.0.1/xampp/Azza/Customer/customer.php">Cancel</a></button>
+        <button class = "btn btn-secondary" data-toggle='modal' data-dismiss='modal'>Close</button>
     	</form>
-     
+     </div>
+    </div>
+   </div>
+  </div>
         
 
 

@@ -25,7 +25,7 @@
 <div class="container">
   <h2>AZZA-CUSTOMER-REGISTRATION</h2>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
+  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">Add</button>
   
 	  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -35,9 +35,9 @@
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="text" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE">
+		<input type="date" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE">
         <br>
-        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
+        <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
         <br>
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <br>
@@ -45,12 +45,9 @@
         <br>
         <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="EQUIPMENT" maxlength="255">
         <br>
-        
-    	<select id="USER" name="USER">
-        <br>
+        <select id="USER" name="USER">
     	<option value="">--SELECT USER--</option>
-        
-    	<?php
+        <?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
@@ -99,9 +96,8 @@
      </div>
   </div>
 </div>
-	<br>
-	<div id="viewCustomer">
-	</div>
+	
+	<div id="viewCustomer"></div>
     
 
 </body>

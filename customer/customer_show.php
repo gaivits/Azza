@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
-<table border='1' style="width:80%;margin-left:15%" class="table table-striped table-lg">
+<table border='1' style="width:80%;margin-left:15%" class="table table-striped table-sm">
   <thead align="center">
     <tr>
       <th>NO.</th>
@@ -60,7 +60,7 @@ $result = mysqli_query($conn, $query);
         <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" data-toggle="modal" data-target="#myModal-3" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
+        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" data-toggle="modal" data-target="#myModal-2" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
         
 		</tr>
 		<?php
@@ -103,10 +103,10 @@ function edits(ID)
 	var url = "customer_edit.php"
 	var SETDATA = {ID:ID}
     $.post(url,SETDATA,function(res){
-		$('#editCustomer').html(res)
-			
+			$('#editCustomer').html(res)
+			$('#editCustomer').modal('show')
 		})
-	$('#editCustomer').html(res)
+	
 }
 
 
