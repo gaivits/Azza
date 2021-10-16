@@ -94,8 +94,8 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
   <h2>AZZA-CUSTOMER-REGISTRATION</h2>
   <br>
   <!-- Trigger the modal with a button -->
-  <input type="text" placeholder="search">
-  <button type="button" class="btn btn-primary btn-sm">SEARCH</button>
+  <input type="text" placeholder="search" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
+  <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
   <button type="button" style="float:right;" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
   
   <br>
@@ -162,6 +162,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     	</form>
         
         </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -172,7 +173,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 </div>
 	<br>
 	<div id="viewCustomer"></div>
-    
+    <div id="popCustomer"></div>
      <div style="float:right;margin-right:50px;" id="pagination_controls"><?php echo $paginationCtrls; ?></div>
     
 </body>
@@ -198,6 +199,7 @@ function creates(){
 	var DEALER = $('#DEALER').val()
 	var WE = $('#WE').val()
 	var SUPPLIER = $('#SUPPLIER').val()
+	
 	if(DATE==='')
 	{
 		alert('Enter Date')
@@ -235,5 +237,19 @@ function creates(){
 }
 $('#viewCustomer').load('customer_show.php')
 
+function searches(){
+	
+	var SEARCH_JOB = $('#SEARCH_JOB').val()
+	
+	$.ajax({
+        type: "POST",
+        url: "customer_look_up.php",
+        data: {"SEARCH_JOB":SEARCH_JOB},
+        success: function(res) {
+           $('#popCustomer').html(res)
+        }
+	})
+	
+}
 
 </script>
