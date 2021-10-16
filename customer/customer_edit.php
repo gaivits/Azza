@@ -27,7 +27,7 @@
         <div class="modal-body">
         <form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="date" autocomplete="off" id="datepicker" name="datepicker" class="form-control datepicker" placeholder="SELECT DATE" value=<?=$DATE?>>
+		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE" value=<?=$DATE?>>
         <br>
         <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME" value=<?=$TIME?>>
         <br>

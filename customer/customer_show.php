@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $query);
 
 
 ?>
-	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,6 +25,7 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
+
 <table border='1' style="width:80%;margin-left:15%" class="table table-striped table-sm">
   <thead align="center">
     <tr>
@@ -68,16 +69,15 @@ $result = mysqli_query($conn, $query);
 	}
 ?>
     </tr>
-    
-  </tbody>
+   </tbody>
 </table>
 
-
+ 
 </body>
-  
+ 
 <div id="editCustomer"></div>
   
-	
+
 </body>
 </html>
 <script>

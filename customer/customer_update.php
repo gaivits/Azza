@@ -24,5 +24,5 @@
 	SUPPLIER = '$SUPPLIER'
 	WHERE CUSTOMER_ID=$ID";	
 	mysqli_query($conn, $sql);
-	echo header("location:customer.php")
+	echo header("location:customer.php");
 	?>
