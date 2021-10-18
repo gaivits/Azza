@@ -4,7 +4,8 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $JOB = $_POST['SEARCH_JOB'];
-$query = "SELECT * FROM customer WHERE JOB LIKE '%$JOB%' ";
+$USER = $_POST['SEARCH_USER'];
+$query = "SELECT * FROM customer WHERE JOB LIKE '%$JOB%' AND USER LIKE '%$USER%'";
 $result = mysqli_query($conn, $query);
 
 

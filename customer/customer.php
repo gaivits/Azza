@@ -94,7 +94,18 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
   <h2>AZZA-CUSTOMER-REGISTRATION</h2>
   <br>
   <!-- Trigger the modal with a button -->
-  <input type="text" placeholder="search" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
+  <input type="text" placeholder="search job" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
+  <select id="SEARCH_USER" name="SEARCH_USER">
+  <option value="">--SEARCH USER--</option>
+        <?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+		}
+		
+    	?>  
+  		</select>
   <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
   <button type="button" style="float:right;" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
   
@@ -111,7 +122,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     	
 		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE">
         <br>
-        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
+        <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
         <br>
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <br>
@@ -129,7 +140,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		}
 		if($data['USER']=='มหาวิทยาลัย')
 		{
-				
+			
 		}	
     	?>  
   		</select>
@@ -180,15 +191,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 </html>
 
 <script>
-$(function(){
-   $('.datepicker').datepicker({
-      format: 'yyyy/mm/dd'
-    });
-});
- $('#timepicker').timepicker({
-            uiLibrary: 'bootstrap4'
-        });
- 
+
 function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
@@ -240,13 +243,15 @@ $('#viewCustomer').load('customer_show.php')
 function searches(){
 	
 	var SEARCH_JOB = $('#SEARCH_JOB').val()
+	var SEARCH_USER = $('#SEARCH_USER').val()
 	
 	$.ajax({
         type: "POST",
         url: "customer_look_up.php",
-        data: {"SEARCH_JOB":SEARCH_JOB},
+        data: {"SEARCH_JOB":SEARCH_JOB,"SEARCH_USER":SEARCH_USER},
         success: function(res) {
            $('#popCustomer').html(res)
+		   $('#viewCustomer').load('customer_show.php').hide()
         }
 	})
 	
