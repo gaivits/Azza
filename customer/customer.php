@@ -109,13 +109,13 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
   &nbsp;&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
   &nbsp;
-  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-user">ADD-NEW-USER</button>
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-user" >ADD-NEW-USER</button>
   &nbsp;
   <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-dealer">ADD-NEW-DEALER</button>
   &nbsp;
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal-add-we">ADD-NEW-WE</button>
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal-add-we" >ADD-NEW-WE</button>
   &nbsp;
-  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-supplier">ADD-NEW-SUPPLIER</button>
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-supplier" >ADD-NEW-SUPPLIER</button>
   &nbsp;<br>
   <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">ADD</button>
   <!-- Modal -->
@@ -198,7 +198,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
       <div class="modal-content">
         <div class="modal-body">
         	<form>
-            	<input type="text" id="ADD_USER" name="ADD_USER">
+            	<input type="text" id="ADD_USER" name="ADD_USER" placeholder="เพิ่มuser">
                 </form>
         </div>
         
@@ -216,7 +216,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
       <div class="modal-content">
         <div class="modal-body">
         	<form>
-            	<input type="text" id="ADD_DEALER" name="ADD_DEALER">
+            	<input type="text" id="ADD_DEALER" name="ADD_DEALER" placeholder="เพิ่มdealer">
                 
         	</form>
         </div>
@@ -236,7 +236,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
       <div class="modal-content">
         <div class="modal-body">
         	<form>
-            	<input type="text" id="ADD_WE" name="ADD_WE">
+            	<input type="text" id="ADD_WE" name="ADD_WE" placeholder="เพิ่มwe">
                 
         	</form>
         </div>
@@ -256,7 +256,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
       <div class="modal-content">
         <div class="modal-body">
         	<form>
-            	<input type="text" id="ADD_SUPPLIER" name="ADD_SUPPLIER">
+            	<input type="text" id="ADD_SUPPLIER" name="ADD_SUPPLIER" placeholder="เพิ่มsupplier">
                 
         	</form>
         </div>

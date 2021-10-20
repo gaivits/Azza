@@ -104,7 +104,6 @@ function edits(ID)
 	var SETDATA = {ID:ID}
     $.post(url,SETDATA,function(res){
 			$('#editCustomer').html(res)
-			$('#editCustomer').modal('show')
 		})
 	
 }
