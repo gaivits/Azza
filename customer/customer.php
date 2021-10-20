@@ -106,13 +106,20 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		
     	?>  
   		</select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
-  <button type="button" style="float:right;" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
-  
+  &nbsp;
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-user">ADD-NEW-USER</button>
+  &nbsp;
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-dealer">ADD-NEW-DEALER</button>
+  &nbsp;
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal-add-we">ADD-NEW-WE</button>
+  &nbsp;
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-supplier">ADD-NEW-SUPPLIER</button>
+  &nbsp;<br>
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">ADD</button>
+  <!-- Modal -->
   <br>
-  
-  
-	  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -120,7 +127,9 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE">
+		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeh
+        
+        older="SELECT DATE">
         <br>
         <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
         <br>
@@ -183,8 +192,87 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
   </div>
 </div>
 	<br>
+    <div class="modal fade" id="myModal-add-user" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+        	<form>
+            	<input type="text" id="ADD_USER" name="ADD_USER">
+                </form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="add_user()">OK</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal-add-dealer" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+        	<form>
+            	<input type="text" id="ADD_DEALER" name="ADD_DEALER">
+                
+        	</form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="add_dealer()">OK</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
+	<br>
+    <div class="modal fade" id="myModal-add-we" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+        	<form>
+            	<input type="text" id="ADD_WE" name="ADD_WE">
+                
+        	</form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="add_we()">OK</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
+	<br>
+    <div class="modal fade" id="myModal-add-supplier" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+        	<form>
+            	<input type="text" id="ADD_SUPPLIER" name="ADD_SUPPLIER">
+                
+        	</form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="add_supplier()">OK</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
 	<div id="viewCustomer"></div>
     <div id="popCustomer"></div>
+    
+    
      <div style="float:right;margin-right:50px;" id="pagination_controls"><?php echo $paginationCtrls; ?></div>
     
 </body>
@@ -256,5 +344,84 @@ function searches(){
 	})
 	
 }
-
+function add_user(){
+	
+	var USER = $('#ADD_USER').val()
+	if(USER==="")
+	{
+		alert("กรอก USER")
+		return 0
+		}
+	$.ajax({
+        type: "POST",
+        url: "customer_add_user.php",
+        data: {"ADD_USER":USER},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+			alert("เพิ่ม dealer 1 รายการ")
+        },
+		
+    })
+}
+$('#viewCustomer').load('customer_show.php')
+function add_dealer(){
+	
+	var DEALER = $('#ADD_DEALER').val()
+	if(DEALER==="")
+	{
+		alert("กรอก DEALER")
+		return 0
+		}
+	$.ajax({
+        type: "POST",
+        url: "customer_add_dealer.php",
+        data: {"ADD_DEALER":DEALER},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+			alert("เพิ่ม dealer 1 รายการ")
+        },
+		
+    })
+}
+$('#viewCustomer').load('customer_show.php')
+function add_we(){
+	
+	var WE = $('#ADD_WE').val()
+	if(WE==="")
+	{
+		alert("กรอก WE")
+		return 0
+		}
+	$.ajax({
+        type: "POST",
+        url: "customer_add_dealer.php",
+        data: {"ADD_WE":WE},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+			alert("เพิ่ม user 1 รายการ")
+        },
+		
+    })
+}
+$('#viewCustomer').load('customer_show.php')
+function add_supplier(){
+	
+	var SUPPLIER = $('#ADD_SUPPLIER').val()
+	if(SUPPLIER==="")
+	{
+		alert("กรอก SUPPLIER")
+		return 0
+		}
+	$.ajax({
+        type: "POST",
+        url: "customer_add_supplier.php",
+        data: {"ADD_SUPPLIER":SUPPLIER},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+			alert("เพิ่ม supplier 1 รายการ")
+        },
+		
+    })
+}
+$('#viewCustomer').load('customer_show.php')
 </script>
