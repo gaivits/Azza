@@ -7,7 +7,7 @@
 	$AMOUNT = $_POST["AMOUNT"];
 	$JOB = $_POST["JOB"];
 	$EQUIPMENT = $_POST["EQUIPMENT"];
-	$USER = $_POST["USER"];
+	$USER = $_POST['USER'];
 	$DEALER = $_POST["DEALER"];
 	$WE =$_POST["WE"];
 	$SUPPLIER = $_POST["SUPPLIER"];

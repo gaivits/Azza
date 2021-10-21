@@ -127,9 +127,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeh
-        
-        older="SELECT DATE">
+		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE" multiple="multiple">
         <br>
         <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
         <br>
@@ -147,16 +145,13 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 		}
-		if($data['USER']=='มหาวิทยาลัย')
-		{
 			
-		}	
     	?>  
   		</select>
         <br>
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <br>
-        <select id="DEALER" name="DEALER">
+        <select id="DEALER" name="DEALER" multiple>
     	<option value="">--SELECT DEALER--</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
@@ -167,7 +162,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     	?>  
   		</select>
        
-        <select id="SUPPLIER" name="SUPPLIER" >
+        <select id="SUPPLIER" name="SUPPLIER" multiple>
     	<option value="">--SELECT SUPPLIER--</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
