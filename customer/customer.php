@@ -1,7 +1,4 @@
 
-
-
-   
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn = new Databases;
@@ -73,8 +70,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 }
 	}
 ?>
-	
-	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -164,7 +160,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         
         </select>
         <br>
-        <select class="form-control" name="Ref_dist_id" id="amphures">
+        <select class="form-control" name="Ref_dist_id" id="amphures" >
         
         </select>
         <br>
@@ -296,50 +292,9 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     
 </body>
 </html>
-
+<?php include("script.php")?>
 <script>
- $('#provinces').change(function() {
-    var id_province = $(this).val();
- 
-      $.ajax({
-      type: "POST",
-      url: "ajax_db.php",
-      data: {id:id_province,function:'provinces'},
-      success: function(data){
-          $('#amphures').html(data); 
-          $('#districts').html(' '); 
-          $('#districts').val(' ');  
-          $('#zip_code').val(' '); 
-      }
-    });
-  });
- 
-  $('#amphures').change(function() {
-    var id_amphures = $(this).val();
- 
-      $.ajax({
-      type: "POST",
-      url: "ajax_db.php",
-      data: {id:id_amphures,function:'amphures'},
-      success: function(data){
-          $('#districts').html(data);  
-      }
-    });
-  });
- 
-   $('#districts').change(function() {
-    var id_districts= $(this).val();
- 
-      $.ajax({
-      type: "POST",
-      url: "ajax_db.php",
-      data: {id:id_districts,function:'districts'},
-      success: function(data){
-          $('#zip_code').val(data)
-      }
-    });
-  
-  });
+
 function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
@@ -347,10 +302,12 @@ function creates(){
 	var JOB = $('#JOB').val()
 	var EQUIPMENT = $('#EQUIPMENT').val()
 	var USER = $('#USER').val()
+	var PROVINCE = $('#provinces').val()
+	var DISTRICT = $('#amphures').val()
+	var SUBDISTRICT = $('#districts').val()
 	var DEALER = $('#DEALER').val()
 	var WE = $('#WE').val()
 	var SUPPLIER = $('#SUPPLIER').val()
-	
 	if(DATE==='')
 	{
 		alert('Enter Date')
@@ -379,7 +336,7 @@ function creates(){
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
+        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"PROVINCE":PROVINCE,"DISTRICT":DISTRCT,"SUBDISTRICT":SUBDISTRICT,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
@@ -484,4 +441,5 @@ function add_supplier(){
     })
 }
 $('#viewCustomer').load('customer_show.php')
+
 </script>

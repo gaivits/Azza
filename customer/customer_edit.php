@@ -19,10 +19,7 @@
 		$SUPPLIER = $row['SUPPLIER'];
 	}
 	?>
-<script>
-	$(document).ready(function(){$('#myModal-2').modal('show')})
-   	
-</script>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,7 +30,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
 <div class="modal fade" id="myModal-2" role="dialog">
@@ -65,10 +61,26 @@
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 		}
-		
-    	?>  
-  		</select>
+		?>
+         </select>
+        <select class="form-control" name="Ref_prov_id" id="provinces">
+		<option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
+        <?php
+        $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
+		while($value = mysqli_fetch_assoc($records))
+        {
+		  echo "<option value='". $value['id'] ."'>" .$value['name_th'] ."</option>";
+		  }
+		?>
+        
+        </select>
         <br>
+        <select class="form-control" name="Ref_dist_id" id="amphures" >
+        
+        </select>
+        <br>
+        <select class="form-control" name="Ref_subdist_id" id="districts">
+      	</select>
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <br>
         <select id="DEALER" name="DEALER">
@@ -103,9 +115,7 @@
   </div>
 </body>
 </html>
-<script>
-	
-</script>
+
         
 
 

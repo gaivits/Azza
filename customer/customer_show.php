@@ -37,6 +37,9 @@ $result = mysqli_query($conn, $query);
       <th>โครงงาน</th>
       <th>อุปกรณ์</th>
       <th>USER</th>
+      <th>จังหวัด</th>
+      <th>เขต/อำเภอ</th>
+      <th>แขวง/ตำบล</th>
       <th>DEALER</th>
       <th>WE</th>
       <th>SUPPLIER</th>
@@ -59,6 +62,9 @@ $result = mysqli_query($conn, $query);
     	<td width="10%" align="left"><nobr><?php echo $row["JOB"]; ?></nobr></td>
         <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
         <td width="6%" align="center"><nobr><?php echo $row['USER'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['PROVINCE'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['DISTRICT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['SUBDISTRICT'] ;?></nobr></td>
         <td width="10%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
