@@ -1,3 +1,7 @@
+
+
+
+   
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn = new Databases;
@@ -145,10 +149,30 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 		}
-			
-    	?>  
-  		</select>
+		
+    	?> 
+       	</select>
+		<select class="form-control" name="Ref_prov_id" id="provinces">
+		<option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
+        <?php
+        $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
+		while($value = mysqli_fetch_assoc($records))
+        {
+		  echo "<option value='". $value['id'] ."'>" .$value['name_th'] ."</option>";
+		  }
+		?>
+        
+        </select>
         <br>
+        <select class="form-control" name="Ref_dist_id" id="amphures">
+        
+        </select>
+        <br>
+        <select class="form-control" name="Ref_subdist_id" id="districts">
+      	</select>
+        <br>
+         <input type="text" name="zip_code" id="zip_code" class="form-control" placeholder="รหัสไปรษณีย์">
+         <br>
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <br>
         <select id="DEALER" name="DEALER" multiple>
@@ -274,7 +298,48 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 </html>
 
 <script>
-
+ $('#provinces').change(function() {
+    var id_province = $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "ajax_db.php",
+      data: {id:id_province,function:'provinces'},
+      success: function(data){
+          $('#amphures').html(data); 
+          $('#districts').html(' '); 
+          $('#districts').val(' ');  
+          $('#zip_code').val(' '); 
+      }
+    });
+  });
+ 
+  $('#amphures').change(function() {
+    var id_amphures = $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "ajax_db.php",
+      data: {id:id_amphures,function:'amphures'},
+      success: function(data){
+          $('#districts').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "ajax_db.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code').val(data)
+      }
+    });
+  
+  });
 function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
