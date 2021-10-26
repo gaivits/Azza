@@ -5,7 +5,7 @@ $conn=new Databases;
 $conn = $conn->__construct();
 $query = "SELECT * FROM customer";
 $result = mysqli_query($conn, $query);
-
+$idx=0;
 
 ?>
 
@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $query);
 
 <body>
 
-<table border='1' style="width:80%;margin-left:15%" class="table table-striped table-sm">
+<table border='1' style="width:80%;margin-left:5%" class="table table-striped table-sm">
   <thead align="center">
     <tr>
       <th>SERIAL</th>
@@ -40,6 +40,12 @@ $result = mysqli_query($conn, $query);
       <th>จังหวัด</th>
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
+      <th>ไปรษณีย์</th>
+      <th>ติดต่อ</th>
+      <th>ฝ่าย/แผนก</th>
+      <th>ผู้รับผิดชอบ</th>
+      <th>โทร</th>
+      <th>E-MAIL</th>
       <th>DEALER</th>
       <th>WE</th>
       <th>SUPPLIER</th>
@@ -51,10 +57,10 @@ $result = mysqli_query($conn, $query);
       <?php
 		
 		while($row = mysqli_fetch_array($result)) 
-		{$idx=1;
+		{$idx=$idx+1;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
-        <td width="2%" align="center"><nobr><?php echo uniqid(); ?></nobr></td>
+        <td width="2%" align="center"><nobr><?php echo "";?></nobr></td>
     	<td width="2%" align="center"><nobr><?php echo $idx; ?></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
@@ -65,22 +71,26 @@ $result = mysqli_query($conn, $query);
         <td width="5%" align="center"><nobr><?php echo $row['PROVINCE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['DISTRICT'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['SUBDISTRICT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
         <td width="10%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" data-toggle="modal" data-target="#myModal-2" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
+        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
         
 		</tr>
-		<?php
-	$idx=$idx+1;
-	}
+        <?php
+		}
 ?>
     </tr>
    </tbody>
 </table>
 
- 
 </body>
  
 <div id="editCustomer"></div>
@@ -112,6 +122,7 @@ function edits(ID)
 	var SETDATA = {ID:ID}
     $.post(url,SETDATA,function(res){
 			$('#editCustomer').html(res)
+			
 		})
 	
 }

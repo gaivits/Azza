@@ -1,4 +1,3 @@
-
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
@@ -31,39 +30,33 @@
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-<div class="modal fade" id="myModal-2" role="dialog">
-    <div class="modal-dialog">
-    <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-body">
-        <form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
+	
+	<form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
     	
 		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE" value=<?=$DATE?>>
         <br>
-        <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME" value=<?=$TIME?>>
+        <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
         <br>
-		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" value=<?=$AMOUNT?>>
+		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <br>
-        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="JOB" maxlength="255" value=<?=$JOB?>>
+        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" maxlength="255" >
         <br>
-        <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="EQUIPMENT" maxlength="255" value=<?=$EQUIPMENT?>>
+        <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์" maxlength="255">
         <br>
-        
-    	<select id="USER" name="USER" >
-        
-    	<option value="<?=$USER?>"><?=$USER?></option>
-        
-    	<?php
+        <select id="USER" name="USER">
+    	<option value="">--SELECT USER--</option>
+        <?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
-		
 		while($data = mysqli_fetch_assoc($records))
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 		}
-		?>
-         </select>
-        <select class="form-control" name="Ref_prov_id" id="provinces">
+		
+    	?> 
+       	</select>
+		<select class="form-control" name="Ref_prov_id" id="provinces2">
 		<option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
         <?php
         $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
@@ -72,19 +65,31 @@
 		  echo "<option value='". $value['id'] ."'>" .$value['name_th'] ."</option>";
 		  }
 		?>
+        </select>
+        <br>
+        <select class="form-control" name="Ref_dist_id" id="amphures2" >
         
         </select>
         <br>
-        <select class="form-control" name="Ref_dist_id" id="amphures" >
-        
-        </select>
-        <br>
-        <select class="form-control" name="Ref_subdist_id" id="districts">
+        <select class="form-control" name="Ref_subdist_id" id="districts2">
       	</select>
+        <br>
+         <input type="text" name="zip_code2" id="zip_code2" class="form-control" placeholder="รหัสไปรษณีย์">
+         <br>
+         <input type="text" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
+         <br>
+         <input type="text" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
+         <br>
+         <input type="text" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
+         <br>
+         <input type="text" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
+         <br>
+         <input type="email" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
+         <br>
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <br>
         <select id="DEALER" name="DEALER">
-    	<option value="<?=$DEALER?>"><?=$DEALER?></option>
+    	<option value="">--SELECT DEALER--</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
@@ -95,7 +100,7 @@
   		</select>
        
         <select id="SUPPLIER" name="SUPPLIER" >
-    	<option value="<?=$SUPPLIER?>"><?=$SUPPLIER?></option>
+    	<option value="">--SELECT SUPPLIER--</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
@@ -105,18 +110,12 @@
 		}	
     	?>  
   		</select>
-        <br>
-        <input type = "submit" value="update" class="btn btn-success">
-        <button class = "btn btn-secondary" data-toggle='modal' data-dismiss='modal'>Close</button>
+        	<input type="submit" value="update" class="btn btn-success">
     	</form>
-     </div>
-    </div>
-   </div>
-  </div>
+        
 </body>
 </html>
+<?php include('script_edit.php') ?>
+<script>
 
-        
-
-
-
+</script>
