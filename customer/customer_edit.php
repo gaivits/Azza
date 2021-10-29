@@ -45,15 +45,15 @@
 	<form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
     	
 		<input type="text" autocomplete="off" id="datepicker2" name="datepicker2" placeholder="SELECT DATE" value=<?=$DATE?>>
-        <br>
+        
         <input type="text" autocomplete="off" id="timepicker2" name="timepicker2" width="276" placeholder="SELECT TIME" value=<?=$TIME?>  />
-        <br>
+        
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" value=<?=$AMOUNT?>>
-        <br>
+        
         <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" value=<?=$JOB?>>
-        <br>
+        
         <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์"  value=<?=$EQUIPMENT?>>
-        <br>
+       
         <select id="USER" name="USER">
     	<option value="<?=$USER?>"><?=$USER?></option>
         <?php
@@ -75,28 +75,28 @@
 		  }
 		?>
         </select>
-        <br>
+        
         <select class="form-control" name="Ref_dist_id" id="amphures2" >
         
         </select>
-        <br>
+        
         <select class="form-control" name="Ref_subdist_id" id="districts2" >
       	</select>
-        <br>
+        
          <input type="text" name="zip_code2" id="zip_code2" class="form-control" value=<?=$ZIPCODE?> placeholder="รหัสไปรษณีย์">
-         <br>
+         
          <input type="text" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" value=<?=$CONTACT?> >
-         <br>
+         
          <input type="text" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" value=<?=$DEPARTMENT?> >
-         <br>
+         
          <input type="text" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" value=<?=$NAME?>>
-         <br>
+         
          <input type="text" id="PHONE" name="PHONE" placeholder="โทร" value=<?=$PHONE?> >
-         <br>
+         
          <input type="email" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" value=<?=$EMAIL?> >
-         <br>
+         
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
-        <br>
+        
         <select id="DEALER" name="DEALER">
     	<option value="<?=$DEALER?>"><?=$DEALER?></option>
     	<?php
@@ -119,13 +119,14 @@
 		}	
     	?>  
   		</select>
-        	<input type="submit" value="update" class="btn btn-success">
+        	<br>
+        	<input type="submit" value="OK">
     	</form>
         
 </body>
 <script>
 $('#datepicker2').datepicker({
-    format: 'mm/dd/yyyy',
+    format: 'yy/mm/dd',
     
 });
  $('#timepicker2').timepicker({

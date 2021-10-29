@@ -2,7 +2,7 @@
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
 	$conn = $conn->__construct();
-	$ID = $_GET[ID];
+	$ID = $_POST[ID];
 	$DATE = $_POST[DATE];
 	$TIME = $_POST[TIME];
 	$AMOUNT = $_POST[AMOUNT];
@@ -41,5 +41,5 @@
 	SUPPLIER = '$SUPPLIER'
 	WHERE CUSTOMER_ID=$ID";	
 	mysqli_query($conn, $sql);
-	echo header("location:customer.php");
+	echo header("location:customer_show.php");
 	?>

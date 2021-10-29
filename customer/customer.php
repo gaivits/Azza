@@ -106,18 +106,19 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
   		</select>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
-  &nbsp;
+  &nbsp <br> 
   <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-user" >ADD-NEW-USER</button>
-  &nbsp;
+  &nbsp <br> 
   <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-dealer">ADD-NEW-DEALER</button>
-  &nbsp;
+  &nbsp <br> 
   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal-add-we" >ADD-NEW-WE</button>
-  &nbsp;
+  &nbsp <br> 
   <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-supplier" >ADD-NEW-SUPPLIER</button>
-  &nbsp;<br>
-  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">ADD</button>
-  <!-- Modal -->
+  &nbsp <br> 
+  <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">เพิ่มสินค้า</button>
   <br>
+  <!-- Modal -->
+  
   
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -127,15 +128,15 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	
 		<input type="text" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE">
-        <br>
+        
         <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
-        <br>
+        
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
-        <br>
+        
         <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" maxlength="255" >
-        <br>
+        
         <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์" maxlength="255">
-        <br>
+        
         <select id="USER" name="USER">
     	<option value="">--SELECT USER--</option>
         <?php
@@ -157,28 +158,28 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		  }
 		?>
         </select>
-        <br>
+        
         <select class="form-control" name="Ref_dist_id" id="amphures" >
         
         </select>
-        <br>
+        
         <select class="form-control" name="Ref_subdist_id" id="districts">
       	</select>
-        <br>
+        
          <input type="text" name="zip_code" id="zip_code" class="form-control" placeholder="รหัสไปรษณีย์">
-         <br>
+         
          <input type="text" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
-         <br>
+         
          <input type="text" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
-         <br>
+         
          <input type="text" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
-         <br>
+         
          <input type="text" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
-         <br>
+         
          <input type="email" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
-         <br>
+         
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
-        <br>
+        
         <select id="DEALER" name="DEALER">
     	<option value="">--SELECT DEALER--</option>
     	<?php
@@ -214,7 +215,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
      </div>
   </div>
 </div>
-	<br>
+	
     <div class="modal fade" id="myModal-add-user" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -233,6 +234,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
      </div>
   </div>
 </div>
+
 <div class="modal fade" id="myModal-add-dealer" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -252,7 +254,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
      </div>
   </div>
 </div>
-	<br>
+	
     <div class="modal fade" id="myModal-add-we" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -272,7 +274,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
      </div>
   </div>
 </div>
-	<br>
+	
     <div class="modal fade" id="myModal-add-supplier" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
