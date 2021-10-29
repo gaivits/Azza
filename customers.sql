@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2021 at 08:06 AM
+-- Generation Time: Oct 29, 2021 at 09:49 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1053,6 +1053,15 @@ CREATE TABLE `customer` (
   `JOB` varchar(255) NOT NULL,
   `EQUIPMENT` varchar(255) NOT NULL,
   `USER` varchar(255) NOT NULL,
+  `PROVINCE` varchar(255) NOT NULL,
+  `DISTRICT` varchar(255) NOT NULL,
+  `SUBDISTRICT` varchar(255) NOT NULL,
+  `ZIPCODE` varchar(5) NOT NULL,
+  `CONTACT` varchar(255) NOT NULL,
+  `DEPARTMENT` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
+  `PHONE` varchar(255) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
   `WE` varchar(255) NOT NULL DEFAULT 'Azza',
   `SUPPLIER` varchar(255) NOT NULL
@@ -1062,8 +1071,9 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `JOB`, `EQUIPMENT`, `USER`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-(1, '2021-10-31', '14:45', 0.05, 'ประชุมออนไลน์', 'คอม10ตัว', 'Array', 'Array', 'Azza', 'Array');
+INSERT INTO `customer` (`CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `JOB`, `EQUIPMENT`, `USER`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
+(9, '2021-11-05', '21:00', 0.05, 'ประชุมออนไลน์', 'com10ตัว', 'โรงพยาบาล', '2', '52', '110104', '10280', 'ติ๋ว', 'บุคคล', '', '024550474', 'Sayan@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'INGRAM'),
+(10, '2021-11-02', '19:20', 0.05, 'ประชุมโรงฆ่าสัตว์', 'คอม', 'มหาวิทยาลัย', '8', '112', '170403', '16120', 'มกร', 'บุคคล', '', '024550475', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'INGRAM');
 
 -- --------------------------------------------------------
 
@@ -10157,7 +10167,7 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `geographies`
