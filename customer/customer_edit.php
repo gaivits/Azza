@@ -13,6 +13,15 @@
 		$JOB = $row['JOB'];
 		$EQUIPMENT = $row['EQUIPMENT'];
 		$USER = $row['USER'];
+		$PROVINCE = $row['PROVINCE'];
+		$DISTRICT = $row['DISTRICT'];
+		$SUBDISTRICT = $row['SUBDISTRICT'];
+		$ZIPCODE = $row['ZIPCODE'];
+		$CONTACT = $row['CONTACT'];
+		$DEPARTMENT=$row['DEPARTMENT'];
+		$NAME = $row['NAME'];
+		$PHONE = $row['PHONE'];
+		$EMAIL = $row['EMAIL'];
 		$DEALER = $row['DEALER'];
 		$WE = $row['WE'];
 		$SUPPLIER = $row['SUPPLIER'];
@@ -35,23 +44,23 @@
 	
 	<form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE" value=<?=$DATE?>>
+		<input type="text" autocomplete="off" id="datepicker2" name="datepicker2" placeholder="SELECT DATE" value=<?=$DATE?>>
         <br>
-        <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
+        <input type="text" autocomplete="off" id="timepicker2" name="timepicker2" width="276" placeholder="SELECT TIME" value=<?=$TIME?>  />
         <br>
-		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
+		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" value=<?=$AMOUNT?>>
         <br>
-        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" maxlength="255" >
+        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" value=<?=$JOB?>>
         <br>
-        <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์" maxlength="255">
+        <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์"  value=<?=$EQUIPMENT?>>
         <br>
         <select id="USER" name="USER">
-    	<option value="">--SELECT USER--</option>
+    	<option value="<?=$USER?>"><?=$USER?></option>
         <?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+            echo "<option value='". $row['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 		}
 		
     	?> 
@@ -71,25 +80,25 @@
         
         </select>
         <br>
-        <select class="form-control" name="Ref_subdist_id" id="districts2">
+        <select class="form-control" name="Ref_subdist_id" id="districts2" >
       	</select>
         <br>
-         <input type="text" name="zip_code2" id="zip_code2" class="form-control" placeholder="รหัสไปรษณีย์">
+         <input type="text" name="zip_code2" id="zip_code2" class="form-control" value=<?=$ZIPCODE?> placeholder="รหัสไปรษณีย์">
          <br>
-         <input type="text" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
+         <input type="text" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" value=<?=$CONTACT?> >
          <br>
-         <input type="text" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
+         <input type="text" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" value=<?=$DEPARTMENT?> >
          <br>
-         <input type="text" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
+         <input type="text" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" value=<?=$NAME?>>
          <br>
-         <input type="text" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
+         <input type="text" id="PHONE" name="PHONE" placeholder="โทร" value=<?=$PHONE?> >
          <br>
-         <input type="email" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
+         <input type="email" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" value=<?=$EMAIL?> >
          <br>
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <br>
         <select id="DEALER" name="DEALER">
-    	<option value="">--SELECT DEALER--</option>
+    	<option value="<?=$DEALER?>"><?=$DEALER?></option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
@@ -100,7 +109,7 @@
   		</select>
        
         <select id="SUPPLIER" name="SUPPLIER" >
-    	<option value="">--SELECT SUPPLIER--</option>
+    	<option value="<?=$SUPPLIER?>"><?=$SUPPLIER?></option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
@@ -114,6 +123,15 @@
     	</form>
         
 </body>
+<script>
+$('#datepicker2').datepicker({
+    format: 'mm/dd/yyyy',
+    
+});
+ $('#timepicker2').timepicker({
+            uiLibrary: 'bootstrap4'
+        });
+</script>
 </html>
 <?php include('script_edit.php') ?>
 <script>

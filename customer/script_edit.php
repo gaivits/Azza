@@ -10,9 +10,9 @@
       data: {id:id_province,function:'provinces'},
       success: function(data){
           $('#amphures2').html(data); 
-          $('#districts2').html(' '); 
-          $('#districts2').val(' ');  
-          $('#zip_code2').val(' '); 
+          $('#districts2').html(''); 
+          $('#districts2').val('');  
+          $('#zip_code2').val(''); 
       }
     });
   });

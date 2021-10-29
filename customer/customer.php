@@ -74,20 +74,18 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />	
 </head>
 
 <body>
 
 <!-- Modal -->
-
 
 <div class="container">
    <br>
@@ -120,6 +118,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
   <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">ADD</button>
   <!-- Modal -->
   <br>
+  
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -127,9 +126,9 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	
-		<input type="date" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE" >
+		<input type="text" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE">
         <br>
-        <input type="time" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
+        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
         <br>
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <br>
@@ -300,6 +299,15 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
      <div style="float:right;margin-right:50px;" id="pagination_controls"><?php echo $paginationCtrls; ?></div>
     
 </body>
+<script>
+$('#datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    
+});
+ $('#timepicker').timepicker({
+            uiLibrary: 'bootstrap4'
+        });
+</script>
 </html>
 <?php include("script.php") ;?>
 <script>
@@ -317,7 +325,7 @@ function creates(){
 	var ZIPCODE=$('#zip_code').val()
 	var CONTACT = $('#CONTACT').val()
 	var DEPARTMENT = $('#DEPARTMENT').val()
-	var NAME = $('#NAME').val()
+	var NAME = $('#NOTENAME').val()
 	var PHONE = $('#PHONE').val()
 	var EMAIL = $('#EMAIL').val()
 	var DEALER = $('#DEALER').val()
@@ -352,7 +360,7 @@ function creates(){
         type: "POST",
         url: "customer_create.php",
         data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
-		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
+		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },

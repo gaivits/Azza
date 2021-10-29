@@ -26,8 +26,8 @@ $idx=0;
 
 <body>
 
-<table border='1' style="width:80%;margin-left:5%" class="table table-striped table-sm">
-  <thead align="center">
+<table border='1' style="width:80%; margin-left:1.5%" class="table table-striped table-sm">
+  <thead align="center" style="font-size:14px;">
     <tr>
       <th>SERIAL</th>
       <th>NO.</th>
@@ -60,7 +60,7 @@ $idx=0;
 		{$idx=$idx+1;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
-        <td width="2%" align="center"><nobr><?php echo "";?></nobr></td>
+        <td width="2%" align="center"><nobr><?php echo '00'.$row['PROVINCE'].$idx;?></nobr></td>
     	<td width="2%" align="center"><nobr><?php echo $idx; ?></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
