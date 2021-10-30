@@ -303,7 +303,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 </body>
 <script>
 $('#datepicker').datepicker({
-    format: 'mm/dd/yyyy',
+    format: 'mm/dd/yy',
     
 });
  $('#timepicker').timepicker({

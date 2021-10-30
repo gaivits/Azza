@@ -42,7 +42,7 @@
 
 <body>
 	
-	<form action="customer_update.php?ID=<?=$ID?>" id="CUSTOMER" name="CUSTOMER" method="POST">
+	<form action="customer_update.php?ID=<?=$ID?>" method="POST" id="CUSTOMER" name="CUSTOMER">
     	
 		<input type="text" autocomplete="off" id="datepicker2" name="datepicker2" placeholder="SELECT DATE" value=<?=$DATE?>>
         
@@ -119,22 +119,19 @@
 		}	
     	?>  
   		</select>
-        	<br>
         	<input type="submit" value="OK">
     	</form>
         
 </body>
 <script>
 $('#datepicker2').datepicker({
-    format: 'yy/mm/dd',
+    format: 'mm/dd/yy',
     
 });
  $('#timepicker2').timepicker({
             uiLibrary: 'bootstrap4'
         });
+		
 </script>
 </html>
 <?php include('script_edit.php') ?>
-<script>
-
-</script>

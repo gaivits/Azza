@@ -25,9 +25,9 @@ $idx=0;
 
 
 <body>
-
-<table border='1' style="width:80%; margin-left:1.5%" class="table table-striped table-sm">
-  <thead align="center" style="font-size:14px;">
+<br>
+<table border='1' style="width:90%; margin-left:5%" class="table table-striped table-sm">
+  <thead align="center" style="font-size:16px;">
     <tr>
       <th>SERIAL</th>
       <th>NO.</th>
@@ -35,17 +35,9 @@ $idx=0;
       <th>TIME</th>
       <th>จัดซื้อประมาณ</th>
       <th>โครงงาน</th>
-      <th>อุปกรณ์</th>
-      <th>USER</th>
-      <th>จังหวัด</th>
-      <th>เขต/อำเภอ</th>
-      <th>แขวง/ตำบล</th>
-      <th>ไปรษณีย์</th>
-      <th>ติดต่อ</th>
-      <th>ฝ่าย/แผนก</th>
-      <th>ผู้รับผิดชอบ</th>
-      <th>โทร</th>
-      <th>E-MAIL</th>
+      <th>สินค้า</th>
+      <th>ลูกค้า</th>
+      <th>หน่วยงาน</th>
       <th>DEALER</th>
       <th>WE</th>
       <th>SUPPLIER</th>
@@ -61,23 +53,15 @@ $idx=0;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
         <td width="2%" align="center"><nobr><?php echo '00'.$row['PROVINCE'].$idx;?></nobr></td>
-    	<td width="2%" align="center"><nobr><?php echo $idx; ?></nobr></td>
+    	<td width="2%" align="center"><nobr><a href="customer_show_user.php?ID=<?php echo $row["CUSTOMER_ID"] ;?>"><?php echo $idx; ?></a></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
-    	<td width="5%" align="right"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
+    	<td width="5%" align="center"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
     	<td width="10%" align="left"><nobr><?php echo $row["JOB"]; ?></nobr></td>
         <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
-        <td width="6%" align="center"><nobr><?php echo $row['USER'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['PROVINCE'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['DISTRICT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['SUBDISTRICT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
-        <td width="10%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
+        <td width="4%" align="left"><nobr><?php echo $row['USER'] ;?></nobr></td>
+        <td width="6%" align="center"><nobr><?php echo $row['UNIT'] ;?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
