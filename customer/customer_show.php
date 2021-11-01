@@ -5,7 +5,7 @@ $conn=new Databases;
 $conn = $conn->__construct();
 $query = "SELECT * FROM customer";
 $result = mysqli_query($conn, $query);
-$idx=0;
+$idx=00;
 
 ?>
 
@@ -28,21 +28,38 @@ $idx=0;
 <br>
 <table border='1' style="width:90%; margin-left:5%" class="table table-striped table-sm">
   <thead align="center" style="font-size:16px;">
-    <tr>
-      <th>SERIAL</th>
-      <th>NO.</th>
-      <th>DATE</th>
-      <th>TIME</th>
-      <th>จัดซื้อประมาณ</th>
-      <th>โครงงาน</th>
-      <th>สินค้า</th>
-      <th>ลูกค้า</th>
-      <th>หน่วยงาน</th>
-      <th>DEALER</th>
-      <th>WE</th>
-      <th>SUPPLIER</th>
-      <th colspan="2">ACTION</th>
+   <tr align="center">
+        <th><h2>รายการ</h2></th>
     </tr>
+    <tr>
+        <td colspan="4"><h3>เลข</h3></td>
+        <td colspan="6"><h3>SYSTEM</h3></td>
+        <td colspan="4"><h3>PRODUCT</h3></td>
+        <td colspan="3"><h3>REGISTER</h3></td>
+        <td colspan="2"><h3>ACTION</h3></td>
+    </tr>
+    <tr>
+        <th>DATE</th>
+        <th>งาน</th>
+        <th>รายการ</th>
+        <th>REF</th>
+        	<th>PROJECT</th>
+        	<th>ลูกค้า</th>
+            <th>(หน่วยงาน)</th>
+        	<th>DEALER</th>
+        	<th>เรา</th>
+     		<th>SUPPLIER</th>
+        <th>ประเภท</th>
+        <th>รุ่น</th>
+        <th>ยี่ห้อ</th>
+        <th>จำนวน</th>
+       <th>UtoD</th>
+       <th>UtoW</th>
+       <th>WtoS</th>
+     		<th>แก้ไข</th>
+            <th>ลบ</th>
+     </tr>
+    
   </thead>
   <tbody>
     
@@ -52,18 +69,23 @@ $idx=0;
 		{$idx=$idx+1;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
-        <td width="2%" align="center"><nobr><?php echo '00'.$row['PROVINCE'].$idx;?></nobr></td>
-    	<td width="2%" align="center"><nobr><a href="customer_show_user.php?ID=<?php echo $row["CUSTOMER_ID"] ;?>"><?php echo $idx; ?></a></nobr></td>
-    	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
-    	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
-    	<td width="5%" align="center"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
-    	<td width="10%" align="left"><nobr><?php echo $row["JOB"]; ?></nobr></td>
-        <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
-        <td width="4%" align="left"><nobr><?php echo $row['USER'] ;?></nobr></td>
-        <td width="6%" align="center"><nobr><?php echo $row['UNIT'] ;?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
+        <td width="2%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
+    	<td width="2%" align="center"><nobr><?php echo sprintf("%02d",$idx); ?></a></nobr></td>
+    	<td width="3%" align="center"><nobr><?php echo sprintf("%02d",$idx); ?></nobr></td>
+    	<td width="3%" align="center"><nobr><?php echo str_replace('/','',$row['CREATE_DATE']).'-'.sprintf("%02d",$idx).sprintf("%02d",$idx); ?></nobr></td>
+    	<td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
+    	<td width="5%" align="left"><nobr><?php echo $row['USER']; ?></nobr></td>
+        <td width="5%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
+        <td width="5%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
+        <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
+        <td width="6%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo "";?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo "";?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo "";?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
         <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
         

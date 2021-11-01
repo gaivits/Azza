@@ -133,7 +133,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         
-        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" maxlength="255" >
+        <input type="text" autocomplete="off" id="PROJECT" name="PROJECT" placeholder="งาน" maxlength="255" >
         
         <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์" maxlength="255">
         
@@ -303,7 +303,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 </body>
 <script>
 $('#datepicker').datepicker({
-    format: 'mm/dd/yy',
+    format: 'yy/mm/dd',
     
 });
  $('#timepicker').timepicker({
@@ -318,7 +318,7 @@ function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
 	var AMOUNT = $('#AMOUNT').val()
-	var JOB = $('#JOB').val()
+	var PROJECT = $('#PROJECT').val()
 	var EQUIPMENT = $('#EQUIPMENT').val()
 	var USER = $('#USER').val()
 	var PROVINCE = $('#provinces').val()
@@ -348,9 +348,9 @@ function creates(){
 		alert('Enter AMOUNT')
 		return false;
 	}
-	if(JOB==='')
+	if(PROJECT==='')
 	{
-		alert('Enter JOB')
+		alert('Enter PROJECT')
 		return false;
 	}
 	if(EQUIPMENT==='')
@@ -361,7 +361,7 @@ function creates(){
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"JOB":JOB,"EQUIPMENT":EQUIPMENT,"USER":USER,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
+        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
 		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
