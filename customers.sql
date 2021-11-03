@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2021 at 09:49 AM
+-- Generation Time: Nov 03, 2021 at 11:20 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1046,13 +1046,17 @@ INSERT INTO `amphures` (`id`, `code`, `name_th`, `name_en`, `province_id`) VALUE
 --
 
 CREATE TABLE `customer` (
-  `CUSTOMER_ID` int(9) NOT NULL,
+  `REF_NO` varchar(255) NOT NULL,
   `CREATE_DATE` varchar(255) NOT NULL,
   `TIME` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
-  `JOB` varchar(255) NOT NULL,
+  `PROJECT` varchar(255) NOT NULL,
   `EQUIPMENT` varchar(255) NOT NULL,
   `USER` varchar(255) NOT NULL,
+  `UNIT` varchar(255) DEFAULT NULL,
+  `BRANDNAME` varchar(255) NOT NULL,
+  `SERIES` varchar(255) NOT NULL,
+  `LOGO` varchar(255) DEFAULT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
@@ -1071,9 +1075,12 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `JOB`, `EQUIPMENT`, `USER`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-(9, '2021-11-05', '21:00', 0.05, 'ประชุมออนไลน์', 'com10ตัว', 'โรงพยาบาล', '2', '52', '110104', '10280', 'ติ๋ว', 'บุคคล', '', '024550474', 'Sayan@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'INGRAM'),
-(10, '2021-11-02', '19:20', 0.05, 'ประชุมโรงฆ่าสัตว์', 'คอม', 'มหาวิทยาลัย', '8', '112', '170403', '16120', 'มกร', 'บุคคล', '', '024550475', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'INGRAM');
+INSERT INTO `customer` (`REF_NO`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
+('2111250000', '21/11/25', '18:00', 0.04, 'job3', 'job3', 'โรงแรม', NULL, 'AZZA', 'VDO-WALL', '', '5', '76', '140307', '13260', 'ไกรวิทย์', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
+('2111270000', '21/11/27', '18:04', 0.05, 'อิอิ', 'อิอิ', 'บมจ', NULL, 'HISENSE', 'SIGNAGE', '', '3', '59', '120202', '11130', 'หน่อง', 'บุคคล', 'กร', '0245504747', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'HISENSE'),
+('2111270101', '21/11/27', '18:00', 0.01, 'job3', 'job3', 'มหาวิทยาลัย', NULL, 'AZZA', 'INTERACTIVE', '', '2', '53', '110202', '10560', 'ติ๋ว', 'บุคคล', 'กร', '0245504751', 'hhh@yahoo.com', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
+('2112010101', '21/12/01', '18:00', 0.05, 'job0', 'job0', 'โรงแรม', NULL, 'HISENSE', 'SIGNAGE', '', '6', '96', '150704', '14160', 'ติ๋ว', 'บุคคล', 'กร', '0245504748', 'hhh@yahoos.com', 'เอสเอ็นไอที', 'Azza', 'HGT'),
+('2112170101', '21/12/17', '17:00', 0.05, 'job1', 'job1', 'มหาวิทยาลัย', NULL, 'LG', 'LED', '', '2', '53', '110201', '10560', 'ติ๋ว', 'บุคคล', 'กร', '0245504748', 'hhh@yahoos.com', 'ไอเอ็มไอ', 'Azza', 'HISENSE');
 
 -- --------------------------------------------------------
 
@@ -10111,7 +10118,14 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 (21, 'USER', 'บมจ', NULL),
 (22, 'USER', 'หจก', NULL),
 (23, 'USER', 'กรม', NULL),
-(28, 'SUPPLIER', 'HGT', '');
+(28, 'SUPPLIER', 'HGT', ''),
+(29, 'BRANDNAME', 'LG', NULL),
+(30, 'BRANDNAME', 'HISENSE', NULL),
+(31, 'BRANDNAME', 'AZZA', NULL),
+(32, 'SERIES', 'LED', NULL),
+(33, 'SERIES', 'VDO-WALL', NULL),
+(34, 'SERIES', 'SIGNAGE', NULL),
+(35, 'SERIES', 'INTERACTIVE', NULL);
 
 --
 -- Indexes for dumped tables
@@ -10127,7 +10141,7 @@ ALTER TABLE `amphures`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`CUSTOMER_ID`);
+  ADD PRIMARY KEY (`REF_NO`);
 
 --
 -- Indexes for table `districts`
@@ -10164,12 +10178,6 @@ ALTER TABLE `amphures`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
 
 --
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `geographies`
 --
 ALTER TABLE `geographies`
@@ -10185,7 +10193,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
-  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
