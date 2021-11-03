@@ -3,8 +3,8 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 
 $conn=new Databases;
 $conn = $conn->__construct();
-$ID = $_GET['ID'];
-$query = "SELECT * FROM customer WHERE CUSTOMER_ID=$ID";
+$REF_NO = $_GET['REF_NO'];
+$query = "SELECT * FROM customer WHERE REF_NO=$REF_NO";
 $result = mysqli_query($conn, $query);
 $idx=0;
 

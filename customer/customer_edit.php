@@ -1,16 +1,16 @@
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
-	$ID = $_POST['ID'];
+	$REF_NO = $_POST['REF_NO'];
 	$conn = $conn->__construct();
-	$sql = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID=$ID";
+	$sql = "SELECT * FROM CUSTOMER WHERE REF_NO=$REF_NO";
 	$result = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_assoc($result))
 	{
 		$DATE = $row['CREATE_DATE'];
 		$TIME = $row['TIME'];
 		$AMOUNT = $row['AMOUNT'];
-		$JOB = $row['JOB'];
+		$PROJECT = $row['PROJECT'];
 		$EQUIPMENT = $row['EQUIPMENT'];
 		$USER = $row['USER'];
 		$PROVINCE = $row['PROVINCE'];
@@ -42,7 +42,7 @@
 
 <body>
 	
-	<form action="customer_update.php?ID=<?=$ID?>" method="POST" id="CUSTOMER" name="CUSTOMER">
+	<form action="customer_update.php?ID=<?=$REF_NO?>" method="POST" id="CUSTOMER" name="CUSTOMER">
     	
 		<input type="text" autocomplete="off" id="datepicker2" name="datepicker2" placeholder="SELECT DATE" value=<?=$DATE?>>
         
@@ -50,7 +50,7 @@
         
 		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" value=<?=$AMOUNT?>>
         
-        <input type="text" autocomplete="off" id="JOB" name="JOB" placeholder="งาน" value=<?=$JOB?>>
+        <input type="text" autocomplete="off" id="PROJECT" name="PROJECT" placeholder="งาน" value=<?=$PROJECT?>>
         
         <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์"  value=<?=$EQUIPMENT?>>
        

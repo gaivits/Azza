@@ -8,10 +8,10 @@
   if (isset($_POST['function']) && $_POST['function'] == 'provinces') 
   {
   	$id = $_POST['id'];
-  	$sql = "SELECT * FROM amphures WHERE province_id='$id'";
+  	$sql = "SELECT * FROM amphures WHERE province_id ='$id'";
   	$query = mysqli_query($con, $sql);
   	echo '<option value="">-กรุณาเลือกอำเภอหลังเลือกจังหวัด-</option>';
-  	while ($data = mysqli_fetch_array($query)) 
+  	while ($data = mysqli_fetch_assoc($query)) 
 	{
   		echo "<option value='". $data['id'] ."'>" .$data['name_th'] ."</option>";
   	}
@@ -24,7 +24,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'amphures')
     $sql = "SELECT * FROM districts WHERE amphure_id='$id'";
     $query = mysqli_query($con, $sql);
     echo '<option value="">-กรุณาเลือกตำบลหลังเลือกอำเภอ-</option>';
-    while ($data = mysqli_fetch_array($query)) 
+    while ($data = mysqli_fetch_assoc($query)) 
 	{
   		echo "<option value='". $data['id'] ."'>" .$data['name_th'] ."</option>";
   	}

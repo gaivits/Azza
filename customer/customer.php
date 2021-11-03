@@ -3,10 +3,9 @@
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn = new Databases;
 	$conn = $conn->__construct();
-	
 	mysqli_query($conn, "SET NAMES 'utf8' ");
 //query
-	$query=mysqli_query($conn,"SELECT COUNT(CUSTOMER_ID) FROM customer");
+	$query=mysqli_query($conn,"SELECT COUNT(*) FROM customer");
 	$row = mysqli_fetch_row($query);
 	$rows = $row[0];
 	$page_rows = 5;
@@ -149,13 +148,14 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     	?> 
        	</select>
 		<select class="form-control" name="Ref_prov_id" id="provinces">
-		<option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
+		<option value="">-กรุณาเลือกจังหวัด-</option>
         <?php
         $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
+		
 		while($value = mysqli_fetch_assoc($records))
         {
 		  echo "<option value='". $value['id'] ."'>" .$value['name_th'] ."</option>";
-		  }
+		}
 		?>
         </select>
         
@@ -195,6 +195,28 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     	<option value="">--SELECT SUPPLIER--</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+			
+		}	
+    	?>  
+  		</select>
+        <select id="BRANDNAME" name="BRANDNAME" >
+    	<option value="">--เลือก BRAND--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+			
+		}	
+    	?>  
+  		</select>
+		<select id="SERIES" name="SERIES" >
+    	<option value="">--เลือก Model--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SERIES'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
@@ -321,6 +343,8 @@ function creates(){
 	var PROJECT = $('#PROJECT').val()
 	var EQUIPMENT = $('#EQUIPMENT').val()
 	var USER = $('#USER').val()
+	var BRANDNAME = $('#BRANDNAME').val()
+	var SERIES = $('#SERIES').val()
 	var PROVINCE = $('#provinces').val()
 	var DISTRICT = $('#amphures').val()
 	var SUBDISTRICT = $('#districts').val()
@@ -333,6 +357,7 @@ function creates(){
 	var DEALER = $('#DEALER').val()
 	var WE = $('#WE').val()
 	var SUPPLIER = $('#SUPPLIER').val()
+	var IDX=0;
 	if(DATE==='')
 	{
 		alert('Enter Date')
@@ -361,8 +386,8 @@ function creates(){
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
-		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
+        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
+		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER,"IDX":IDX+1},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },

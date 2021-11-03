@@ -3,16 +3,16 @@
 <script>
 	$('#provinces').change(function() {
     var id_province = $(this).val();
- 
+ 	
       $.ajax({
       type: "POST",
       url: "ajax_db.php",
       data: {id:id_province,function:'provinces'},
       success: function(data){
           $('#amphures').html(data); 
-          $('#districts').html(' '); 
-          $('#districts').val(' ');  
-          $('#zip_code').val(' '); 
+          $('#districts').html(''); 
+          $('#districts').val('');  
+          $('#zip_code').val(''); 
       }
     });
   });

@@ -27,7 +27,7 @@ $idx=00;
 <body>
 <br>
 <table border='1' style="width:90%; margin-left:5%" class="table table-striped table-sm">
-  <thead align="center" style="font-size:16px;">
+  <thead align="center" style="font-size:14px;">
    <tr align="center">
         <th><h2>รายการ</h2></th>
     </tr>
@@ -68,26 +68,26 @@ $idx=00;
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
 		?>
-		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
+		<tr id=<?php echo $row["REF_NO"];?>>
         <td width="2%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
     	<td width="2%" align="center"><nobr><?php echo sprintf("%02d",$idx); ?></a></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo sprintf("%02d",$idx); ?></nobr></td>
-    	<td width="3%" align="center"><nobr><?php echo str_replace('/','',$row['CREATE_DATE']).'-'.sprintf("%02d",$idx).sprintf("%02d",$idx); ?></nobr></td>
+    	<td width="3%" align="center"><nobr><a href="customer_show_user.php?REF_NO=<?=$row['REF_NO'];?>"><?php echo $row['REF_NO'];?></a></nobr></td>
     	<td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
     	<td width="5%" align="left"><nobr><?php echo $row['USER']; ?></nobr></td>
         <td width="5%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
         <td width="5%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
         <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
         <td width="6%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo "";?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo "";?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo "";?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo $row['BRANDNAME'];?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
+        <td width="7%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
-        <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"] ;?>)" >DEL</button></td>
-        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"] ;?>)" >EDIT</button></td>
+        <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["REF_NO"];?>)" >DEL</button></td>
+        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["REF_NO"];?>)" >EDIT</button></td>
         
 		</tr>
         <?php
@@ -106,27 +106,28 @@ $idx=00;
 </html>
 <script>
 
-function dels(ID)
+function dels(REF_NO)
 {
 	if(confirm('คุณต้องการลบหรือไม่?') )
 	{
 		$.ajax({
 			url : "customer_del.php",
 			type:"POST",
-			data : {"ID":ID},
+			data : {"REF_NO":REF_NO},
 			success:function(res){
-					$("#delete"+ID).hide()
+					$("#delete"+REF_NO).hide()
 					
 				}
 			})
 	}
 	window.location.href = "customer.php"
 }
-function edits(ID)
+function edits(REF_NO)
 {
 	var url = "customer_edit.php"
-	var SETDATA = {ID:ID}
+	var SETDATA = {REF_NO:REF_NO}
     $.post(url,SETDATA,function(res){
+			alert(REF_NO)
 			$('#editCustomer').html(res)
 			
 		})
