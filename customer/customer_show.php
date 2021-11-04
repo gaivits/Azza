@@ -72,7 +72,7 @@ $idx=00;
         <td width="2%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
     	<td width="2%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></a></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
-    	<td width="3%" align="center"><nobr><a href="customer_show_user.php?REF_NO=<?=$row['REF_NO'];?>"><?php echo $row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
+    	<td width="3%" align="center"><nobr><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><?php echo $row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
     	<td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
     	<td width="5%" align="left"><nobr><?php echo $row['USER']; ?></nobr></td>
         <td width="5%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
