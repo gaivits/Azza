@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 11:20 AM
+-- Generation Time: Nov 04, 2021 at 11:18 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1047,6 +1047,7 @@ INSERT INTO `amphures` (`id`, `code`, `name_th`, `name_en`, `province_id`) VALUE
 
 CREATE TABLE `customer` (
   `REF_NO` varchar(255) NOT NULL,
+  `CUSTOMER_ID` int(10) NOT NULL,
   `CREATE_DATE` varchar(255) NOT NULL,
   `TIME` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
@@ -1075,12 +1076,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`REF_NO`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('2111250000', '21/11/25', '18:00', 0.04, 'job3', 'job3', 'โรงแรม', NULL, 'AZZA', 'VDO-WALL', '', '5', '76', '140307', '13260', 'ไกรวิทย์', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
-('2111270000', '21/11/27', '18:04', 0.05, 'อิอิ', 'อิอิ', 'บมจ', NULL, 'HISENSE', 'SIGNAGE', '', '3', '59', '120202', '11130', 'หน่อง', 'บุคคล', 'กร', '0245504747', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'HISENSE'),
-('2111270101', '21/11/27', '18:00', 0.01, 'job3', 'job3', 'มหาวิทยาลัย', NULL, 'AZZA', 'INTERACTIVE', '', '2', '53', '110202', '10560', 'ติ๋ว', 'บุคคล', 'กร', '0245504751', 'hhh@yahoo.com', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
-('2112010101', '21/12/01', '18:00', 0.05, 'job0', 'job0', 'โรงแรม', NULL, 'HISENSE', 'SIGNAGE', '', '6', '96', '150704', '14160', 'ติ๋ว', 'บุคคล', 'กร', '0245504748', 'hhh@yahoos.com', 'เอสเอ็นไอที', 'Azza', 'HGT'),
-('2112170101', '21/12/17', '17:00', 0.05, 'job1', 'job1', 'มหาวิทยาลัย', NULL, 'LG', 'LED', '', '2', '53', '110201', '10560', 'ติ๋ว', 'บุคคล', 'กร', '0245504748', 'hhh@yahoos.com', 'ไอเอ็มไอ', 'Azza', 'HISENSE');
+INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
+('211130', 1, '21/11/30', '18:45', 13112.2, 'job0', 'job0', 'โรงแรม', NULL, 'AZZA', 'INTERACTIVE', '', '1', '11', '101103', '10520', 'ไกรวิทย์', 'บุคคล', 'จ้าๆ', '0245504751', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
@@ -10141,7 +10138,8 @@ ALTER TABLE `amphures`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`REF_NO`);
+  ADD PRIMARY KEY (`REF_NO`),
+  ADD UNIQUE KEY `PK` (`CUSTOMER_ID`);
 
 --
 -- Indexes for table `districts`
@@ -10176,6 +10174,12 @@ ALTER TABLE `tbl_master_groupcode`
 --
 ALTER TABLE `amphures`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `geographies`
