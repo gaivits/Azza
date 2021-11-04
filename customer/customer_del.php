@@ -2,8 +2,8 @@
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
 	$conn = $conn->__construct();
-	$REF_NO = $_POST["REF_NO"];
-	$sql = "DELETE FROM customer WHERE REF_NO='$REF_NO'";	
+	$ID = $_POST["CUSTOMER_ID"];
+	$sql = "DELETE FROM customer WHERE CUSTOMER_ID='$ID'";	
 	mysqli_query($conn, $sql);
 	
 ?>

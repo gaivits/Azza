@@ -68,7 +68,7 @@ $idx=00;
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
 		?>
-		<tr id=<?php echo $row["REF_NO"];?>>
+		<tr id=<?php echo $row["CUSTOMER_ID"];?>>
         <td width="2%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
     	<td width="2%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></a></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
@@ -86,8 +86,8 @@ $idx=00;
         <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
-        <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["REF_NO"];?>)" >DEL</button></td>
-        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["REF_NO"];?>)" >EDIT</button></td>
+        <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" >DEL</button></td>
+        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" >EDIT</button></td>
         
 		</tr>
         <?php
@@ -106,7 +106,7 @@ $idx=00;
 </html>
 <script>
 
-function dels(REF_NO)
+function dels(ID)
 {
 	if(confirm('คุณต้องการลบหรือไม่?') )
 	{
@@ -115,7 +115,7 @@ function dels(REF_NO)
 			type:"POST",
 			data : {"REF_NO":REF_NO},
 			success:function(res){
-					$("#delete"+REF_NO).hide()
+					$("#delete"+ID).hide()
 					
 				}
 			})

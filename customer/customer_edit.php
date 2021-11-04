@@ -1,9 +1,9 @@
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
-	$REF_NO = $_POST['REF_NO'];
+	$ID = $_POST['CUSTOMER_ID'];
 	$conn = $conn->__construct();
-	$sql = "SELECT * FROM CUSTOMER WHERE REF_NO=$REF_NO";
+	$sql = "SELECT * FROM CUSTOMER WHERE REF_NO=$ID";
 	$result = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_assoc($result))
 	{
