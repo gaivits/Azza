@@ -65,7 +65,7 @@ $idx=0;
         <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
-        <td width="5%" id="U2D" onclick="sta()" align="center"></td>
+        <td width="5%" id="U2D"align="center"></td>
         
         
 		</tr>
@@ -85,14 +85,13 @@ $idx=0;
 </html>
 
 <script>
-function sta()
-{
-	
-		var colors = ['green','red','white','yellow']
-		for(var j=0;j<1;j++)
-		{
-			document.getElementById('U2D').style.backgroundColor += colors[j]
-		}
-		
+var box = document.getElementById('U2D'),
+    colors = ['purple', 'yellow', 'orange', 'brown', 'black'];
+
+box.onclick = function () {
+    color = colors.shift();
+    colors.push(color);
+    
+    box.style.background = color;
 }
 </script>
