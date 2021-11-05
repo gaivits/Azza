@@ -3,7 +3,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 
 $conn=new Databases;
 $conn = $conn->__construct();
-$query = "SELECT * FROM customer ORDER BY CUSTOMER_ID DESC";
+$query = "SELECT * FROM customer";
 $result = mysqli_query($conn, $query);
 $idx=00;
 
@@ -35,7 +35,7 @@ $idx=00;
         <td colspan="4"><h3>เลข</h3></td>
         <td colspan="6"><h3>SYSTEM</h3></td>
         <td colspan="4"><h3>PRODUCT</h3></td>
-        <td colspan="3"><h3>REGISTER</h3></td>
+        
         <td colspan="2"><h3>ACTION</h3></td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@ $idx=00;
         <th>รายการ</th>
         <th>REF</th>
         	<th>PROJECT</th>
-        	<th>ลูกค้า</th>
+        	<th>USER</th>
             <th>(หน่วยงาน)</th>
         	<th>DEALER</th>
         	<th>เรา</th>
@@ -53,9 +53,7 @@ $idx=00;
         <th>รุ่น</th>
         <th>ยี่ห้อ</th>
         <th>จำนวน</th>
-       <th>UtoD</th>
-       <th>UtoW</th>
-       <th>WtoS</th>
+      
      		<th>แก้ไข</th>
             <th>ลบ</th>
      </tr>
@@ -83,9 +81,7 @@ $idx=00;
         <td width="7%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
         <td width="7%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo ""; ?></nobr></td>
+        
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" >DEL</button></td>
         <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" >EDIT</button></td>
         

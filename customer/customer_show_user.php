@@ -31,7 +31,7 @@ $idx=0;
   <thead align="center" style="font-size:14px;">
     <tr>
       
-      <th>ลูกค้า</th>
+      <th>USER</th>
       <th>จังหวัด</th>
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
@@ -41,6 +41,9 @@ $idx=0;
       <th>ผู้รับผิดชอบ</th>
       <th>โทร</th>
       <th>E-MAIL</th>
+      <th>UtoD</th>
+      <th>DtoW</th>
+      <th>WtoS</th>
     
     </tr>
   </thead>
@@ -62,7 +65,7 @@ $idx=0;
         <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
-        
+        <td width="5%" id="U2D" onclick="sta()" align="center"></td>
         
         
 		</tr>
@@ -80,10 +83,16 @@ $idx=0;
 
 </body>
 </html>
+
 <script>
-
-
-
-
-
+function sta()
+{
+	
+		var colors = ['green','red','white','yellow']
+		for(var j=0;j<1;j++)
+		{
+			document.getElementById('U2D').style.backgroundColor += colors[j]
+		}
+		
+}
 </script>
