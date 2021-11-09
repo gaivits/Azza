@@ -1,9 +1,9 @@
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
-	$ID = $_POST['CUSTOMER_ID'];
+	$ID = $_POST['ID'];
 	$conn = $conn->__construct();
-	$sql = "SELECT * FROM CUSTOMER WHERE REF_NO=$ID";
+	$sql = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID=$ID";
 	$result = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_assoc($result))
 	{
@@ -42,7 +42,7 @@
 
 <body>
 	
-	<form action="customer_update.php?ID=<?=$REF_NO?>" method="POST" id="CUSTOMER" name="CUSTOMER">
+	<form action="customer_update.php?ID=<?=$ID?>" method="POST" id="CUSTOMER" name="CUSTOMER">
     	
 		<input type="text" autocomplete="off" id="datepicker2" name="datepicker2" placeholder="SELECT DATE" value=<?=$DATE?>>
         

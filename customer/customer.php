@@ -157,7 +157,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		
 		while($value = mysqli_fetch_assoc($records))
         {
-		  echo "<option value='". $value['id'] ."'>" .$value['name_th'] ."</option>";
+		  echo "<option value='". $value['id'],$value['name_th'] ."'>" .$value['name_th'] ."</option>";
 		}
 		?>
         </select>

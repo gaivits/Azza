@@ -1,13 +1,12 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$('#provinces2').change(function() {
     var id_province = $(this).val();
- 
+ 	var name_th = $(this).val()
       $.ajax({
       type: "POST",
       url: "ajax_db.php",
-      data: {id:id_province,function:'provinces'},
+      data: {id:id_province,name_th:name_th,function:'provinces'},
       success: function(data){
           $('#amphures2').html(data); 
           $('#districts2').html(''); 
@@ -19,11 +18,12 @@
  
   $('#amphures2').change(function() {
     var id_amphures = $(this).val();
- 
+ 	var name_th = $(this).val();
+	
       $.ajax({
       type: "POST",
       url: "ajax_db.php",
-      data: {id:id_amphures,function:'amphures'},
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
       success: function(data){
           $('#districts2').html(data);  
       }

@@ -13,7 +13,7 @@
   	echo '<option value="">-กรุณาเลือกอำเภอหลังเลือกจังหวัด-</option>';
   	while ($data = mysqli_fetch_assoc($query)) 
 	{
-  		echo "<option value='". $data['id'] ."'>" .$data['name_th'] ."</option>";
+  		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";
   	}
   }
  
@@ -26,17 +26,18 @@ if (isset($_POST['function']) && $_POST['function'] == 'amphures')
     echo '<option value="">-กรุณาเลือกตำบลหลังเลือกอำเภอ-</option>';
     while ($data = mysqli_fetch_assoc($query)) 
 	{
-  		echo "<option value='". $data['id'] ."'>" .$data['name_th'] ."</option>";
+  		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";
   	}
+	
+
   }
  
   if (isset($_POST['function']) && $_POST['function'] == 'districts') 
   {
-    $id = $_POST['id'];
-    $sql = "SELECT * FROM districts WHERE id='$id'";
+    $id = substr($_POST['id'],0,6);
+	$sql = "SELECT * FROM districts WHERE id='$id' ";
     $query3 = mysqli_query($con, $sql);
     $result = mysqli_fetch_assoc($query3);
-    echo $result['zip_code'];
-    
-  }
+   	echo $result['zip_code'];
+}
 ?>

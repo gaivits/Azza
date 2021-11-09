@@ -118,12 +118,11 @@ function dels(ID)
 	}
 	window.location.href = "customer.php"
 }
-function edits(REF_NO)
+function edits(ID)
 {
 	var url = "customer_edit.php"
-	var SETDATA = {REF_NO:REF_NO}
+	var SETDATA = {ID:ID}
     $.post(url,SETDATA,function(res){
-			alert(REF_NO)
 			$('#editCustomer').html(res)
 			
 		})
