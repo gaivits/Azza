@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 11:18 AM
+-- Generation Time: Nov 09, 2021 at 08:44 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,7 +1077,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211130', 1, '21/11/30', '18:45', 13112.2, 'job0', 'job0', 'โรงแรม', NULL, 'AZZA', 'INTERACTIVE', '', '1', '11', '101103', '10520', 'ไกรวิทย์', 'บุคคล', 'จ้าๆ', '0245504751', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
+('211124', 1, '21/11/24', '17:30', 0.01, 'job0', 'job0', 'บริษัท/ห้าง/เอกชน', NULL, 'HISENSE', 'VDO-WALL', '', '3นนทบุรี', '63ปากเกร็ด', '120604บางพูด', '11111', 'สุรดิษ', 'HR', 'กร', '0245504747', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
@@ -10138,7 +10138,6 @@ ALTER TABLE `amphures`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`REF_NO`),
   ADD UNIQUE KEY `PK` (`CUSTOMER_ID`);
 
 --
