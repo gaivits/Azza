@@ -4,8 +4,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $JOB = $_POST['SEARCH_JOB'];
-$USER = $_POST['SEARCH_USER'];
-$query = "SELECT * FROM customer WHERE JOB LIKE '%$JOB%' AND USER LIKE '%$USER%'";
+$query = "SELECT * FROM customer WHERE CUSTOMER_ID LIKE '%$JOB%' OR REF_NO LIKE '%$JOB%'";
 $result = mysqli_query($conn, $query);
 
 
@@ -27,7 +26,7 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
-
+<br>
 <table border='1' style="width:80%;margin-left:15%" class="table table-striped table-sm">
   <thead align="center">
     <tr>
@@ -56,7 +55,7 @@ $result = mysqli_query($conn, $query);
     	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
     	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
     	<td width="5%" align="right"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
-    	<td width="10%" align="left"><nobr><?php echo $row["JOB"]; ?></nobr></td>
+    	<td width="10%" align="left"><nobr><?php echo $row["PROJECT"]; ?></nobr></td>
         <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
         <td width="6%" align="center"><nobr><?php echo $row["USER"]; ?></nobr></td>
         <td width="10%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
