@@ -45,7 +45,7 @@ $idx=00;
         <th>REF</th>
         	<th>PROJECT</th>
         	<th>USER</th>
-            <th>(หน่วยงาน)</th>
+            <th>(หน่วย)</th>
         	<th>DEALER</th>
         	<th>เรา</th>
      		<th>SUPPLIER</th>

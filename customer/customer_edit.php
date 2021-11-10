@@ -66,7 +66,7 @@
     	?> 
        	</select>
 		<select class="form-control" name="Ref_prov_id" id="provinces2">
-		<option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
+		<option value="" selected disabled><?= preg_replace("/[0-9]+/","",$PROVINCE);?></option>
         <?php
         $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
 		while($value = mysqli_fetch_assoc($records))
@@ -77,10 +77,12 @@
         </select>
         
         <select class="form-control" name="Ref_dist_id" id="amphures2" >
+        	<option value="" selected disabled><?=preg_replace('/[0-9]+/','',$DISTRICT);?></option>
         
         </select>
         
         <select class="form-control" name="Ref_subdist_id" id="districts2" >
+        	<option value="" selected disabled><?=preg_replace("/[0-9]+/","",$SUBDISTRICT);?></option>
       	</select>
         
          <input type="text" name="zip_code2" id="zip_code2" class="form-control" value=<?=$ZIPCODE?> placeholder="รหัสไปรษณีย์">

@@ -38,7 +38,7 @@ $idx=0;
       <th>ไปรษณีย์</th>
       <th>ติดต่อ</th>
       <th>ฝ่าย/แผนก</th>
-      <th>ผู้รับผิดชอบ</th>
+      <th>ผู้รับ</th>
       <th>โทร</th>
       <th>E-MAIL</th>
       <th>UtoD</th>
@@ -56,9 +56,9 @@ $idx=0;
 		?>
 		
         <td width="6%" align="center"><nobr><?php echo $row['USER'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['PROVINCE'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['DISTRICT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['SUBDISTRICT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['PROVINCE']) ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
