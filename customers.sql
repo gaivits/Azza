@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 08:44 AM
+-- Generation Time: Nov 10, 2021 at 11:05 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,7 +1077,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211124', 1, '21/11/24', '17:30', 0.01, 'job0', 'job0', 'บริษัท/ห้าง/เอกชน', NULL, 'HISENSE', 'VDO-WALL', '', '3นนทบุรี', '63ปากเกร็ด', '120604บางพูด', '11111', 'สุรดิษ', 'HR', 'กร', '0245504747', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
+('211124', 1, '21/11/24', '17:30', 0.01, 'job0', 'job0', 'บริษัท/ห้าง/เอกชน', NULL, 'HISENSE', 'VDO-WALL', '', '3นนทบุรี', '63ปากเกร็ด', '120604บางพูด', '11111', 'สุรดิษ', 'HR', 'กร', '0245504747', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC'),
+('211111', 2, '21/11/11', '17:16', 0.25, 'job1', 'job1', 'โรงแรม', NULL, 'HISENSE', 'SIGNAGE', '', '4ปทุมธานี', '66เมืองปทุมธานี', '130103บ้านกลาง', '12000', 'ไกรวิทย์', 'HR', 'จ้าๆ', '0245504751', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
@@ -10178,7 +10179,7 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `geographies`
