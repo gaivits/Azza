@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2021 at 11:05 AM
+-- Generation Time: Nov 12, 2021 at 11:08 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1065,7 +1065,7 @@ CREATE TABLE `customer` (
   `CONTACT` varchar(255) NOT NULL,
   `DEPARTMENT` varchar(255) NOT NULL,
   `NAME` varchar(255) NOT NULL,
-  `PHONE` varchar(255) NOT NULL,
+  `PHONE` varchar(10) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
   `WE` varchar(255) NOT NULL DEFAULT 'Azza',
@@ -1077,8 +1077,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211124', 1, '21/11/24', '17:30', 0.01, 'job0', 'job0', 'บริษัท/ห้าง/เอกชน', NULL, 'HISENSE', 'VDO-WALL', '', '3นนทบุรี', '63ปากเกร็ด', '120604บางพูด', '11111', 'สุรดิษ', 'HR', 'กร', '0245504747', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC'),
-('211111', 2, '21/11/11', '17:16', 0.25, 'job1', 'job1', 'โรงแรม', NULL, 'HISENSE', 'SIGNAGE', '', '4ปทุมธานี', '66เมืองปทุมธานี', '130103บ้านกลาง', '12000', 'ไกรวิทย์', 'HR', 'จ้าๆ', '0245504751', 'hhh@yahoo.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
+('211108', 1, '21/11/08', '21:30', 12.25, 'job0', 'job0', 'โรงแรม', NULL, 'HISENSE', 'SIGNAGE', '', '9ชัยนาท', '117วัดสิงห์', '180301วัดสิงห์', '17120', 'สุรดิษ', 'บุคคล', 'นิกร', '0245504751', 'hhh@yahoo.com', 'ไอเอ็มไอ', 'Azza', 'HGT');
 
 -- --------------------------------------------------------
 
@@ -9983,6 +9982,32 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `module`
+--
+
+CREATE TABLE `module` (
+  `ID` int(10) NOT NULL,
+  `BRAND` varchar(255) NOT NULL,
+  `SERIES` varchar(255) NOT NULL,
+  `MODULE` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `module`
+--
+
+INSERT INTO `module` (`ID`, `BRAND`, `SERIES`, `MODULE`) VALUES
+(1, 'LG', 'VDO-WALL', '0.88mm'),
+(2, 'LG', 'VDO-WALL', '1.8mm'),
+(3, 'LG', 'VDO-WALL', '3.5mm'),
+(4, 'LG', 'SIGNAGE', '16/7'),
+(5, 'LG', 'SIGNAGE', '24/7'),
+(6, 'LG', 'INTERACTIVE', 'WITH-CAMERA'),
+(7, 'LG', 'INTERACTIVE', 'NON-CAMERA');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `provinces`
 --
 
@@ -10125,6 +10150,30 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 (34, 'SERIES', 'SIGNAGE', NULL),
 (35, 'SERIES', 'INTERACTIVE', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warehouse`
+--
+
+CREATE TABLE `warehouse` (
+  `ID` int(10) NOT NULL,
+  `MODULE` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `warehouse`
+--
+
+INSERT INTO `warehouse` (`ID`, `MODULE`, `NAME`) VALUES
+(1, '0.88mm', '55SVMF'),
+(2, '0.88mm', '55SV7F'),
+(3, '1.8mm', '55VM5G'),
+(4, '3.5mm', '49VL5F'),
+(5, '3.5mm', '55VL7F'),
+(6, '3.5mm', '55VL9F');
+
 --
 -- Indexes for dumped tables
 --
@@ -10154,6 +10203,12 @@ ALTER TABLE `geographies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `module`
+--
+ALTER TABLE `module`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
@@ -10163,6 +10218,12 @@ ALTER TABLE `provinces`
 -- Indexes for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `warehouse`
+--
+ALTER TABLE `warehouse`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -10179,13 +10240,19 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `geographies`
 --
 ALTER TABLE `geographies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `module`
+--
+ALTER TABLE `module`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -10198,6 +10265,12 @@ ALTER TABLE `provinces`
 --
 ALTER TABLE `tbl_master_groupcode`
   MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `warehouse`
+--
+ALTER TABLE `warehouse`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
