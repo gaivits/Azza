@@ -207,18 +207,23 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		}	
     	?>  
   		</select>
-		<select id="SERIES" name="SERIES" >
+        
+      <select id="SERIES" name="SERIES" >
     	<option value="">--เลือก Model--</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SERIES'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
 		}	
     	?>  
   		</select>
         
+        <select id="LOGO" name="LOGO">
+		</select>
+        
+        <select id="GOODS" name="GOODS">
+		</select>
     	</form>
         
         </div>
@@ -328,8 +333,33 @@ $('#datepicker').datepicker({
 </script>
 </html>
 <?php include("script.php") ;?>
+
 <script>
 
+	$('#SERIES').change(function() {
+    var LOGO = $('#SERIES').val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "ajax_db2.php",
+      data: {LOGO:LOGO},
+      success: function(data){
+          $('#LOGO').html(data)
+      }
+    });
+  });
+$('#LOGO').change(function() {
+    var GOODS = $('#LOGO').val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "ajax_db3.php",
+      data: {GOODS:GOODS},
+      success: function(data){
+          $('#GOODS').html(data)
+      }
+    });
+  });
 function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
@@ -339,6 +369,7 @@ function creates(){
 	var USER = $('#USER').val()
 	var BRANDNAME = $('#BRANDNAME').val()
 	var SERIES = $('#SERIES').val()
+	
 	var PROVINCE = $('#provinces').val()
 	var DISTRICT = $('#amphures').val()
 	var SUBDISTRICT = $('#districts').val()
