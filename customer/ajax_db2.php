@@ -7,7 +7,7 @@
 
  	
   	$LOGO = $_POST['LOGO'];
-	
+	$BRAND = $_POST["BRANDNAME"];
   	$sql = "SELECT * FROM MODULE WHERE SERIES='$LOGO'";
   	$query = mysqli_query($con, $sql);
   	echo '<option value="">-เลือก การนำไปใช้-</option>';

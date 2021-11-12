@@ -348,6 +348,18 @@ $('#datepicker').datepicker({
       }
     });
   });
+  $('#BRANDNAME').change(function() {
+    var BRANDNAME = $('#BRANDNAME').val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "ajax_db2.php",
+      data: {BRANDNAME:BRANDNAME},
+      success: function(data){
+          $('#LOGO').html(data)
+      }
+    });
+  });
 $('#LOGO').change(function() {
     var GOODS = $('#LOGO').val();
  
