@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 06:46 AM
+-- Generation Time: Nov 13, 2021 at 08:40 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,7 +1077,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211108', 1, '21/11/08', '21:30', 12.25, 'job0', 'job0', 'โรงแรม', NULL, 'HISENSE', 'SIGNAGE', '', '9ชัยนาท', '117วัดสิงห์', '180301วัดสิงห์', '17120', 'สุรดิษ', 'บุคคล', 'นิกร', '0245504751', 'hhh@yahoo.com', 'ไอเอ็มไอ', 'Azza', 'HGT');
+('211127', 1, '21/11/27', '17:30', 10.01, 'job0', 'job0', 'มหาวิทยาลัย', NULL, 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '5พระนครศรีอยุธยา', '74พระนครศรีอยุธยา', '140101ประตูชัย', '13000', 'หน่อง', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
@@ -10172,7 +10172,50 @@ INSERT INTO `warehouse` (`ID`, `BRAND`, `MODULE`, `NAME`) VALUES
 (3, 'LG', '3.5mm', '55VL7F'),
 (4, 'LG', '1.8mm', '55VM5G'),
 (5, 'LG', '0.88mm', '55SVM5F'),
-(6, 'LG', '0.88mm', '55SVH7F');
+(6, 'LG', '0.88mm', '55SVH7F'),
+(7, 'LG', '16/7', '43UL3G'),
+(8, 'LG', '16/7', '50UL3G'),
+(9, 'LG', '16/7', '55UL3G'),
+(10, 'LG', '16/7', '65UL3G'),
+(11, 'LG', '16/7', '75UL3G'),
+(12, 'LG', '16/7', '86UL3G'),
+(13, 'LG', '24/7', '22SM'),
+(14, 'LG', '24/7', '32SM'),
+(15, 'LG', '24/7', '43UH5F'),
+(16, 'LG', '24/7', '49UH5F'),
+(17, 'LG', '24/7', '55UH5F'),
+(18, 'LG', '24/7', '65UH5F'),
+(19, 'LG', '24/7', '75UH5F'),
+(20, 'LG', '24/7', '86UH9F'),
+(21, 'LG', '24/7', '98UH5F'),
+(22, 'LG', 'NON-CAMERA', '55TR3BF'),
+(23, 'LG', 'NON-CAMERA', '65TR3BF'),
+(24, 'LG', 'NON-CAMERA', '75BR3BF'),
+(25, 'LG', 'NON-CAMERA', '86TR3BF'),
+(26, 'HISENSE', '3.5mm', '46L35B5U'),
+(27, 'HISENSE', '3.5mm', '55L35B5U'),
+(28, 'HISENSE', '1.8mm', '55L18H5K'),
+(29, 'HISENSE', '16/7', '55B4E31T'),
+(30, 'HISENSE', '16/7', '654E31T'),
+(31, 'HISENSE', '16/7', '754E30T'),
+(32, 'HISENSE', '16/7', '864E30T'),
+(33, 'HISENSE', '24/7', '32BM66AE'),
+(34, 'HISENSE', '24/7', '43BM66AE'),
+(35, 'HISENSE', '24/7', '49BM66AE'),
+(36, 'HISENSE', '24/7', '55BM66AE'),
+(37, 'HISENSE', '24/7', '86BM66AE'),
+(38, 'HISENSE', 'NON-CAMERA', '65WR60AE'),
+(39, 'HISENSE', 'NON-CAMERA', 'HN75WR80U'),
+(40, 'HISENSE', 'NON-CAMERA', '86WR60AE'),
+(41, 'HISENSE', 'WITH-CAMERA', '65WR6BE'),
+(42, 'HISENSE', 'WITH-CAMERA', '75WR6BE'),
+(43, 'HISENSE', 'WITH-CAMERA', '86WR6BE'),
+(44, 'AZZA', '3.5mm', '49D35-ll'),
+(45, 'AZZA', '3.5mm', '55D35-ll'),
+(46, 'AZZA', '1.8mm', '55D18-ll'),
+(47, 'AZZA', '0.88mm', '55D09-ll'),
+(48, 'AZZA', 'NON-CAMERA', '55W21K-U'),
+(49, 'AZZA', 'NON-CAMERA', '98W11S');
 
 --
 -- Indexes for dumped tables
@@ -10270,7 +10313,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `warehouse`
 --
 ALTER TABLE `warehouse`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
