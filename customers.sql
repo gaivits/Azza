@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 11:08 AM
+-- Generation Time: Nov 13, 2021 at 06:46 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -9987,7 +9987,6 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 
 CREATE TABLE `module` (
   `ID` int(10) NOT NULL,
-  `BRAND` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
   `MODULE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -9996,14 +9995,14 @@ CREATE TABLE `module` (
 -- Dumping data for table `module`
 --
 
-INSERT INTO `module` (`ID`, `BRAND`, `SERIES`, `MODULE`) VALUES
-(1, 'LG', 'VDO-WALL', '0.88mm'),
-(2, 'LG', 'VDO-WALL', '1.8mm'),
-(3, 'LG', 'VDO-WALL', '3.5mm'),
-(4, 'LG', 'SIGNAGE', '16/7'),
-(5, 'LG', 'SIGNAGE', '24/7'),
-(6, 'LG', 'INTERACTIVE', 'WITH-CAMERA'),
-(7, 'LG', 'INTERACTIVE', 'NON-CAMERA');
+INSERT INTO `module` (`ID`, `SERIES`, `MODULE`) VALUES
+(1, 'VDO-WALL', '0.88mm'),
+(2, 'VDO-WALL', '1.8mm'),
+(3, 'VDO-WALL', '3.5mm'),
+(4, 'SIGNAGE', '16/7'),
+(5, 'SIGNAGE', '24/7'),
+(6, 'INTERACTIVE', 'WITH-CAMERA'),
+(7, 'INTERACTIVE', 'NON-CAMERA');
 
 -- --------------------------------------------------------
 
@@ -10158,6 +10157,7 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 
 CREATE TABLE `warehouse` (
   `ID` int(10) NOT NULL,
+  `BRAND` varchar(255) NOT NULL,
   `MODULE` varchar(255) NOT NULL,
   `NAME` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -10166,13 +10166,13 @@ CREATE TABLE `warehouse` (
 -- Dumping data for table `warehouse`
 --
 
-INSERT INTO `warehouse` (`ID`, `MODULE`, `NAME`) VALUES
-(1, '0.88mm', '55SVMF'),
-(2, '0.88mm', '55SV7F'),
-(3, '1.8mm', '55VM5G'),
-(4, '3.5mm', '49VL5F'),
-(5, '3.5mm', '55VL7F'),
-(6, '3.5mm', '55VL9F');
+INSERT INTO `warehouse` (`ID`, `BRAND`, `MODULE`, `NAME`) VALUES
+(1, 'LG', '3.5mm', '49VL5F'),
+(2, 'LG', '3.5mm', '55VL5F'),
+(3, 'LG', '3.5mm', '55VL7F'),
+(4, 'LG', '1.8mm', '55VM5G'),
+(5, 'LG', '0.88mm', '55SVM5F'),
+(6, 'LG', '0.88mm', '55SVH7F');
 
 --
 -- Indexes for dumped tables
