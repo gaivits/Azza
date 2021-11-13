@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2021 at 08:26 AM
+-- Generation Time: Nov 13, 2021 at 08:32 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -28,13 +28,27 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `customer` (
-  `CUSTOMER_ID` int(9) NOT NULL,
+  `REF_NO` varchar(255) NOT NULL,
+  `CUSTOMER_ID` int(10) NOT NULL,
   `CREATE_DATE` varchar(255) NOT NULL,
   `TIME` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
-  `JOB` varchar(255) NOT NULL,
+  `PROJECT` varchar(255) NOT NULL,
   `EQUIPMENT` varchar(255) NOT NULL,
   `USER` varchar(255) NOT NULL,
+  `UNIT` varchar(255) DEFAULT NULL,
+  `BRANDNAME` varchar(255) NOT NULL,
+  `SERIES` varchar(255) NOT NULL,
+  `LOGO` varchar(255) DEFAULT NULL,
+  `PROVINCE` varchar(255) NOT NULL,
+  `DISTRICT` varchar(255) NOT NULL,
+  `SUBDISTRICT` varchar(255) NOT NULL,
+  `ZIPCODE` varchar(5) NOT NULL,
+  `CONTACT` varchar(255) NOT NULL,
+  `DEPARTMENT` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
+  `PHONE` varchar(10) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
   `WE` varchar(255) NOT NULL DEFAULT 'Azza',
   `SUPPLIER` varchar(255) NOT NULL
@@ -44,17 +58,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `JOB`, `EQUIPMENT`, `USER`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-(1, '2021/10/02', '12:05', 0.04, 'ประชุมออนไลน์', 'PC10ea', 'โรงเรียน', 'เอสเอ็นไอที', 'Azza', 'MDEC'),
-(2, '2021/10/12', '15:30', 0.04, 'แข่งACM', 'SERVER10ea', 'มหาวิทยาลัย', 'เอสเอ็นไอที', 'Azza', 'MDEC'),
-(3, '2021/11/30', '15:43', 15.3, 'hello', 'Linux', 'โรงเรียน', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
-(4, '2021/10/27', '22:05', 15.5, 'hello', 'Fedora', 'โรงเรียน', 'ไอเอ็มไอ', 'Azza', 'LG'),
-(5, '2021/10/28', '07:30', 3.25, 'ประชุมโรงเรียน', 'ubuntu', 'มหาวิทยาลัย', 'ไอเอ็มไอ', 'Azza', 'MDEC'),
-(6, '2021/10/29', '08:00', 3.25, 'ประชุมโรงงาน', 'lubuntu', 'โรงเรียน', 'เอสเอ็นไอที', 'Azza', 'HISENSE'),
-(7, '2021/10/30', '09:00', 4.25, 'ประชุมโรงครัว', 'mint', 'โรงเรียน', 'ไอเอ็มไอ', 'Azza', 'VST'),
-(8, '2021/10/02', '05:30', 4.25, 'ประชุมโรงฆ่าสัตว์', 'Arch', 'โรงพยาบาล', 'เอสเอ็นไอที', 'Azza', 'INGRAM'),
-(9, '2021/10/15', '03:30', 5.25, 'ประชุมโรงเลี้ยง', 'Biotonic', 'ราชการ', 'เอสเอ็นไอที', 'Azza', 'LG'),
-(10, '2021/10/02', '20:00', 5.25, 'ประชุมโรงไม้', 'Cent', 'บุคคลทั่วไป', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'HISENSE');
+INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
+('211127', 1, '21/11/27', '17:30', 10.01, 'job0', 'job0', 'มหาวิทยาลัย', NULL, 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '5พระนครศรีอยุธยา', '74พระนครศรีอยุธยา', '140101ประตูชัย', '13000', 'หน่อง', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +69,7 @@ INSERT INTO `customer` (`CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `JOB`, `
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`CUSTOMER_ID`);
+  ADD UNIQUE KEY `PK` (`CUSTOMER_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -74,7 +79,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
