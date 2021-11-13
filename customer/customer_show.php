@@ -77,8 +77,8 @@ $idx=00;
         <td width="5%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
         <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
         <td width="6%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo $row['BRANDNAME'];?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['BRANDNAME'];?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
         <td width="7%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
         
