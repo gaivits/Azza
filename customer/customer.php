@@ -224,6 +224,8 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         
         <select id="GOODS" name="GOODS">
 		</select>
+        
+        
     	</form>
         
         </div>
@@ -335,38 +337,25 @@ $('#datepicker').datepicker({
 <?php include("script.php") ;?>
 
 <script>
-
-	$('#SERIES').change(function() {
-    var LOGO = $('#SERIES').val();
- 
+$('#SERIES').change(function() {
+    var SERIES = $('#SERIES').val();
+ 	var BRANDNAME = $('#BRANDNAME').val()
       $.ajax({
       type: "POST",
       url: "ajax_db2.php",
-      data: {LOGO:LOGO},
-      success: function(data){
-          $('#LOGO').html(data)
-      }
-    });
-  });
-  $('#BRANDNAME').change(function() {
-    var BRANDNAME = $('#BRANDNAME').val();
- 
-      $.ajax({
-      type: "POST",
-      url: "ajax_db2.php",
-      data: {BRANDNAME:BRANDNAME},
+      data: {SERIES:SERIES,BRANDNAME:BRANDNAME},
       success: function(data){
           $('#LOGO').html(data)
       }
     });
   });
 $('#LOGO').change(function() {
-    var GOODS = $('#LOGO').val();
- 
+    var GOODS = $('#LOGO').val()
+	var BRAND = $('#BRANDNAME').val()
       $.ajax({
       type: "POST",
       url: "ajax_db3.php",
-      data: {GOODS:GOODS},
+      data: {GOODS:GOODS,BRAND:BRAND},
       success: function(data){
           $('#GOODS').html(data)
       }

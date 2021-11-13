@@ -7,7 +7,8 @@
 
  	
   	$GOODS = $_POST['GOODS'];
-  	$sql = "SELECT * FROM warehouse WHERE MODULE ='$GOODS'";
+	$BRAND = $_POST['BRAND'];
+  	$sql = "SELECT * FROM warehouse WHERE MODULE='$GOODS' AND BRAND = '$BRAND' ";
   	$query = mysqli_query($con, $sql);
   	echo '<option value="">-เลือกสินค้า-</option>';
   	while ($data = mysqli_fetch_assoc($query)) 
