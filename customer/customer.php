@@ -370,7 +370,8 @@ function creates(){
 	var USER = $('#USER').val()
 	var BRANDNAME = $('#BRANDNAME').val()
 	var SERIES = $('#SERIES').val()
-	
+	var LOGO = $('#LOGO').val()
+	var GOODS = $('#GOODS').val()
 	var PROVINCE = $('#provinces').val()
 	var DISTRICT = $('#amphures').val()
 	var SUBDISTRICT = $('#districts').val()
@@ -412,7 +413,7 @@ function creates(){
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
+        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
 		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
