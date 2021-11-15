@@ -41,9 +41,9 @@ $idx=0;
       <th>ผู้รับ</th>
       <th>โทร</th>
       <th>E-MAIL</th>
-      <th>UtoD</th>
-      <th>DtoW</th>
-      <th>WtoS</th>
+      <th>เรา</th>
+      <th>SUPPLIER</th>
+      
     
     </tr>
   </thead>
@@ -65,9 +65,9 @@ $idx=0;
         <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
-        <td width="5%" style="cursor: pointer;" id="U2D"align="center"></td>
-         <td width="5%" style="cursor: pointer;" id="D2W"align="center"></td>
-          <td width="5%" style="cursor: pointer;" id="W2S"align="center"></td>
+        <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
+        <td width="6%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
+        
         
 		</tr>
         <?php
@@ -86,28 +86,5 @@ $idx=0;
 </html>
 
 <script>
-var box = document.getElementById('U2D'),
-    colors = ['white', 'yellow', 'green', 'red'];
-box.onclick = function () {
-    color = colors.shift();
-    colors.push(color);
-    box.style.background = color;
-}
-
-var box2 = document.getElementById('D2W'),
-    colors = ['white', 'yellow', 'green', 'red'];
-box2.onclick = function () {
-    color = colors.shift();
-    colors.push(color);
-    box2.style.background = color;
-}
-
-var box3 = document.getElementById('W2S'),
-    colors = ['white', 'yellow', 'green', 'red'];
-box3.onclick = function () {
-    color = colors.shift();
-    colors.push(color);
-    box3.style.background = color;
-}
 
 </script>

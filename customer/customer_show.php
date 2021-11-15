@@ -33,9 +33,9 @@ $idx=00;
     </tr>
     <tr>
         <td colspan="4"><h3>เลข</h3></td>
-        <td colspan="6"><h3>SYSTEM</h3></td>
+        <td colspan="4"><h3>SYSTEM</h3></td>
         <td colspan="4"><h3>PRODUCT</h3></td>
-        
+        <td colspan="3"><h3>STATUS</h3></td>
         <td colspan="2"><h3>ACTION</h3></td>
     </tr>
     <tr>
@@ -45,17 +45,18 @@ $idx=00;
         <th>REF</th>
         	<th>PROJECT</th>
         	<th>USER</th>
-            <th>(หน่วย)</th>
+            <th>หน่วยย่อย</th>
         	<th>DEALER</th>
-        	<th>เรา</th>
-     		<th>SUPPLIER</th>
+        	
         <th>ประเภท</th>
         <th>รุ่น</th>
         <th>ยี่ห้อ</th>
         <th>จำนวน</th>
-      
-     		<th>แก้ไข</th>
-            <th>ลบ</th>
+      	   <th>รอ</th>
+           <th>ไม่รับ</th>
+           <th>รับ</th>
+     		<th>ลบ</th>
+            <th>แก้ไข</th>
      </tr>
     
   </thead>
@@ -75,13 +76,13 @@ $idx=00;
     	<td width="5%" align="left"><nobr><?php echo $row['USER']; ?></nobr></td>
         <td width="5%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
         <td width="5%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
-        <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
-        <td width="6%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['BRANDNAME'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
         <td width="7%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
-        
+        <td width="5%" style="cursor: pointer;" id="U2D"align="center"></td>
+         <td width="5%" style="cursor: pointer;" id="D2W"align="center"></td>
+          <td width="5%" style="cursor: pointer;" id="W2S"align="center"></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" >DEL</button></td>
         <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" >EDIT</button></td>
         
@@ -101,6 +102,29 @@ $idx=00;
 </body>
 </html>
 <script>
+var box = document.getElementById('U2D'),
+    colors = ['white', 'yellow', 'green', 'red'];
+box.onclick = function () {
+    color = colors.shift();
+    colors.push(color);
+    box.style.background = color;
+}
+
+var box2 = document.getElementById('D2W'),
+    colors = ['white', 'yellow', 'green', 'red'];
+box2.onclick = function () {
+    color = colors.shift();
+    colors.push(color);
+    box2.style.background = color;
+}
+
+var box3 = document.getElementById('W2S'),
+    colors = ['white', 'yellow', 'green', 'red'];
+box3.onclick = function () {
+    color = colors.shift();
+    colors.push(color);
+    box3.style.background = color;
+}
 
 function dels(ID)
 {
