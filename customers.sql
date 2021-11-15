@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 08:40 AM
+-- Generation Time: Nov 15, 2021 at 10:50 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,7 +1077,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211127', 1, '21/11/27', '17:30', 10.01, 'job0', 'job0', 'มหาวิทยาลัย', NULL, 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '5พระนครศรีอยุธยา', '74พระนครศรีอยุธยา', '140101ประตูชัย', '13000', 'หน่อง', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
+('211127', 1, '21/11/27', '17:30', 10.01, 'job0', 'job0', 'มหาวิทยาลัย', NULL, 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '5พระนครศรีอยุธยา', '74พระนครศรีอยุธยา', '140101ประตูชัย', '13000', 'หน่อง', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC'),
+('211130', 2, '21/11/30', '17:30', 0.1, 'job1', 'job1', 'มหาวิทยาลัย', NULL, 'HISENSE', 'SIGNAGE', '16/7 654E31T', '6อ่างทอง', '92ป่าโมก', '150302ป่าโมก', '14130', 'ไกรวิทย์', 'บุคคล', 'นิกร', '0245504748', 'hhh@yahoo.com', 'ไอเอ็มไอ', 'Azza', 'VST');
 
 -- --------------------------------------------------------
 
@@ -10147,7 +10148,9 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 (32, 'SERIES', 'LED', NULL),
 (33, 'SERIES', 'VDO-WALL', NULL),
 (34, 'SERIES', 'SIGNAGE', NULL),
-(35, 'SERIES', 'INTERACTIVE', NULL);
+(35, 'SERIES', 'INTERACTIVE', NULL),
+(36, 'DEALER', 'ออมนิซิสเตม', ''),
+(37, 'DEALER', 'นิวซิโน่(ไทย)', '');
 
 -- --------------------------------------------------------
 
@@ -10283,7 +10286,7 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10307,7 +10310,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
-  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
