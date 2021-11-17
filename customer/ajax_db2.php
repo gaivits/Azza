@@ -9,7 +9,7 @@
 	$BRAND = $_POST['BRANDNAME'] ;	
   	$sql = "SELECT * FROM MODULE WHERE SERIES='$SERIES'";
   	$query = mysqli_query($con, $sql);
-  	echo '<option value="">-เลือก การนำไปใช้-</option>';
+  	echo '<option value="">-เลือกการนำไปใช้-</option>';
   	while ($data = mysqli_fetch_assoc($query)) 
 	{
   		echo "<option value='". $data['MODULE'] ."'>" .$data['MODULE'] ."</option>";

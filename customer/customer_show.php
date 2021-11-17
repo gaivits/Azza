@@ -80,9 +80,9 @@ $idx=00;
         <td width="5%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
         <td width="7%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
-        <td width="5%" style="cursor: pointer;" id="U2D"align="center"></td>
-         <td width="5%" style="cursor: pointer;" id="D2W"align="center"></td>
-          <td width="5%" style="cursor: pointer;" id="W2S"align="center"></td>
+        <td width="5%" style="cursor: pointer;" id="U2D"></td>
+         <td width="5%" style="cursor: pointer;" id="D2W"></td>
+          <td width="5%" style="cursor: pointer;" id="W2S"></td>
         <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" >DEL</button></td>
         <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" >EDIT</button></td>
         
