@@ -26,8 +26,8 @@ $idx=0;
 
 
 <body>
-
-<table border='1' style="width:80%; margin-left:1.5%" class="table table-striped table-sm">
+<a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
+<table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
   <thead align="center" style="font-size:14px;">
     <tr>
       
@@ -38,6 +38,7 @@ $idx=0;
       <th>ไปรษณีย์</th>
       <th>ติดต่อ</th>
       <th>ฝ่าย/แผนก</th>
+      <th>งาน</th>
       <th>ผู้รับ</th>
       <th>โทร</th>
       <th>E-MAIL</th>
@@ -62,6 +63,7 @@ $idx=0;
         <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
@@ -76,7 +78,7 @@ $idx=0;
     </tr>
    </tbody>
 </table>
-
+		
 </body>
  
 <div id="editCustomer"></div>

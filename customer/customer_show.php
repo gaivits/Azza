@@ -22,35 +22,45 @@ $idx=00;
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> 
 <title>Customer</title>
 </head>
-
-
+<style>
+	.dels
+	{
+		height: 15px;
+		width:15px;
+	}
+	.edits
+	{
+		height: 15px;
+		width:15px;
+	}
+</style>
 <body>
+
 <br>
-<table border='1' style="width:90%; margin-left:5%" class="table table-striped table-sm">
-  <thead align="center" style="font-size:14px;">
-   <tr align="center">
+<a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
+<table border='1' style="width:99%;" class="table table-striped table-sm">
+  <thead style="font-size:14px;">
+   <tr>
         <th><h2>รายการ</h2></th>
     </tr>
-    <tr>
+    <tr align="center">
         <td colspan="4"><h3>เลข</h3></td>
-        <td colspan="4"><h3>SYSTEM</h3></td>
-        <td colspan="4"><h3>PRODUCT</h3></td>
+        <td colspan="3"><h3>SYSTEM</h3></td>
+        <td colspan="3"><h3>PRODUCT</h3></td>
         <td colspan="3"><h3>STATUS</h3></td>
         <td colspan="2"><h3>ACTION</h3></td>
     </tr>
-    <tr>
-        <th>DATE</th>
+    <tr align="center">
+        <th>วัน</th>
         <th>งาน</th>
-        <th>รายการ</th>
+        <th>รก</th>
         <th>REF</th>
-        	<th>PROJECT</th>
         	<th>USER</th>
-            <th>หน่วยย่อย</th>
-        	<th>DEALER</th>
+            <th>SUBUSER</th>
+            <th>DEALER</th>
         	
-        <th>ประเภท</th>
-        <th>รุ่น</th>
-        <th>ยี่ห้อ</th>
+        <th>ยี่ห้อ/รุ่น</th>
+        <th>สินค้า</th>
         <th>จำนวน</th>
       	   <th>รอ</th>
            <th>ไม่รับ</th>
@@ -60,7 +70,7 @@ $idx=00;
      </tr>
     
   </thead>
-  <tbody>
+  <tbody style="font-size:12px;">
     
       <?php
 		
@@ -68,23 +78,21 @@ $idx=00;
 		{$idx=$idx+1;
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"];?>>
-        <td width="2%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
-    	<td width="2%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></a></nobr></td>
-    	<td width="3%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
-    	<td width="3%" align="center"><nobr><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><?php echo $row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
-    	<td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
-    	<td width="5%" align="left"><nobr><?php echo $row['USER']; ?></nobr></td>
-        <td width="5%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
-        <td width="5%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['BRANDNAME'];?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['SERIES'];?></nobr></td>
-        <td width="7%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
-        <td width="5%" style="cursor: pointer;" id="U2D"></td>
-         <td width="5%" style="cursor: pointer;" id="D2W"></td>
-          <td width="5%" style="cursor: pointer;" id="W2S"></td>
-        <td width="4%" align="center"><button class="btn btn-danger btn-sm" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" >DEL</button></td>
-        <td width="4%" align="center" ><button class="btn btn-info btn-sm" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" >EDIT</button></td>
+        <td width="1%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
+    	<td width="1%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></a></nobr></td>
+    	<td width="1%" align="left"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
+    	<td width="1%" align="center"><nobr><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><?php echo "CR".$row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
+    	<td width="2%" align="left"><nobr><?php echo $row['USER']; ?></nobr></td>
+        <td width="7%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
+        <td width="3%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
+        <td width="2%" align="center"><nobr><?php echo $row['BRANDNAME'].'/'.$row['SERIES'];?></nobr></td>
+        <td width="2%" align="center"><nobr><?php echo $row['LOGO'];?></nobr></td>
+        <td width="1%" align="center"><nobr><?php echo $row["AMOUNT"]; ?></nobr></td>
+        <td width="1%" style="cursor: pointer;" id="U2D"></td>
+        <td width="1%" style="cursor: pointer;" id="D2W"></td>
+        <td width="1%" style="cursor: pointer;" id="W2S"></td>
+        <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
+        <td width="1%" align="center" ><button class="btn btn-info edits" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
         
 		</tr>
         <?php
@@ -93,7 +101,7 @@ $idx=00;
     </tr>
    </tbody>
 </table>
-
+		
 </body>
  
 <div id="editCustomer"></div>

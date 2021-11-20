@@ -4,7 +4,9 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $JOB = $_POST['SEARCH_JOB'];
-$query = "SELECT * FROM customer WHERE CUSTOMER_ID LIKE '%$JOB%' OR REF_NO LIKE '%$JOB%'";
+$SEARCH_USER = $_POST['SEARCH_USER'];
+$SEARCH_DEALER = $_POST['SEARCH_DEALER'];
+$query = "SELECT * FROM customer WHERE REF_NO LIKE '%$JOB%' AND USER LIKE '%$SEARCH_USER%' AND DEALER LIKE '%$SEARCH_DEALER%'";
 $result = mysqli_query($conn, $query);
 
 
@@ -26,8 +28,8 @@ $result = mysqli_query($conn, $query);
 
 
 <body>
-<br>
-<table border='1' style="width:80%;margin-left:15%" class="table table-striped table-sm">
+<a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
+<table border='1' style="width:99%;margin-left:1%" class="table table-striped table-sm">
   <thead align="center">
     <tr>
       <th>NO.</th>
@@ -72,7 +74,7 @@ $result = mysqli_query($conn, $query);
    </tbody>
 </table>
 
- 
+
 </body>
  
 <div id="editCustomer"></div>

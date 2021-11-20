@@ -40,13 +40,13 @@
 		if ($pagenum > 1) 
 		{
 			$previous = $pagenum - 1;
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'" class="btn btn-info">Previous</a> &nbsp; &nbsp; ';
+			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'" class="btn btn-link">Previous</a> &nbsp; &nbsp; ';
 
 		for($i = $pagenum-4; $i < $pagenum; $i++)
 		{
 			if($i > 0)
 			{
-				$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-primary">'.$i.'</a> &nbsp; ';
+				$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-link">'.$i.'</a> &nbsp; ';
 			}
 		}
 	}
@@ -55,7 +55,7 @@
 
 	for($i = $pagenum+1; $i <= $last; $i++)
 	{
-		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-primary">'.$i.'</a> &nbsp; ';
+		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-link">'.$i.'</a> &nbsp; ';
 		if($i >= $pagenum+4)
 		{
 			break;
@@ -65,7 +65,7 @@
 if ($pagenum != $last) 
 {
 $next = $pagenum + 1;
-$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'" class="btn btn-info">Next</a> ';
+$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'" class="btn btn-link">Next</a> ';
 }
 	}
 ?>
@@ -95,10 +95,29 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 <div class="container">
    <br>
   <h2>CUSTOMER-REGISTRATION</h2>
-  <br>
   <!-- Trigger the modal with a button -->
   
       <input type="text" placeholder="ค้นหาid,รายการ,ref" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
+      <select id="SEARCH_USER">
+      <option value="">--SEARCH USER--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+		}	
+    	?>  
+  		</select>
+      <select id="SEARCH_DEALER">
+      <option value="">--SEARCH DEALER--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+		}	
+    	?>  
+  		</select>
       <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
      <br>
      <br>
@@ -131,20 +150,12 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
       <div class="modal-content">
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
-    	
-		<input type="text" autocomplete="off" id="datepicker" name="datepicker" placeholder="SELECT DATE">
-        
-        
-        
-        <input type="text" autocomplete="off" id="timepicker" name="timepicker" width="276" placeholder="SELECT TIME">
-		
-        
-		<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
-        
+    	<p style="font-weight:bold">-----รายละเอียดงาน-----</p>
+		<input type="text" autocomplete="off" id="datepicker" name="datepicker" width="256px" placeholder="SELECT DATE">
+   		<input type="text" autocomplete="off" id="timepicker" name="timepicker" width="256px" placeholder="SELECT TIME">
+        <input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
         <input type="text" autocomplete="off" id="PROJECT" name="PROJECT" placeholder="งาน" maxlength="255" >
-        
         <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์" maxlength="255">
-        
         <select id="USER" name="USER">
     	<option value="">--SELECT USER--</option>
         <?php
@@ -156,7 +167,11 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		
     	?> 
        	</select>
-		<select class="form-control" name="Ref_prov_id" id="provinces">
+        <input type="text" autocomplete="off" name="UNIT" id="UNIT" placeholder="หน่วยย่อย">
+        <p style="font-weight:bold;">-----รายละเอียดงาน-----</p>
+        
+        <p style="font-weight:bold;">-----ที่อยู่-----</p>
+		<select name="Ref_prov_id" id="provinces">
 		<option value="">-กรุณาเลือกจังหวัด-</option>
         <?php
         $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
@@ -168,27 +183,31 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		?>
         </select>
         
-        <select class="form-control" name="Ref_dist_id" id="amphures" >
+        <select name="Ref_dist_id" id="amphures" >
         
         </select>
         
-        <select class="form-control" name="Ref_subdist_id" id="districts">
+        <select name="Ref_subdist_id" id="districts">
       	</select>
         
-         <input type="text" name="zip_code" id="zip_code" class="form-control" placeholder="รหัสไปรษณีย์">
+         <input type="text" autocomplete="off" name="zip_code" id="zip_code" placeholder="รหัสไปรษณีย์">
+         <p style="font-weight:bold;">-----ที่อยู่-----</p>
          
-         <input type="text" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
+         <p style="font-weight:bold;">-----ติดต่อ-----</p>
+         <input type="text" autocomplete="off" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
          
-         <input type="text" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
+         <input type="text" autocomplete="off" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
          
-         <input type="text" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
+         <input type="text" autocomplete="off" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
          
-         <input type="text" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
+         <input type="text" autocomplete="off" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
          
-         <input type="email" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
+         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
          
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
-        
+        <p style="font-weight:bold;">-----ติดต่อ-----</p>
+     
+        <p style="font-weight:bold;">-----สินค้า-----</p>
         <select id="DEALER" name="DEALER">
     	<option value="">--SELECT DEALER--</option>
     	<?php
@@ -240,8 +259,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         
         <select id="GOODS" name="GOODS">
 		</select>
-        
-        
+        <p style="font-weight:bold;">-----สินค้า-----</p>
     	</form>
         
         </div>
@@ -384,6 +402,7 @@ function creates(){
 	var PROJECT = $('#PROJECT').val()
 	var EQUIPMENT = $('#EQUIPMENT').val()
 	var USER = $('#USER').val()
+	var UNIT = $('#UNIT').val()
 	var BRANDNAME = $('#BRANDNAME').val()
 	var SERIES = $('#SERIES').val()
 	var LOGO = $('#LOGO').val()
@@ -426,10 +445,40 @@ function creates(){
 		alert('Enter EQUIPMENT')
 		return false;
 	}
+	if(PROVINCE==='')
+	{
+		alert('Enter จังหวัด')
+		return false;
+	}
+	if(DISTRICT==='')
+	{
+		alert('Enter เขต')
+		return false;
+	}
+	if(SUBDISTRICT==='')
+	{
+		alert('Enter แขวง')
+		return false;
+	}
+	if(BRANDNAME==='')
+	{
+		alert('Enter แบรนด์')
+		return false;
+	}
+	if(SERIES==='')
+	{
+		alert('Enter ยี่ห้อ')
+		return false;
+	}
+	if(LOGO==='')
+	{
+		alert('Enter รุ่น')
+		return false;
+	}
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
+        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,UNIT:UNIT,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
 		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
@@ -442,10 +491,12 @@ $('#viewCustomer').load('customer_show.php')
 function searches(){
 	
 	var SEARCH_JOB = $('#SEARCH_JOB').val()
+	var SEARCH_USER = $('#SEARCH_USER').val()
+	var SEARCH_DEALER = $('#SEARCH_DEALER').val()
 	$.ajax({
         type: "POST",
         url: "customer_look_up.php",
-        data: {"SEARCH_JOB":SEARCH_JOB},
+        data: {"SEARCH_JOB":SEARCH_JOB,SEARCH_USER:SEARCH_USER,SEARCH_DEALER:SEARCH_DEALER},
         success: function(res) {
            $('#popCustomer').html(res)
 		   $('#viewCustomer').load('customer_show.php').hide()
