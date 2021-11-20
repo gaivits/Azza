@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 11:17 AM
+-- Generation Time: Nov 20, 2021 at 08:26 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,10 +1077,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211127', 1, '21/11/27', '17:30', 10.01, 'job0', 'job0', 'มหาวิทยาลัย', NULL, 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '5พระนครศรีอยุธยา', '74พระนครศรีอยุธยา', '140101ประตูชัย', '13000', 'หน่อง', 'HR', 'นิกร', '0245504748', 'hhh@yahoos.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC'),
-('211130', 2, '21/11/30', '17:30', 0.1, 'job1', 'job1', 'มหาวิทยาลัย', NULL, 'HISENSE', 'SIGNAGE', '16/7 654E31T', '6อ่างทอง', '92ป่าโมก', '150302ป่าโมก', '14130', 'ไกรวิทย์', 'บุคคล', 'นิกร', '0245504748', 'hhh@yahoo.com', 'ไอเอ็มไอ', 'Azza', 'VST'),
-('211124', 3, '21/11/24', '16:30', 2, 'job3', 'job3', 'ราชการ', NULL, 'LG', 'VDO-WALL', '3.5mm 55VL5F', '2สมุทรปราการ', '52เมืองสมุทรปราการ', '110102สำโรงเหนือ', '10270', 'ไกรวิทย์', 'HR', 'จ้าๆ', '0245504747', 'hhh@yahoo.com', 'นิวซิโน่(ไทย)', 'Azza', 'MDEC'),
-('211124', 4, '21/11/24', '17:30', 0.1, 'job4', 'job4', 'ร้านค้า', NULL, 'AZZA', 'VDO-WALL', '1.8mm 55D18-ll', '9ชัยนาท', '119สรรคบุรี', '180504โพงาม', '17140', 'ไกรวิทย์', 'HR', 'นิกร', '0245504748', 'Sayan@yahoo.com', 'ไอเอ็มไอ', 'Azza', 'HGT');
+('211130', 1, '21/11/30', '04:30', 10, 'job0', 'job0', 'โรงแรม', 'มรภ อุดร', 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '3นนทบุรี', '61บางบัวทอง', '120402บางบัวทอง', '11110', 'นิกร', 'บุคคล', 'ต่อง', '024550474', 'hello@gmail.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'HGT');
 
 -- --------------------------------------------------------
 
@@ -10288,7 +10285,7 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `geographies`
