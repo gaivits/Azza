@@ -38,6 +38,7 @@ $idx=0;
       <th>ไปรษณีย์</th>
       <th>ติดต่อ</th>
       <th>ฝ่าย/แผนก</th>
+      <th>ชนิด</th>
       <th>งาน</th>
       <th>ผู้รับ</th>
       <th>โทร</th>
@@ -63,12 +64,13 @@ $idx=0;
         <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['SERIES'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
         <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
-        <td width="6%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
+        <td width="3%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
         
         
 		</tr>
