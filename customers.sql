@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2021 at 08:26 AM
+-- Generation Time: Nov 24, 2021 at 11:16 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1052,7 +1052,6 @@ CREATE TABLE `customer` (
   `TIME` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
   `PROJECT` varchar(255) NOT NULL,
-  `EQUIPMENT` varchar(255) NOT NULL,
   `USER` varchar(255) NOT NULL,
   `UNIT` varchar(255) DEFAULT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
@@ -1076,8 +1075,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `EQUIPMENT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211130', 1, '21/11/30', '04:30', 10, 'job0', 'job0', 'โรงแรม', 'มรภ อุดร', 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '3นนทบุรี', '61บางบัวทอง', '120402บางบัวทอง', '11110', 'นิกร', 'บุคคล', 'ต่อง', '024550474', 'hello@gmail.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'HGT');
+INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
+('211230', 1, '21/12/30', '16:30', 3, 'job0', 'ร้านค้า', 'มรภ บ้านสมเด็จ', 'HISENSE', 'VDO-WALL', '1.8mm 55L18H5K', '2สมุทรปราการ', '52เมืองสมุทรปราการ', '110104ท้ายบ้าน', '10280', 'ติ้ว', 'บุคคล', 'ธนบดี', '024550474', 'jokk@hotmail.com', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
