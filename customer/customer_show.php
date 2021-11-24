@@ -46,7 +46,7 @@ $idx=00;
     <tr align="center">
         <td colspan="4"><h3>เลข</h3></td>
         <td colspan="3"><h3>SYSTEM</h3></td>
-        <td colspan="3"><h3>PRODUCT</h3></td>
+        <td colspan="4"><h3>PRODUCT</h3></td>
         <td colspan="3"><h3>STATUS</h3></td>
         <td colspan="2"><h3>ACTION</h3></td>
     </tr>
@@ -59,7 +59,7 @@ $idx=00;
             <th>SUBUSER</th>
             <th>DEALER</th>
 		<th>ยี่ห้อ</th>
-        
+        <th>โมเดล</th>
         <th>รุ่น</th>
         <th>จำนวน</th>
       	   <th>รอ</th>
@@ -76,6 +76,8 @@ $idx=00;
 		
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
+			$nrow=explode(" ",$row['LOGO']);
+			
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"];?>>
         <td width="1%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
@@ -86,7 +88,8 @@ $idx=00;
         <td width="7%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
         <td width="3%" align="left"><nobr><?php echo $row['DEALER']; ?></nobr></td>
         <td width="2%" align="center"><nobr><?php echo $row['BRANDNAME']?></td>
-        <td width="2%" align="center"><nobr><?php echo substr($row['LOGO'],5,10)?></td>
+        <td width="2%" align="center"><nobr><?php echo $nrow[0]?></td>
+        <td width="2%" align="center"><nobr><?php echo $nrow[1]?></td>
         <td width="2%" align="center"><nobr><?php echo $row['AMOUNT']?></td>
         <td width="1%" style="cursor: pointer;" id="U2D"></td>
         <td width="1%" style="cursor: pointer;" id="D2W"></td>

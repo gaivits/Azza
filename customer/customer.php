@@ -151,11 +151,11 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         <div class="modal-body">
         <form id="CUSTOMER" name="CUSTOMER" method="POST">
     	<p style="font-weight:bold">-----รายละเอียดงาน-----</p>
-		<input type="text" autocomplete="off" id="datepicker" name="datepicker" width="256px" placeholder="SELECT DATE">
-   		<input type="text" autocomplete="off" id="timepicker" name="timepicker" width="256px" placeholder="SELECT TIME">
-        <input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="AMOUNT" >
+		<input type="text" autocomplete="off" id="datepicker" name="datepicker"  placeholder="SELECT DATE">
+   		<input type="text" autocomplete="off" id="timepicker" name="timepicker"  placeholder="SELECT TIME">
+        
         <input type="text" autocomplete="off" id="PROJECT" name="PROJECT" placeholder="งาน" maxlength="255" >
-        <input type="text" autocomplete="off" id="EQUIPMENT" name="EQUIPMENT" placeholder="อุปกรณ์" maxlength="255">
+        
         <select id="USER" name="USER">
     	<option value="">--SELECT USER--</option>
         <?php
@@ -167,6 +167,28 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		
     	?> 
        	</select>
+        <select id="DEALER" name="DEALER">
+    	<option value="">--SELECT DEALER--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+		}	
+    	?>  
+  		</select>
+       
+        <select id="SUPPLIER" name="SUPPLIER" >
+    	<option value="">--SELECT SUPPLIER--</option>
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
+		while($data = mysqli_fetch_assoc($records))
+        {
+            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+			
+		}	
+    	?>  
+  		</select>
         <input type="text" autocomplete="off" name="UNIT" id="UNIT" placeholder="หน่วยย่อย">
         <p style="font-weight:bold;">-----รายละเอียดงาน-----</p>
         
@@ -208,28 +230,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
         <p style="font-weight:bold;">-----ติดต่อ-----</p>
      
         <p style="font-weight:bold;">-----สินค้า-----</p>
-        <select id="DEALER" name="DEALER">
-    	<option value="">--SELECT DEALER--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-		}	
-    	?>  
-  		</select>
-       
-        <select id="SUPPLIER" name="SUPPLIER" >
-    	<option value="">--SELECT SUPPLIER--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
-		}	
-    	?>  
-  		</select>
+        
         <select id="SERIES" name="SERIES" >
     	<option value="">--เลือก Type--</option>
     	<?php
@@ -251,9 +252,7 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
 		}	
     	?>  
   		</select>
-        
-      
-        
+       	<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
         <select id="LOGO" name="LOGO">
 		</select>
         
@@ -478,7 +477,7 @@ function creates(){
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"EQUIPMENT":EQUIPMENT,"USER":USER,UNIT:UNIT,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
+        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"USER":USER,UNIT:UNIT,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
 		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
