@@ -5,69 +5,21 @@
 	$conn = $conn->__construct();
 	mysqli_query($conn, "SET NAMES 'utf8' ");
 //query
-	$query=mysqli_query($conn,"SELECT COUNT(*) FROM customer");
-	$row = mysqli_fetch_row($query);
-	$rows = $row[0];
-	$page_rows = 5;
-	$last = ceil($rows/$page_rows);
-	if($last < 1)
+	if(!$conn)
 	{
-		$last = 1;
+	die('Could not Connect My Sql:' .mysql_error());
+	}
+	$limit = 10;  
+	if (isset($_GET["page"])) 
+	{
+		$page  = $_GET["page"]; 
 	} 
-	$pagenum = 1;
-
-	if(isset($_GET['pn']))
-	{
-		$pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
-	}
-	if ($pagenum < 1) 
-	{
-		$pagenum = 1;
-	}
-	else if ($pagenum > $last) 
-	{
-		$pagenum = $last;
-	}
-
-	$limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-
-	$nquery=mysqli_query($conn,"SELECT * from  customer $limit");
-
-	$paginationCtrls = '';
-
-	if($last != 1)
-	{
-		if ($pagenum > 1) 
-		{
-			$previous = $pagenum - 1;
-			$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'" class="btn btn-link">Previous</a> &nbsp; &nbsp; ';
-
-		for($i = $pagenum-4; $i < $pagenum; $i++)
-		{
-			if($i > 0)
-			{
-				$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-link">'.$i.'</a> &nbsp; ';
-			}
-		}
-	}
-
-	$paginationCtrls .= ''.$pagenum.' &nbsp; ';
-
-	for($i = $pagenum+1; $i <= $last; $i++)
-	{
-		$paginationCtrls .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-link">'.$i.'</a> &nbsp; ';
-		if($i >= $pagenum+4)
-		{
-			break;
-		}
-	}
-
-if ($pagenum != $last) 
-{
-$next = $pagenum + 1;
-$paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'" class="btn btn-link">Next</a> ';
-}
-	}
+	else
+	{ 
+	$page=1;
+	}  
+$start_from = ($page-1) * $limit;  
+$result = mysqli_query($conn,"SELECT * FROM customer");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -354,7 +306,19 @@ $paginationCtrls .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next
     <div id="popCustomer"></div>
     
     
-     <div style="float:right;margin-right:50px;" id="pagination_controls"><?php echo $paginationCtrls; ?></div>
+     <?php  
+		$result_db = mysqli_query($conn,"SELECT COUNT(CUSTOMER_ID) FROM customer"); 
+		$row_db = mysqli_fetch_row($result_db);  
+		$total_records = $row_db[0];  
+		$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+		$pagLink = "<ul class='pagination'>";  
+		for ($i=1; $i<=$total_pages; $i++) 
+		{
+              $pagLink .= "<li class='page-item'><a class='page-link' href='customer.php?page=".$i."'>".$i."</a></li>";	
+		}
+		echo $pagLink . "</ul>";  
+?>
     
 </body>
 <script>
