@@ -1,6 +1,6 @@
 <?php
 include "C:/xampp/htdocs/xampp/Azza/connects.php";
-
+$idx=0;
 $conn=new Databases;
 $conn = $conn->__construct();
 $JOB = $_POST['SEARCH_JOB'];
@@ -26,23 +26,29 @@ $result = mysqli_query($conn, $query);
 <title>Customer</title>
 </head>
 
-
 <body>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
-<table border='1' style="width:99%;margin-left:1%" class="table table-striped table-sm">
-  <thead align="center">
+<table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
+  <thead align="center" style="font-size:14px;">
     <tr>
-      <th>NO.</th>
-      <th>DATE</th>
-      <th>TIME</th>
-      <th>จัดซื้อประมาณ</th>
-      <th>โครงงาน</th>
-      <th>อุปกรณ์</th>
+      
       <th>USER</th>
-      <th>DEALER</th>
-      <th>WE</th>
+      <th>เวลา</th>
+      <th>จังหวัด</th>
+      <th>เขต/อำเภอ</th>
+      <th>แขวง/ตำบล</th>
+      <th>ไปรษณีย์</th>
+      <th>ติดต่อ</th>
+      <th>ฝ่าย/แผนก</th>
+      <th>ชนิด</th>
+      <th>งาน</th>
+      <th>ผู้รับ</th>
+      <th>โทร</th>
+      <th>E-MAIL</th>
+      <th>เรา</th>
       <th>SUPPLIER</th>
       
+    
     </tr>
   </thead>
   <tbody>
@@ -50,35 +56,35 @@ $result = mysqli_query($conn, $query);
       <?php
 		
 		while($row = mysqli_fetch_array($result)) 
-		{$idx=0;
+		{$idx=$idx+1;
 		?>
-		<tr id=<?php echo $row["CUSTOMER_ID"] ;?>>
-    	<td width="2%" align="center"><nobr><?php echo $row[$idx]; ?></nobr></td>
-    	<td width="3%" align="center"><nobr><?php echo $row["CREATE_DATE"]; ?></nobr></td>
-    	<td width="3%" align="center"><nobr><?php echo $row["TIME"]; ?></nobr></td>
-    	<td width="5%" align="right"><nobr><?php echo number_format($row["AMOUNT"],2); ?></nobr></td>
-    	<td width="10%" align="left"><nobr><?php echo $row["PROJECT"]; ?></nobr></td>
-        <td width="10%" align="left"><nobr><?php echo $row["EQUIPMENT"]; ?></nobr></td>
-        <td width="6%" align="center"><nobr><?php echo $row["USER"]; ?></nobr></td>
-        <td width="10%" align="center"><nobr><?php echo $row["DEALER"]; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row["WE"]; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row["SUPPLIER"]; ?></nobr></td>
+		
+        <td width="6%" align="center"><nobr><?php echo $row['USER'] ;?></nobr></td>
+        <td width="6%" align="center"><nobr><?php echo $row['TIME'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['PROVINCE']) ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['SERIES'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
+        <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
+        <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
+        <td width="3%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
         
         
 		</tr>
-		<?php
-	$idx=$idx+1;
-	}
+        <?php
+		}
 ?>
     </tr>
    </tbody>
 </table>
-
-
+		
 </body>
  
-<div id="editCustomer"></div>
-  
-
 </body>
 </html>
