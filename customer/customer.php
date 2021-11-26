@@ -182,7 +182,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer");
         <p style="font-weight:bold;">-----ติดต่อ-----</p>
      
         <p style="font-weight:bold;">-----สินค้า-----</p>
-        
+        <input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
         <select id="SERIES" name="SERIES" >
     	<option value="">--เลือก Type--</option>
     	<?php
@@ -204,7 +204,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer");
 		}	
     	?>  
   		</select>
-       	<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
+       	
         <select id="LOGO" name="LOGO">
 		</select>
         

@@ -113,58 +113,47 @@
         
          <p style="font-weight:bold;">-----ที่อยู่-----</p>
          <p style="font-weight:bold;">-----ติดต่อ-----</p>
-         <input type="text" autocomplete="off" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
+         <input type="text" autocomplete="off" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255" value=<?=$CONTACT?>>
          
-         <input type="text" autocomplete="off" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
+         <input type="text" autocomplete="off" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255" value=<?=$DEPARTMENT?>>
          
-         <input type="text" autocomplete="off" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
+         <input type="text" autocomplete="off" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255" value=<?=$NAME?>>
          
-         <input type="text" autocomplete="off" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
+         <input type="text" autocomplete="off" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255" value=<?=$PHONE?>>
          
-         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
+         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255" value=<?=$EMAIL?>>
          
         <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
         <p style="font-weight:bold;">-----ติดต่อ-----</p>
      	<p style="font-weight:bold;">-----สินค้า-----</p>
         <select id="SERIES2" name="SERIES2" >
     	<option value=<?=$SERIES?>><?=$SERIES?></option>
-        <?php
-    		 $records = mysqli_query($conn, "Select * from tbl_master_groupcode where TYPE='SERIES' ");  // Use select query here 
+    	<?php
+        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SERIES'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
 		}	
     	?>  
   		</select>
-        <select id="BRANDNAME2" name="BRANDNAME2" >
+       	<select id="BRANDNAME2" name="BRANDNAME2" >
     	<option value=<?=$BRANDNAME?>><?=$BRANDNAME?></option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
         {
             echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
 		}	
     	?>  
   		</select>
-        
+        <select id="LOGO2" name="LOGO2" >
+    	<option value=<?=$LOGO?>><?=$LOGO?></option>
+    	
   		</select>
-        <select id="LOGO2" name="LOGO2">
-        	<?php
-        		$records = mysqli_query($conn, "Select * from MODULE");  // Use select query here 
-				while($data = mysqli_fetch_assoc($records))
-        		{
-            		echo "<option value='". $data['MODULE'] ."'>" .$data['MODULE'] ."</option>";  // displaying data in option menu
-			
-				}	
-    		?>  
-		</select>
         
         <select id="GOODS2" name="GOODS2">
-        	<option value=<?=$LOGO?>> <?=$LOGO?></option>
+        	<option value=<?=$GOODS?>><?=$GOODS?></option>
 		</select>
-        
        	<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" value=<?=$AMOUNT?>>
         <p style="font-weight:bold;">-----สินค้า-----</p>
         <input type="submit" class="btn btn-success btn-sm" value="แก้ไข">
@@ -198,7 +187,7 @@ $('#LOGO2').change(function() {
     });
   });
 $('#datepicker2').datepicker({
-    format: 'mm/dd/yy',
+    format: 'yy/mm/dd',
     
 });
  $('#timepicker2').timepicker({

@@ -32,6 +32,7 @@ $idx=0;
     <tr>
       
       <th>USER</th>
+      <th>เวลา</th>
       <th>จังหวัด</th>
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
@@ -58,6 +59,7 @@ $idx=0;
 		?>
 		
         <td width="6%" align="center"><nobr><?php echo $row['USER'] ;?></nobr></td>
+        <td width="6%" align="center"><nobr><?php echo $row['TIME'] ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['PROVINCE']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
