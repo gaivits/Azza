@@ -7,10 +7,10 @@
 	$TIME = $_POST[TIME];
 	$AMOUNT=$_POST[AMOUNT];
 	$PROJECT = $_POST[PROJECT];
-	$EQUIPMENT = $_POST[EQUIPMENT];
+	
 	$sql = "update customer setCREATE_DATE=$DATE 
 	,TIME = $TIME,AMOUNT=$AMOUNT,
-	PROJECT = $PROJECT,EQUIPMENT=$EQUIPMENT
+	PROJECT = $PROJECT,
 	WHERE $ID=CUSTOMER_ID";
 	mysqli_query($conn,$sql);
 	echo header("location:customer.php");

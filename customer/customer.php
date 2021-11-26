@@ -222,7 +222,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer");
       </div>
      </div>
   </div>
-</div>
+ </div>
 	
     <div class="modal fade" id="myModal-add-user" role="dialog">
     <div class="modal-dialog">
@@ -315,7 +315,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer");
 		$pagLink = "<ul class='pagination'>";  
 		for ($i=1; $i<=$total_pages; $i++) 
 		{
-              $pagLink .= "<li class='page-item'><a class='page-link' href='customer.php?page=".$i."'>".$i."</a></li>";	
+              $pagLink .= "<li style='margin-left:95%;' class='page-item'><a class='page-link' href='customer.php?page=".$i."'>".$i."</a></li>";	
 		}
 		echo $pagLink . "</ul>";  
 ?>

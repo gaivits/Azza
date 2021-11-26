@@ -95,7 +95,7 @@ $idx=00;
         <td width="1%" style="cursor: pointer;" id="D2W"></td>
         <td width="1%" style="cursor: pointer;" id="W2S"></td>
         <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
-        <td width="1%" align="center" ><button class="btn btn-info edits" id="edits" name="edits" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
+        <td width="1%" align="center" ><button class="btn btn-info edits" id="edits" name="edits" data-toggle="modal" data-target="#myModal-2" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
         
 		</tr>
         <?php
@@ -159,7 +159,6 @@ function edits(ID)
 	var SETDATA = {ID:ID}
     $.post(url,SETDATA,function(res){
 			$('#editCustomer').html(res)
-			
 		})
 	
 }
