@@ -25,6 +25,7 @@
 		$BRANDNAME = $row['BRANDNAME'];
 		$SERIES = $row['SERIES'];
 		$LOGO = $row['LOGO'];
+		$narr = explode(" ",$LOGO);
 		$AMOUNT = $row['AMOUNT'];
 		$WE = $row['WE'];
 		$SUPPLIER = $row['SUPPLIER'];
@@ -101,12 +102,12 @@
         
         
         <select name="Ref_dist_id" id="amphures2" >
-        	<option value=""><?=preg_replace('/[0-9]+/','',$DISTRICT);?></option>
+        	<option value=<?=preg_replace('/[0-9]+/','',$DISTRICT)?>><?=preg_replace('/[0-9]+/','',$DISTRICT);?></option>
         
         </select>
         
         <select name="Ref_subdist_id" id="districts2" >
-        	<option value=""><?=preg_replace("/[0-9]+/","",$SUBDISTRICT);?></option>
+        	<option value=<?=preg_replace("/[0-9]+/","",$SUBDISTRICT)?>><?=preg_replace("/[0-9]+/","",$SUBDISTRICT);?></option>
       	</select>
         
          <input type="text" name="zip_code2" id="zip_code2" value=<?=$ZIPCODE?> placeholder="รหัสไปรษณีย์">
@@ -147,7 +148,7 @@
     	?>  
   		</select>
         <select id="LOGO2" name="LOGO2" >
-    	<option value=<?=$LOGO?>><?=$LOGO?></option>
+    	<option value=<?=$narr[0]?>><?=$narr[0]?></option>
     	
   		</select>
         

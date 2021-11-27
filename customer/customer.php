@@ -4,22 +4,33 @@
 	$conn = new Databases;
 	$conn = $conn->__construct();
 	mysqli_query($conn, "SET NAMES 'utf8' ");
-//query
-	if(!$conn)
+	// define how many results you want per page
+	$results_per_page = 10;
+
+// find out the number of results stored in database
+	$sql='SELECT * FROM customer';
+	$result = mysqli_query($conn, $sql);
+	$number_of_results = mysqli_num_rows($result);
+
+// determine number of total pages available
+	$number_of_pages = ceil($number_of_results/$results_per_page);
+
+// determine which page number visitor is currently on
+	if (!isset($_GET['page'])) 
 	{
-	die('Could not Connect My Sql:' .mysql_error());
-	}
-	$limit = 10;  
-	if (isset($_GET["page"])) 
-	{
-		$page  = $_GET["page"]; 
+  	$page = 1;
 	} 
 	else
-	{ 
-	$page=1;
-	}  
-$start_from = ($page-1) * $limit;  
-$result = mysqli_query($conn,"SELECT * FROM customer");
+	{
+  	$page = $_GET['page'];
+	}
+
+// determine the sql LIMIT starting number for the results on the displaying page
+	$this_page_first_result = ($page-1)*$results_per_page;
+
+// retrieve selected results from database and display them on page	
+	$sql="SELECT * FROM customer LIMIT" . $this_page_first_result . ',' .  $results_per_page;
+	$result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -308,18 +319,11 @@ $result = mysqli_query($conn,"SELECT * FROM customer");
     
     
      <?php  
-		$result_db = mysqli_query($conn,"SELECT COUNT(CUSTOMER_ID) FROM customer"); 
-		$row_db = mysqli_fetch_row($result_db);  
-		$total_records = $row_db[0];  
-		$total_pages = ceil($total_records / $limit); 
-/* echo  $total_pages; */
-		$pagLink = "<ul class='pagination'>";  
-		for ($i=1; $i<=$total_pages; $i++) 
+		for ($page=1;$page<=$number_of_pages;$page++)
 		{
-              $pagLink .= "<li style='margin-left:95%;' class='page-item'><a class='page-link' href='customer.php?page=".$i."'>".$i."</a></li>";	
+  			echo '<a class="btn btn-secondary" style="margin-left:90%;" href="customer.php?page=' . $page . '">' . $page . '</a> ';
 		}
-		echo $pagLink . "</ul>";  
-?>
+		?>
     
 </body>
 <script>
