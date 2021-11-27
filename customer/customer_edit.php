@@ -153,7 +153,7 @@
   		</select>
         
         <select id="GOODS2" name="GOODS2">
-        	<option value=<?=$GOODS?>><?=$GOODS?></option>
+        	<option value=<?=$narr[1]?>><?=$narr[1]?></option>
 		</select>
        	<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" value=<?=$AMOUNT?>>
         <p style="font-weight:bold;">-----สินค้า-----</p>
