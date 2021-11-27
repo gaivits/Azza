@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2021 at 09:39 AM
+-- Generation Time: Nov 27, 2021 at 07:47 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1076,7 +1076,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211130', 1, '21/11/30', '16:30', 2, 'job0', 'มหาวิทยาลัย', 'มก(ศรช)คณะวิศวะ', 'LG', 'INTERACTIVE', 'NON-CAMERA <br', '11ชลบุรี', '', '', '20110', 'โอ', 'วิศวะ', 'โอ้โห', '0919999977', 'ohho@eng.src.ku.th', 'เจริญชัยมาเก็ตติ้ง', 'Azza', 'VST');
+('211129', 1, '21/11/29', '04:00', 2, 'job0', 'โรงแรม', 'W-bangkok', 'HISENSE', 'VDO-WALL', '1.8mm <br', '18สระแก้ว', '206เมืองสระแก้ว', '270102บ้านแก้ง', '27000', 'ติ้ว', 'HR', 'วัฒนะ', '0843359779', 'hhhh@yahoo.com', 'นิวซิโน่(ไทย)', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
