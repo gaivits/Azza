@@ -1,4 +1,4 @@
-<?php
+z<?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
 	$conn = $conn->__construct();
@@ -38,5 +38,5 @@
 	WE='$WE',SUPPLIER='$SUPPLIER'
 	WHERE CUSTOMER_ID='$ID' ";
 	mysqli_query($conn,$sql);
-	echo header("location:customer.php");
+	header("location:customer.php");
 ?>
