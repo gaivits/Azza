@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2021 at 07:47 AM
+-- Generation Time: Dec 01, 2021 at 11:24 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1053,30 +1053,30 @@ CREATE TABLE `customer` (
   `AMOUNT` float NOT NULL,
   `PROJECT` varchar(255) NOT NULL,
   `USER` varchar(255) NOT NULL,
-  `UNIT` varchar(255) DEFAULT NULL,
+  `UNIT` varchar(255) NOT NULL,
+  `DEALER` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
   `LOGO` varchar(255) DEFAULT NULL,
+  `GOODS` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dealers`
+--
+
+CREATE TABLE `dealers` (
+  `ID` int(11) NOT NULL,
+  `CONSIGNEE` varchar(255) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
+  `PHONE` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
-  `ZIPCODE` varchar(5) NOT NULL,
-  `CONTACT` varchar(255) NOT NULL,
-  `DEPARTMENT` varchar(255) NOT NULL,
-  `NAME` varchar(255) NOT NULL,
-  `PHONE` varchar(10) NOT NULL,
-  `EMAIL` varchar(255) NOT NULL,
-  `DEALER` varchar(255) NOT NULL,
-  `WE` varchar(255) NOT NULL DEFAULT 'Azza',
-  `SUPPLIER` varchar(255) NOT NULL
+  `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `BRANDNAME`, `SERIES`, `LOGO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`, `CONTACT`, `DEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `DEALER`, `WE`, `SUPPLIER`) VALUES
-('211129', 1, '21/11/29', '04:00', 2, 'job0', 'โรงแรม', 'W-bangkok', 'HISENSE', 'VDO-WALL', '1.8mm <br', '18สระแก้ว', '206เมืองสระแก้ว', '270102บ้านแก้ง', '27000', 'ติ้ว', 'HR', 'วัฒนะ', '0843359779', 'hhhh@yahoo.com', 'นิวซิโน่(ไทย)', 'Azza', 'MDEC');
 
 -- --------------------------------------------------------
 
@@ -10153,6 +10153,35 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
+  `CONSIGNEE` varchar(255) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
+  `PHONE` varchar(255) NOT NULL,
+  `PROVINCE` varchar(255) NOT NULL,
+  `DISTRICT` varchar(255) NOT NULL,
+  `SUBDISTRICT` varchar(255) NOT NULL,
+  `ZIPCODE` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
+(1, 'จิล', 'jillz@hotmail.com', '024550474', '11ชลบุรี', '142ศรีราชา', '200701ศรีราชา', '20110'),
+(2, '', '', '', '', '', '', ''),
+(3, '', '', '', '', '', '', ''),
+(4, '', '', '', '', '', '', ''),
+(5, '', '', '', '', '', '', ''),
+(6, 'แมกซ์', 'max003@hotmail.com', '7598078', '18สระแก้ว', '211อรัญประเทศ', '270602เมืองไผ่', '27120');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `warehouse`
 --
 
@@ -10235,6 +10264,12 @@ ALTER TABLE `customer`
   ADD UNIQUE KEY `PK` (`CUSTOMER_ID`);
 
 --
+-- Indexes for table `dealers`
+--
+ALTER TABLE `dealers`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
@@ -10265,6 +10300,12 @@ ALTER TABLE `tbl_master_groupcode`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `warehouse`
 --
 ALTER TABLE `warehouse`
@@ -10284,7 +10325,13 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `dealers`
+--
+ALTER TABLE `dealers`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10309,6 +10356,12 @@ ALTER TABLE `provinces`
 --
 ALTER TABLE `tbl_master_groupcode`
   MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
