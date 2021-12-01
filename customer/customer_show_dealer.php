@@ -4,7 +4,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $ID = $_GET['ID'];
-$query = "SELECT * FROM users WHERE ID='$ID' ";
+$query = "SELECT * FROM dealers WHERE ID='$ID' ";
 $result = mysqli_query($conn, $query);
 $idx=0;
 
@@ -47,7 +47,7 @@ $idx=0;
     
       <?php
 		
-		while($row = mysqli_fetch_array($result)) 
+		while($row = mysqli_fetch_assoc($result)) 
 		{$idx=$idx+1;
 		?>
 		<td width="3%" align="center"><nobr><?php echo $row['CONSIGNEE'];?></nobr></td>

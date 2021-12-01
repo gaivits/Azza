@@ -113,10 +113,15 @@
      		<div class="container">
   		<div class="row">
         	
-    				<div class="col-md">
-						<input type="text" autocomplete="off" id="datepicker" name="datepicker"  placeholder="เลือกวัน">
-   						<input type="text" autocomplete="off" id="timepicker" name="timepicker"  placeholder="เลือกเวลา">
+    				<div class="col-md-6">
+                    	วันที่:<input type="text" autocomplete="off" id="datepicker" name="datepicker">
+   						เวลา:<input type="text" autocomplete="off" id="timepicker" name="timepicker">
+                        <input type="text" autocomplete="off" id="UNIT" name="UNIT"  placeholder="หน่วยย่อย">
                         <input type="text" autocomplete="off" id="PROJECT" name="PROJECT"  placeholder="ชื่องาน">
+                        <h4>USER</h4>
+                        <input type="text" autocomplete="off" id="CONSIGNEE" name="CONSIGNEE"  placeholder="ผู้รับ">
+                        <input type="email" autocomplete="off" id="EMAIL" name="EMAIL"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE" name="PHONE"  placeholder="โทร">
                         <select id="USER" name="USER">
     					<option value="">--SELECT USER--</option>
         				<?php
@@ -127,26 +132,99 @@
 						}
 						?> 
        					</select>
-                        <input type="text" autocomplete="off" id="UNIT" name="UNIT"  placeholder="หน่วยย่อย">
+                        
                         	<select name="Ref_prov_id0" id="provinces0">
 							<option value="">-กรุณาเลือกจังหวัด-</option>
-        					<?php
-        					$records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
-							while($value = mysqli_fetch_assoc($records))
-        					{
-		  					echo "<option value='". $value['id'],$value['name_th'] ."'>" .$value['name_th'] ."</option>";
-							}
-							?>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
         					</select>
         					<select name="Ref_dist_id0" id="amphures0" >
        						</select>
         
         					<select name="Ref_subdist_id0" id="districts0">
       						</select>
+                            
         					<input type="text" autocomplete="off" name="zip_code0" id="zip_code0" placeholder="รหัสไปรษณีย์">
+                            <h4>USER</h4>
+                            <h4>DEALER</h4>
+                            <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
+                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
+                             <select id="DEALER" name="DEALER">
+    					<option value="">--เลือก DEALER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+                        
+                        	<select name="Ref_prov_id1" id="provinces1">
+							<option value="">-กรุณาเลือกจังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+        					<select name="Ref_dist_id1" id="amphures1" >
+       						</select>
+        
+        					<select name="Ref_subdist_id1" id="districts1">
+                            
+      						</select>
+                            <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
+                            <h4>DEALER</h4>
+                            <h4>SUPPLIER</h4>
+                            <input type="text" autocomplete="off" id="CONTACT2" name="CONTACT2"  placeholder="ผู้รับ">
+                        <input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE2" name="PHONE2"  placeholder="โทร">
+                             <select id="SUPPLIER" name="SUPPLIER">
+    					<option value="">--เลือก SUPPLIER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+                        
+                        	<select name="Ref_prov_id2" id="provinces2">
+							<option value="">-กรุณาเลือกจังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+        					<select name="Ref_dist_id2" id="amphures2" >
+       						</select>
+        
+        					<select name="Ref_subdist_id2" id="districts2">
+      						</select>
+                            <input type="text" autocomplete="off" name="zip_code2" id="zip_code2" placeholder="รหัสไปรษณีย์">
+                            <h4>SUPPLIER</h4>
+                            
+                            
+                            
          
         			</div>
-                    <div class="col-sm">
+                    <div class="col-sm-6">
       					<select id="SERIES" name="SERIES" style="width:125;">
     						<option value="">--เลือกประเภท--</option>
     						<?php
@@ -167,7 +245,7 @@
 						}	
     					?>  
   						</select>
-       	
+       					
         				<select id="LOGO" name="LOGO" style="width:125;">
 						</select>
         
@@ -176,16 +254,14 @@
         				<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
         
     				</div>
-    		 	</div>
-                
-            </div>
-   			 
-          </div>
-         <div class="modal-footer">
+                    <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
           					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-       </div>
+        			</div>
+    		 	</div>
+               </div>
+   			 </div>
+         </div>
     </div>
     <div class="modal fade" id="myModal-add-user" role="dialog">
     <div class="modal-dialog">
@@ -275,8 +351,10 @@
   			echo '<a class="btn btn-secondary" style="margin-left:90%;" href="customer.php?page=' . $page . '">' . $page . '</a> ';
 		}
 		?>
-    
+
 </body>
+</html>
+
 <script>
 	$('#datepicker').datepicker({
     format: 'yy/mm/dd',
@@ -287,8 +365,9 @@
         });
 </script>
 </html>
-
-
+<?= include("script.php")?>
+<?= include("script1.php")?>
+<?= include("script2.php")?>
 <script>
 
 $('#SERIES').change(function() {
@@ -296,7 +375,7 @@ $('#SERIES').change(function() {
  	var BRANDNAME = $('#BRANDNAME').val()
       $.ajax({
       type: "POST",
-      url: "ajax_db2.php",
+      url: "location1.php",
       data: {SERIES:SERIES,BRANDNAME:BRANDNAME},
       success: function(data){
           $('#LOGO').html(data)
@@ -308,7 +387,7 @@ $('#LOGO').change(function() {
 	var BRAND = $('#BRANDNAME').val()
       $.ajax({
       type: "POST",
-      url: "ajax_db3.php",
+      url: "location2.php",
       data: {GOODS:GOODS,BRAND:BRAND},
       success: function(data){
           $('#GOODS').html(data)
@@ -318,88 +397,51 @@ $('#LOGO').change(function() {
 function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
-	var AMOUNT = $('#AMOUNT').val()
-	var PROJECT = $('#PROJECT').val()
-	var EQUIPMENT = $('#EQUIPMENT').val()
 	var USER = $('#USER').val()
 	var UNIT = $('#UNIT').val()
+	var PROJECT = $('#PROJECT').val()
+	var DEALER = $('#DEALER').val()
 	var BRANDNAME = $('#BRANDNAME').val()
 	var SERIES = $('#SERIES').val()
 	var LOGO = $('#LOGO').val()
 	var GOODS = $('#GOODS').val()
-	var PROVINCE = $('#provinces').val()
-	var DISTRICT = $('#amphures').val()
-	var SUBDISTRICT = $('#districts').val()
-	var ZIPCODE=$('#zip_code').val()
-	var CONTACT = $('#CONTACT').val()
-	var DEPARTMENT = $('#DEPARTMENT').val()
-	var NAME = $('#NOTENAME').val()
-	var PHONE = $('#PHONE').val()
-	var EMAIL = $('#EMAIL').val()
-	var DEALER = $('#DEALER').val()
-	var WE = $('#WE').val()
-	var SUPPLIER = $('#SUPPLIER').val()
-	
-	if(DATE==='')
-	{
-		alert('Enter Date')
-		return false;
-	}
-	if(TIME==='')
-	{
-		alert('Enter TIME')
-		return false;
-	}
-	if(AMOUNT==='')
-	{
-		alert('Enter AMOUNT')
-		return false;
-	}
-	if(PROJECT==='')
-	{
-		alert('Enter PROJECT')
-		return false;
-	}
-	if(EQUIPMENT==='')
-	{
-		alert('Enter EQUIPMENT')
-		return false;
-	}
-	if(PROVINCE==='')
-	{
-		alert('Enter จังหวัด')
-		return false;
-	}
-	if(DISTRICT==='')
-	{
-		alert('Enter เขต')
-		return false;
-	}
-	if(SUBDISTRICT==='')
-	{
-		alert('Enter แขวง')
-		return false;
-	}
-	if(BRANDNAME==='')
-	{
-		alert('Enter แบรนด์')
-		return false;
-	}
-	if(SERIES==='')
-	{
-		alert('Enter ยี่ห้อ')
-		return false;
-	}
-	if(LOGO==='')
-	{
-		alert('Enter รุ่น')
-		return false;
-	}
+	var AMOUNT = $('#AMOUNT').val()
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"AMOUNT":AMOUNT,"PROJECT":PROJECT,"USER":USER,UNIT:UNIT,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"PROVINCE":PROVINCE,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,
-		"ZIPCODE":ZIPCODE,"CONTACT":CONTACT,"DEPARTMENT":DEPARTMENT,"NOTENAME":NAME,"PHONE":PHONE,"EMAIL":EMAIL,"DEALER":DEALER,"WE":WE,"SUPPLIER":SUPPLIER},
+        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"DEALER":DEALER,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"AMOUNT":AMOUNT},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+		
+    })
+	var CONSIGNEE = $('#CONSIGNEE').val()
+	var EMAIL = $('#EMAIL').val()
+	var PHONE = $('#PHONE').val()
+	var PROVINCE = $('#provinces0').val()
+	var DISTRICT = $('#amphures0').val()
+	var SUBDISTRICT = $('#districts0').val()
+	var ZIPCODE = $('#zip_code0').val()
+	$.ajax({
+        type: "POST",
+        url: "create_user.php",
+        data: {"CONSIGNEE":CONSIGNEE,"EMAIL":EMAIL,"PHONE":PHONE,"PROVINCE":PROVINCE,"PROJECT":DISTRICT,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,"ZIPCODE":ZIPCODE},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+		
+    })
+	var CONSIGNEE1 = $('#CONSIGNEE1').val()
+	var EMAIL1 = $('#EMAIL1').val()
+	var PHONE1 = $('#PHONE1').val()
+	var PROVINCE1 = $('#provinces1').val()
+	var DISTRICT1 = $('#amphures1').val()
+	var SUBDISTRICT1 = $('#districts1').val()
+	var ZIPCODE1 = $('#zip_code1').val()
+	$.ajax({
+        type: "POST",
+        url: "create_dealer.php",
+        data: {"CONSIGNEE1":CONSIGNEE1,"EMAIL1":EMAIL1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"PROJECT1":DISTRICT1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
