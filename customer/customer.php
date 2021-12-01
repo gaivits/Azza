@@ -57,6 +57,7 @@
 
 <div class="container">
    <br>
+   
   <h2>CUSTOMER-REGISTRATION</h2>
   <!-- Trigger the modal with a button -->
   
@@ -105,137 +106,87 @@
   
 
   <!-- Modal -->
-  
-  
-  <div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-body">
-        <form id="CUSTOMER" name="CUSTOMER" method="POST">
-    	<p style="font-weight:bold">-----รายละเอียดงาน-----</p>
-		<input type="text" autocomplete="off" id="datepicker" name="datepicker"  placeholder="SELECT DATE">
-   		<input type="text" autocomplete="off" id="timepicker" name="timepicker"  placeholder="SELECT TIME">
+    	<div class="modal-content">
+           <div class="modal-body">
+     		<div class="container">
+  		<div class="row">
+        	
+    				<div class="col-md">
+						<input type="text" autocomplete="off" id="datepicker" name="datepicker"  placeholder="เลือกวัน">
+   						<input type="text" autocomplete="off" id="timepicker" name="timepicker"  placeholder="เลือกเวลา">
+                        <input type="text" autocomplete="off" id="PROJECT" name="PROJECT"  placeholder="ชื่องาน">
+                        <select id="USER" name="USER">
+    					<option value="">--SELECT USER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+                        <input type="text" autocomplete="off" id="UNIT" name="UNIT"  placeholder="หน่วยย่อย">
+                        	<select name="Ref_prov_id0" id="provinces0">
+							<option value="">-กรุณาเลือกจังหวัด-</option>
+        					<?php
+        					$records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
+							while($value = mysqli_fetch_assoc($records))
+        					{
+		  					echo "<option value='". $value['id'],$value['name_th'] ."'>" .$value['name_th'] ."</option>";
+							}
+							?>
+        					</select>
+        					<select name="Ref_dist_id0" id="amphures0" >
+       						</select>
         
-        <input type="text" autocomplete="off" id="PROJECT" name="PROJECT" placeholder="งาน" maxlength="255" >
-        
-        <select id="USER" name="USER">
-    	<option value="">--SELECT USER--</option>
-        <?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-		}
-		
-    	?> 
-       	</select>
-        <select id="DEALER" name="DEALER">
-    	<option value="">--SELECT DEALER--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-		}	
-    	?>  
-  		</select>
-       
-        <select id="SUPPLIER" name="SUPPLIER" >
-    	<option value="">--SELECT SUPPLIER--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
-		}	
-    	?>  
-  		</select>
-        <input type="text" autocomplete="off" name="UNIT" id="UNIT" placeholder="หน่วยย่อย">
-        <p style="font-weight:bold;">-----รายละเอียดงาน-----</p>
-        
-        <p style="font-weight:bold;">-----ที่อยู่-----</p>
-		<select name="Ref_prov_id" id="provinces">
-		<option value="">-กรุณาเลือกจังหวัด-</option>
-        <?php
-        $records = mysqli_query($conn, "SELECT * FROM provinces");  // Use select query here 
-		
-		while($value = mysqli_fetch_assoc($records))
-        {
-		  echo "<option value='". $value['id'],$value['name_th'] ."'>" .$value['name_th'] ."</option>";
-		}
-		?>
-        </select>
-        
-        <select name="Ref_dist_id" id="amphures" >
-        
-        </select>
-        
-        <select name="Ref_subdist_id" id="districts">
-      	</select>
-        
-         <input type="text" autocomplete="off" name="zip_code" id="zip_code" placeholder="รหัสไปรษณีย์">
-         <p style="font-weight:bold;">-----ที่อยู่-----</p>
+        					<select name="Ref_subdist_id0" id="districts0">
+      						</select>
+        					<input type="text" autocomplete="off" name="zip_code0" id="zip_code0" placeholder="รหัสไปรษณีย์">
          
-         <p style="font-weight:bold;">-----ติดต่อ-----</p>
-         <input type="text" autocomplete="off" id="CONTACT" name="CONTACT" placeholder="ติดต่อ" maxlength="255">
-         
-         <input type="text" autocomplete="off" id="DEPARTMENT" name="DEPARTMENT" placeholder="แผนก/หน่วยงาน" maxlength="255">
-         
-         <input type="text" autocomplete="off" id="NOTENAME" name="NOTENAME" placeholder="ชื่อ" maxlength="255">
-         
-         <input type="text" autocomplete="off" id="PHONE" name="PHONE" placeholder="โทร" maxlength="255">
-         
-         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL" placeholder="อีเมลล์" maxlength="255">
-         
-        <input type="text" id="WE" name="WE" placeholder="WE" maxlength="255" value="Azza">
-        <p style="font-weight:bold;">-----ติดต่อ-----</p>
-     
-        <p style="font-weight:bold;">-----สินค้า-----</p>
-        
-        <select id="SERIES" name="SERIES" >
-    	<option value="">--เลือก Type--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SERIES'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-		}	
-    	?>  
-  		</select>
-        <select id="BRANDNAME" name="BRANDNAME" >
-    	<option value="">--เลือก BRAND--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-			
-		}	
-    	?>  
-  		</select>
+        			</div>
+                    <div class="col-sm">
+      					<select id="SERIES" name="SERIES" style="width:125;">
+    						<option value="">--เลือกประเภท--</option>
+    						<?php
+        					$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SERIES'");  // Use select query here 
+							while($data = mysqli_fetch_assoc($records))
+       						 {
+            					echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+								}	
+    						?>  
+  						</select>
+        				<select id="BRANDNAME" name="BRANDNAME" style="width:125;">
+    					<option value="">--เลือก BRAND--</option>
+    					<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+       					{
+        			    echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}	
+    					?>  
+  						</select>
        	
-        <select id="LOGO" name="LOGO">
-		</select>
+        				<select id="LOGO" name="LOGO" style="width:125;">
+						</select>
         
-        <select id="GOODS" name="GOODS">
-		</select>
-        <input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
-        <p style="font-weight:bold;">-----สินค้า-----</p>
-    	</form>
+        				<select id="GOODS" name="GOODS" style="width:125;">
+						</select>
+        				<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
         
+    				</div>
+    		 	</div>
+                
+            </div>
+   			 
+          </div>
+         <div class="modal-footer">
+          					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-     </div>
-  </div>
- </div>
-	
+       </div>
+    </div>
     <div class="modal fade" id="myModal-add-user" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -336,9 +287,10 @@
         });
 </script>
 </html>
-<?php include("script.php") ;?>
+
 
 <script>
+
 $('#SERIES').change(function() {
     var SERIES = $('#SERIES').val();
  	var BRANDNAME = $('#BRANDNAME').val()
