@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 04:34 AM
+-- Generation Time: Dec 02, 2021 at 11:29 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1042,6 +1042,28 @@ INSERT INTO `amphures` (`id`, `code`, `name_th`, `name_en`, `province_id`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `ID` int(11) NOT NULL,
+  `CATEGORY` varchar(255) NOT NULL,
+  `MODULE` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`ID`, `CATEGORY`, `MODULE`) VALUES
+(1, 'VISUAL', 'VDO-WALL'),
+(2, 'VISUAL', 'LED'),
+(3, 'VISUAL', 'INTERACTIVE'),
+(4, 'VISUAL', 'SIGNAGE');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
@@ -1055,6 +1077,7 @@ CREATE TABLE `customer` (
   `USER` varchar(255) NOT NULL,
   `UNIT` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
+  `CATAGORY` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
   `LOGO` varchar(255) DEFAULT NULL
@@ -1064,8 +1087,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `DEALER`, `BRANDNAME`, `SERIES`, `LOGO`) VALUES
-('211230', 1, '21/12/30', '10:30', 3, 'job0', 'ร้านค้า', 'job0', 'ออมนิซิสเตม', 'HISENSE', 'SIGNAGE', '16/7 55B4E31T');
+INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `DEALER`, `CATAGORY`, `BRANDNAME`, `SERIES`, `LOGO`) VALUES
+('211230', 1, '21/12/30', '19:27', 23.5, 'job0', 'มหาวิทยาลัย', 'มรภ อุดร', 'ไอเอ็มไอ', '', 'LG', 'VDO-WALL', '0.88mm 55SVH7F');
 
 -- --------------------------------------------------------
 
@@ -1089,7 +1112,7 @@ CREATE TABLE `dealers` (
 --
 
 INSERT INTO `dealers` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'ติ้ว', 'wwww@hotmail.com', '1234567890', '19นครราชสีมา', '235ปากช่อง', '302101ปากช่อง', '30130');
+(1, 'แมน', 'man@gmail.com', '024550474', '2สมุทรปราการ', '53บางบ่อ', '110202บ้านระกาศ', '10560');
 
 -- --------------------------------------------------------
 
@@ -9999,6 +10022,7 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 
 CREATE TABLE `module` (
   `ID` int(10) NOT NULL,
+  `CATEGORY` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
   `MODULE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -10007,14 +10031,14 @@ CREATE TABLE `module` (
 -- Dumping data for table `module`
 --
 
-INSERT INTO `module` (`ID`, `SERIES`, `MODULE`) VALUES
-(1, 'VDO-WALL', '0.88mm'),
-(2, 'VDO-WALL', '1.8mm'),
-(3, 'VDO-WALL', '3.5mm'),
-(4, 'SIGNAGE', '16/7'),
-(5, 'SIGNAGE', '24/7'),
-(6, 'INTERACTIVE', 'WITH-CAMERA'),
-(7, 'INTERACTIVE', 'NON-CAMERA');
+INSERT INTO `module` (`ID`, `CATEGORY`, `SERIES`, `MODULE`) VALUES
+(1, 'VISUAL', 'VDO-WALL', '0.88mm'),
+(2, 'VISUAL', 'VDO-WALL', '1.8mm'),
+(3, 'VISUAL', 'VDO-WALL', '3.5mm'),
+(4, 'VISUAL', 'SIGNAGE', '16/7'),
+(5, 'VISUAL', 'SIGNAGE', '24/7'),
+(6, 'VISUAL', 'INTERACTIVE', 'WITH-CAMERA'),
+(7, 'VISUAL', 'INTERACTIVE', 'NON-CAMERA');
 
 -- --------------------------------------------------------
 
@@ -10135,7 +10159,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'ok', 'oks@hotmail.com', '9876543210', '17นครนายก', '202เมืองนครนายก', '260113พรหมณี', '26000');
+(1, 'ติ้ว', 'tiw@gmail.com', '024550474', '18สระแก้ว', '206เมืองสระแก้ว', '270101สระแก้ว', '27000');
 
 -- --------------------------------------------------------
 
@@ -10185,7 +10209,12 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 (34, 'SERIES', 'SIGNAGE', NULL),
 (35, 'SERIES', 'INTERACTIVE', NULL),
 (36, 'DEALER', 'ออมนิซิสเตม', ''),
-(37, 'DEALER', 'นิวซิโน่(ไทย)', '');
+(37, 'DEALER', 'นิวซิโน่(ไทย)', ''),
+(38, 'CATEGORY', 'VISUAL', NULL),
+(39, 'CATEGORY', 'AUDIO', NULL),
+(40, 'CATEGORY', 'CAMERA', NULL),
+(41, 'CATEGORY', 'PERIPHERAL', NULL),
+(42, 'CATEGORY', 'MOUNT', NULL);
 
 -- --------------------------------------------------------
 
@@ -10209,7 +10238,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'แมกซ์', 'ggg@gmail.com', '024550474', '19นครราชสีมา', '231ชุมพวง', '301717โนนยอ', '30270');
+(1, 'ติ้ว', 'tiw@gmail.com', '024550474', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200');
 
 -- --------------------------------------------------------
 
@@ -10290,6 +10319,12 @@ ALTER TABLE `amphures`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -10360,6 +10395,12 @@ ALTER TABLE `amphures`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
 
 --
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
@@ -10399,7 +10440,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
-  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `users`
