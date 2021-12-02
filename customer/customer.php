@@ -113,21 +113,33 @@
      		<div class="container">
   		<div class="row">
         	
-    				<div class="col-md-6">
-                    	<div class="input-group mb-3 input-group-sm">
-      						<div class="input-group-prepend">
-        					<span class="input-group-text">วัน</span>
-      					</div>
+    				<div class="col-sm-6">
+                    		<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">วัน</span>
+      						</div>
       				<input type="text" class="form-control" id="datepicker" name="datepicker" width="105">
     				</div>
-   						<div class="input-group mb-3 input-group-sm">
-      						<div class="input-group-prepend">
-        					<span class="input-group-text">เวลา</span>
-      					</div>
+   							<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">เวลา</span>
+      						</div>
       				<input type="text" class="form-control" id="timepicker" name="timepicker" width="105">
     				</div>
-                        <input type="text" autocomplete="off" id="UNIT" name="UNIT"  placeholder="หน่วยย่อย">
-                        <input type="text" autocomplete="off" id="PROJECT" name="PROJECT"  placeholder="ชื่องาน">
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">หน่วย</span>
+      						</div>
+      				<input type="text" class="form-control" id="UNIT" name="UNIT" width="105">
+    				</div>
+                        <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชื่องาน</span>
+      						</div>
+      				<input type="text" class="form-control" id="PROJECT" name="PROJECT" width="105">
+    				</div>
+                     </div>
+                     <div class="col-sm-6">  
                         <h4>USER</h4>
                         <input type="text" autocomplete="off" id="CONSIGNEE" name="CONSIGNEE"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL"  placeholder="อีเมลล์">
@@ -161,7 +173,9 @@
       						</select>
                             
         					<input type="text" autocomplete="off" name="zip_code0" id="zip_code0" placeholder="รหัสไปรษณีย์">
-                            <h4>USER</h4>
+                            
+                          </div>
+                          <div class="col-sm-6">
                             <h4>DEALER</h4>
                             <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
@@ -195,7 +209,9 @@
                             
       						</select>
                             <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
-                            <h4>DEALER</h4>
+                           
+                            </div>
+                            <div class="col-sm-6">
                             <h4>SUPPLIER</h4>
                             <input type="text" autocomplete="off" id="CONSIGNEE2" name="CONSIGNEE2"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2"  placeholder="อีเมลล์">
@@ -228,52 +244,76 @@
         					<select name="Ref_subdist_id2" id="districts2">
       						</select>
                             <input type="text" autocomplete="off" name="zip_code2" id="zip_code2" placeholder="รหัสไปรษณีย์">
-                            <h4>SUPPLIER</h4>
-                            
-                            
-                            
-         
+                            </div>
+             
         			</div>
-                    <div class="col-sm-6">
-                    	<select id="CATEGORY" name="CATEGORY" style="width:125;">
-    						<option value="">--เลือกแบบ--</option>
-    						<?php
-        					$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
-							while($data = mysqli_fetch_assoc($records))
-       						 {
-            					echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+                   
+                  	<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">แบบ</span>
+      						</div>
+      				<select id="CATEGORY" name="CATEGORY" style="width:105;">
+    							<option value="">--เลือกแบบ--</option>
+    							<?php
+        						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
+								while($data = mysqli_fetch_assoc($records))
+       						 	{
+            						echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
 								}	
     						?>  
   						</select>
-      					<select id="SERIES" name="SERIES" style="width:125;">
-    						<option value="">--เลือกประเภท--</option>
-    						<?php
-        					$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SERIES'");  // Use select query here 
-							while($data = mysqli_fetch_assoc($records))
-       						 {
-            					echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-								}	
-    						?>  
-  						</select>
-        				<select id="BRANDNAME" name="BRANDNAME" style="width:125;">
-    					<option value="">--เลือก BRAND--</option>
-    					<?php
-        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
-						while($data = mysqli_fetch_assoc($records))
-       					{
-        			    echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-						}	
-    					?>  
-  						</select>
-       					
-        				<select id="LOGO" name="LOGO" style="width:125;">
-						</select>
-        
-        				<select id="GOODS" name="GOODS" style="width:125;">
-						</select>
-        				<input type="number" autocomplete="off" min=0 step=0.01 id="AMOUNT" name="AMOUNT" placeholder="จำนวน" >
-        
     				</div>
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">แบรนด์</span>
+      						</div>
+      				<select id="BRANDNAME" name="BRANDNAME" style="width:105;">
+    							<option value="">--เลือกแบบ--</option>
+    							<?php
+        						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
+								while($data = mysqli_fetch_assoc($records))
+       						 	{
+            						echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+								}	
+    						?>  
+  						</select>
+    				</div>
+      				
+                        <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ประเภท</span>
+      						</div>
+      				<select id="SERIES" name="SERIES" style="width:105;">
+    							
+  						</select>
+    				</div>
+                   
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">Usage</span>
+      						</div>
+      				<select id="LOGO" name="LOGO" style="width:105;">
+    							
+  						</select>
+    				</div>
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">สินค้า</span>
+      						</div>
+      				<select id="GOODS" name="GOODS" style="width:105;">
+    							
+  						</select>
+    				</div>
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">จำนวน</span>
+      						</div>
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" width="80">
+    				</div>
+       
                     <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
           					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -281,8 +321,10 @@
     		 	</div>
                </div>
    			 </div>
+           
          </div>
     </div>
+   
     <div class="modal fade" id="myModal-add-user" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
@@ -390,42 +432,40 @@
 <?= include("script2.php")?>
 <script>
 $('#CATEGORY').change(function() {
-    var CATEGORY = $('#CATEGORY').val()
- 	var BRANDNAME = $('#BRANDNAME').val()
-	
+    var CATEGORY = $('#CATEGORY').val()	
       $.ajax({
       type: "POST",
-      url: "location1.php",
-      data: {SERIES:SERIES,BRANDNAME:BRANDNAME,CATEGORY:CATEGORY},
+      url: "product0.php",
+      data: {CATEGORY:CATEGORY},
       success: function(data){
           $('#SERIES').html(data)
       }
     });
   });
 $('#SERIES').change(function() {
-    var SERIES = $('#SERIES').val();
- 	var BRANDNAME = $('#BRANDNAME').val()
+    var SERIES = $('#SERIES').val()	
       $.ajax({
       type: "POST",
-      url: "location1.php",
-      data: {SERIES:SERIES,BRANDNAME:BRANDNAME},
+      url: "product1.php",
+      data: {SERIES:SERIES},
       success: function(data){
           $('#LOGO').html(data)
       }
     });
   });
-$('#LOGO').change(function() {
+   $('#LOGO').change(function() {
     var GOODS = $('#LOGO').val()
 	var BRAND = $('#BRANDNAME').val()
       $.ajax({
       type: "POST",
-      url: "location2.php",
+      url: "product3.php",
       data: {GOODS:GOODS,BRAND:BRAND},
       success: function(data){
           $('#GOODS').html(data)
       }
     });
   });
+
 function creates(){
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
