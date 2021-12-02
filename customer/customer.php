@@ -187,7 +187,7 @@
                             <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
                             <h4>DEALER</h4>
                             <h4>SUPPLIER</h4>
-                            <input type="text" autocomplete="off" id="CONTACT2" name="CONTACT2"  placeholder="ผู้รับ">
+                            <input type="text" autocomplete="off" id="CONSIGNEE2" name="CONSIGNEE2"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2"  placeholder="อีเมลล์">
                         <input type="text" maxlength="10" autocomplete="off" id="PHONE2" name="PHONE2"  placeholder="โทร">
                              <select id="SUPPLIER" name="SUPPLIER">
@@ -442,6 +442,22 @@ function creates(){
         type: "POST",
         url: "create_dealer.php",
         data: {"CONSIGNEE1":CONSIGNEE1,"EMAIL1":EMAIL1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"PROJECT1":DISTRICT1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+		
+    })
+	var CONSIGNEE2 = $('#CONSIGNEE2').val()
+	var EMAIL2 = $('#EMAIL2').val()
+	var PHONE2 = $('#PHONE2').val()
+	var PROVINCE2 = $('#provinces2').val()
+	var DISTRICT2 = $('#amphures2').val()
+	var SUBDISTRICT2 = $('#districts2').val()
+	var ZIPCODE2 = $('#zip_code2').val()
+	$.ajax({
+        type: "POST",
+        url: "create_supplier.php",
+        data: {"CONSIGNEE2":CONSIGNEE2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"PROJECT2":DISTRICT2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE2":ZIPCODE2},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
