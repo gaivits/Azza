@@ -27,6 +27,7 @@ $idx=0;
 
 <body>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
+<input type="text" class="btn btn-success" value="add">
 <table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
   <thead align="center" style="font-size:14px;">
     <tr>

@@ -114,8 +114,18 @@
   		<div class="row">
         	
     				<div class="col-md-6">
-                    	วันที่:<input type="text" autocomplete="off" id="datepicker" name="datepicker">
-   						เวลา:<input type="text" autocomplete="off" id="timepicker" name="timepicker">
+                    	<div class="input-group mb-3 input-group-sm">
+      						<div class="input-group-prepend">
+        					<span class="input-group-text">วัน</span>
+      					</div>
+      				<input type="text" class="form-control" id="datepicker" name="datepicker" width="105">
+    				</div>
+   						<div class="input-group mb-3 input-group-sm">
+      						<div class="input-group-prepend">
+        					<span class="input-group-text">เวลา</span>
+      					</div>
+      				<input type="text" class="form-control" id="timepicker" name="timepicker" width="105">
+    				</div>
                         <input type="text" autocomplete="off" id="UNIT" name="UNIT"  placeholder="หน่วยย่อย">
                         <input type="text" autocomplete="off" id="PROJECT" name="PROJECT"  placeholder="ชื่องาน">
                         <h4>USER</h4>
@@ -225,6 +235,16 @@
          
         			</div>
                     <div class="col-sm-6">
+                    	<select id="CATEGORY" name="CATEGORY" style="width:125;">
+    						<option value="">--เลือกแบบ--</option>
+    						<?php
+        					$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
+							while($data = mysqli_fetch_assoc($records))
+       						 {
+            					echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+								}	
+    						?>  
+  						</select>
       					<select id="SERIES" name="SERIES" style="width:125;">
     						<option value="">--เลือกประเภท--</option>
     						<?php
@@ -369,7 +389,19 @@
 <?= include("script1.php")?>
 <?= include("script2.php")?>
 <script>
-
+$('#CATEGORY').change(function() {
+    var CATEGORY = $('#CATEGORY').val()
+ 	var BRANDNAME = $('#BRANDNAME').val()
+	
+      $.ajax({
+      type: "POST",
+      url: "location1.php",
+      data: {SERIES:SERIES,BRANDNAME:BRANDNAME,CATEGORY:CATEGORY},
+      success: function(data){
+          $('#SERIES').html(data)
+      }
+    });
+  });
 $('#SERIES').change(function() {
     var SERIES = $('#SERIES').val();
  	var BRANDNAME = $('#BRANDNAME').val()

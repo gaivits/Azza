@@ -5,9 +5,11 @@
   error_reporting( error_reporting() & ~E_NOTICE );
   date_default_timezone_set('Asia/Bangkok');  
 	
+	$CATEGORY = $_POST['CATEGORY'];
 	$SERIES = $_POST['SERIES'];
-	$BRAND = $_POST['BRANDNAME'] ;	
-  	$sql = "SELECT * FROM MODULE WHERE SERIES='$SERIES'";
+	$BRAND = $_POST['BRANDNAME'] ;
+	
+  	$sql = "SELECT * FROM MODULE WHERE SERIES='$SERIES' AND CATEGORY='$CATEGORY' ";
   	$query = mysqli_query($con, $sql);
   	echo '<option value="">-เลือกการนำไปใช้-</option>';
   	while ($data = mysqli_fetch_assoc($query)) 
