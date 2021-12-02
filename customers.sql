@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2021 at 11:24 AM
+-- Generation Time: Dec 02, 2021 at 04:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1057,9 +1057,15 @@ CREATE TABLE `customer` (
   `DEALER` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
-  `LOGO` varchar(255) DEFAULT NULL,
-  `GOODS` varchar(255) NOT NULL
+  `LOGO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `DEALER`, `BRANDNAME`, `SERIES`, `LOGO`) VALUES
+('211230', 1, '21/12/30', '10:30', 3, 'job0', 'ร้านค้า', 'job0', 'ออมนิซิสเตม', 'HISENSE', 'SIGNAGE', '16/7 55B4E31T');
 
 -- --------------------------------------------------------
 
@@ -1077,6 +1083,13 @@ CREATE TABLE `dealers` (
   `SUBDISTRICT` varchar(255) NOT NULL,
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dealers`
+--
+
+INSERT INTO `dealers` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
+(1, 'ติ้ว', 'wwww@hotmail.com', '1234567890', '19นครราชสีมา', '235ปากช่อง', '302101ปากช่อง', '30130');
 
 -- --------------------------------------------------------
 
@@ -10103,6 +10116,30 @@ INSERT INTO `provinces` (`id`, `code`, `name_th`, `name_en`, `geography_id`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `ID` int(11) NOT NULL,
+  `CONSIGNEE` varchar(255) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
+  `PHONE` varchar(255) NOT NULL,
+  `PROVINCE` varchar(255) NOT NULL,
+  `DISTRICT` varchar(255) NOT NULL,
+  `SUBDISTRICT` varchar(255) NOT NULL,
+  `ZIPCODE` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
+(1, 'ok', 'oks@hotmail.com', '9876543210', '17นครนายก', '202เมืองนครนายก', '260113พรหมณี', '26000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_master_groupcode`
 --
 
@@ -10172,12 +10209,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'จิล', 'jillz@hotmail.com', '024550474', '11ชลบุรี', '142ศรีราชา', '200701ศรีราชา', '20110'),
-(2, '', '', '', '', '', '', ''),
-(3, '', '', '', '', '', '', ''),
-(4, '', '', '', '', '', '', ''),
-(5, '', '', '', '', '', '', ''),
-(6, 'แมกซ์', 'max003@hotmail.com', '7598078', '18สระแก้ว', '211อรัญประเทศ', '270602เมืองไผ่', '27120');
+(1, 'แมกซ์', 'ggg@gmail.com', '024550474', '19นครราชสีมา', '231ชุมพวง', '301717โนนยอ', '30270');
 
 -- --------------------------------------------------------
 
@@ -10294,6 +10326,12 @@ ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
@@ -10325,13 +10363,13 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dealers`
 --
 ALTER TABLE `dealers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10352,6 +10390,12 @@ ALTER TABLE `provinces`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
@@ -10361,7 +10405,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
