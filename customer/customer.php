@@ -107,14 +107,13 @@
 
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
     	<div class="modal-content">
            <div class="modal-body">
-     		<div class="container">
-  		<div class="row">
-        	
-    				<div class="col-sm-6">
-                    		<div class="input-group mb-3 input-group-sm">
+     			<div class="container">
+ 					 <div class="row">
+    					<div class="col-sm">
+      						<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">วัน</span>
       						</div>
@@ -138,8 +137,8 @@
       						</div>
       				<input type="text" class="form-control" id="PROJECT" name="PROJECT" width="105">
     				</div>
-                     </div>
-                     <div class="col-sm-6">  
+    					</div>
+    					<div class="col-sm">  
                         <h4>USER</h4>
                         <input type="text" autocomplete="off" id="CONSIGNEE" name="CONSIGNEE"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL"  placeholder="อีเมลล์">
@@ -175,7 +174,8 @@
         					<input type="text" autocomplete="off" name="zip_code0" id="zip_code0" placeholder="รหัสไปรษณีย์">
                             
                           </div>
-                          <div class="col-sm-6">
+                         <br>
+    					<div class="col-sm">
                             <h4>DEALER</h4>
                             <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
@@ -211,7 +211,7 @@
                             <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
                            
                             </div>
-                            <div class="col-sm-6">
+                        <div class="col-sm">
                             <h4>SUPPLIER</h4>
                             <input type="text" autocomplete="off" id="CONSIGNEE2" name="CONSIGNEE2"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2"  placeholder="อีเมลล์">
@@ -245,10 +245,9 @@
       						</select>
                             <input type="text" autocomplete="off" name="zip_code2" id="zip_code2" placeholder="รหัสไปรษณีย์">
                             </div>
-             
-        			</div>
-                   
-                  	<div class="input-group mb-3 input-group-sm">
+                        <div class="col-sm-6">
+                        			<h4>สินค้า</h4>
+      								<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">แบบ</span>
       						</div>
@@ -262,14 +261,12 @@
 								}	
     						?>  
   						</select>
-    				</div>
-                    
-                    <div class="input-group mb-3 input-group-sm">
+                        <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">แบรนด์</span>
       						</div>
       				<select id="BRANDNAME" name="BRANDNAME" style="width:105;">
-    							<option value="">--เลือกแบบ--</option>
+    							<option value="">--เลือกแบรนด์--</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
 								while($data = mysqli_fetch_assoc($records))
@@ -278,8 +275,6 @@
 								}	
     						?>  
   						</select>
-    				</div>
-      				
                         <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ประเภท</span>
@@ -288,7 +283,6 @@
     							
   						</select>
     				</div>
-                   
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">Usage</span>
@@ -297,7 +291,6 @@
     							
   						</select>
     				</div>
-                    
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">สินค้า</span>
@@ -306,21 +299,22 @@
     							
   						</select>
     				</div>
-                    
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">จำนวน</span>
       						</div>
       					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" width="80">
     				</div>
-       
+    				</div>
                     <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
           					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         			</div>
-    		 	</div>
-               </div>
-   			 </div>
+    				</div>
+    					</div>
+  					</div>
+				</div>
+   			</div>
            
          </div>
     </div>
