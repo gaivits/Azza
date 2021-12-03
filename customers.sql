@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 11:29 AM
+-- Generation Time: Dec 03, 2021 at 05:32 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -10224,7 +10224,10 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
-  `CONSIGNEE` varchar(255) NOT NULL,
+  `COMPANY` varchar(255) NOT NULL,
+  `DEPARTMENT` varchar(255) NOT NULL,
+  `SUBDEPARTMENT` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PHONE` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
@@ -10237,8 +10240,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'ติ้ว', 'tiw@gmail.com', '024550474', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200');
+INSERT INTO `users` (`ID`, `COMPANY`, `DEPARTMENT`, `SUBDEPARTMENT`, `NAME`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
+(1, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', 'คณะแพทย์ศาสตร์', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200');
 
 -- --------------------------------------------------------
 
