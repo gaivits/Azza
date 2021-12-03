@@ -138,7 +138,7 @@
       				<input type="text" class="form-control" id="PROJECT" name="PROJECT" width="105">
     				</div>
     					</div>
-    					<div class="col-sm">  
+    					<div class="col-sm-4">  
                         <h4>USER</h4>
                         <input type="text" autocomplete="off" id="CONSIGNEE" name="CONSIGNEE"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL" name="EMAIL"  placeholder="อีเมลล์">
@@ -175,7 +175,7 @@
                             
                           </div>
                          <br>
-    					<div class="col-sm">
+    					<div class="col-sm-4">
                             <h4>DEALER</h4>
                             <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
@@ -211,7 +211,43 @@
                             <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
                            
                             </div>
-                        <div class="col-sm">
+                        <div class="col-sm-4">
+                            <h4>WE</h4>
+                            <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
+                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
+                             <select id="DEALER" name="DEALER">
+    					<option value="">--เลือก DEALER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+                        
+                        	<select name="Ref_prov_id1" id="provinces1">
+							<option value="">-กรุณาเลือกจังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+        					<select name="Ref_dist_id1" id="amphures1" >
+       						</select>
+        
+        					<select name="Ref_subdist_id1" id="districts1">
+                            
+      						</select>
+                            <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
+                           
+                            </div>
+                        <div class="col-md-4">
                             <h4>SUPPLIER</h4>
                             <input type="text" autocomplete="off" id="CONSIGNEE2" name="CONSIGNEE2"  placeholder="ผู้รับ">
                         <input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2"  placeholder="อีเมลล์">
@@ -245,14 +281,14 @@
       						</select>
                             <input type="text" autocomplete="off" name="zip_code2" id="zip_code2" placeholder="รหัสไปรษณีย์">
                             </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
                         			<h4>สินค้า</h4>
       								<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">หมวด</span>
       						</div>
-      				<select id="CATEGORY" name="CATEGORY" style="width:105;">
-    							<option value="">--หมวด--</option>
+      				<select id="CATEGORY" name="CATEGORY" style="width: 80px;">
+    							<option value="">-หมวด-</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
 								while($data = mysqli_fetch_assoc($records))
@@ -261,18 +297,18 @@
 								}	
     						?>  
   						</select>
-                        <div class="input-group mb-3 input-group-sm">
+                        <div class="input-group mb-3 input-group-sm" >
       							<div class="input-group-prepend">
         						<span class="input-group-text">กลุ่ม</span>
       						</div>
-      				<select id="SERIES" name="SERIES" style="width:105;">
+      				<select id="SERIES" name="SERIES" style="width: 80px;">
     							
   						</select>
                       <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ชนิด</span>
       						</div>
-      				<select id="LOGO" name="LOGO" style="width:105;">
+      				<select id="LOGO" name="LOGO" style="width: 80px;">
     							
   						</select>
     				
@@ -281,7 +317,7 @@
       							<div class="input-group-prepend">
         						<span class="input-group-text">ประเภท</span>
       						</div>
-      				<select id="BRANDNAME" name="BRANDNAME" style="width:105;">
+      				<select id="BRANDNAME" name="BRANDNAME" style="width: 85px;">
     							<option value="">--เลือกประเภท--</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
@@ -297,7 +333,7 @@
       							<div class="input-group-prepend">
         						<span class="input-group-text">สินค้า</span>
       						</div>
-      				<select id="GOODS" name="GOODS" style="width:105;">
+      				<select id="GOODS" name="GOODS" style="width: 80px;">
     							
   						</select>
     			
@@ -305,12 +341,12 @@
       							<div class="input-group-prepend">
         						<span class="input-group-text">จำนวน</span>
       						</div>
-      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" width="80">
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 80px;">
     				<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">หน่วย</span>
       						</div>
-      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" width="80">
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 80px;">
     				
                     <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
