@@ -249,10 +249,10 @@
                         			<h4>สินค้า</h4>
       								<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
-        						<span class="input-group-text">แบบ</span>
+        						<span class="input-group-text">หมวด</span>
       						</div>
       				<select id="CATEGORY" name="CATEGORY" style="width:105;">
-    							<option value="">--เลือกแบบ--</option>
+    							<option value="">--หมวด--</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
 								while($data = mysqli_fetch_assoc($records))
@@ -263,10 +263,26 @@
   						</select>
                         <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
-        						<span class="input-group-text">แบรนด์</span>
+        						<span class="input-group-text">กลุ่ม</span>
+      						</div>
+      				<select id="SERIES" name="SERIES" style="width:105;">
+    							
+  						</select>
+                      <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชนิด</span>
+      						</div>
+      				<select id="LOGO" name="LOGO" style="width:105;">
+    							
+  						</select>
+    				
+    				
+                        <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ประเภท</span>
       						</div>
       				<select id="BRANDNAME" name="BRANDNAME" style="width:105;">
-    							<option value="">--เลือกแบรนด์--</option>
+    							<option value="">--เลือกประเภท--</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
 								while($data = mysqli_fetch_assoc($records))
@@ -275,22 +291,8 @@
 								}	
     						?>  
   						</select>
-                        <div class="input-group mb-3 input-group-sm">
-      							<div class="input-group-prepend">
-        						<span class="input-group-text">ประเภท</span>
-      						</div>
-      				<select id="SERIES" name="SERIES" style="width:105;">
-    							
-  						</select>
-    				</div>
-                    <div class="input-group mb-3 input-group-sm">
-      							<div class="input-group-prepend">
-        						<span class="input-group-text">Usage</span>
-      						</div>
-      				<select id="LOGO" name="LOGO" style="width:105;">
-    							
-  						</select>
-    				</div>
+                        
+                    
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">สินค้า</span>
@@ -298,26 +300,33 @@
       				<select id="GOODS" name="GOODS" style="width:105;">
     							
   						</select>
-    				</div>
+    			
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">จำนวน</span>
       						</div>
       					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" width="80">
-    				</div>
-    				</div>
+    				<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">หน่วย</span>
+      						</div>
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" width="80">
+    				
                     <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
           					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         			</div>
     				</div>
-    					</div>
-  					</div>
-				</div>
-   			</div>
-           
-         </div>
-    </div>
+ 				</div>
+  			</div>
+           </div>
+		</div>
+   	</div>
+   </div>
+  </div>
+  </div>
+ </div>
+</div>
    
     <div class="modal fade" id="myModal-add-user" role="dialog">
     <div class="modal-dialog">
