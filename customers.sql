@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 05:32 AM
+-- Generation Time: Dec 03, 2021 at 05:46 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1098,7 +1098,9 @@ INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`
 
 CREATE TABLE `dealers` (
   `ID` int(11) NOT NULL,
-  `CONSIGNEE` varchar(255) NOT NULL,
+  `COMPANY` varchar(255) NOT NULL,
+  `DEPARTMENT` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PHONE` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
@@ -1106,13 +1108,6 @@ CREATE TABLE `dealers` (
   `SUBDISTRICT` varchar(255) NOT NULL,
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `dealers`
---
-
-INSERT INTO `dealers` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'แมน', 'man@gmail.com', '024550474', '2สมุทรปราการ', '53บางบ่อ', '110202บ้านระกาศ', '10560');
 
 -- --------------------------------------------------------
 
@@ -10145,7 +10140,9 @@ INSERT INTO `provinces` (`id`, `code`, `name_th`, `name_en`, `geography_id`) VAL
 
 CREATE TABLE `suppliers` (
   `ID` int(11) NOT NULL,
-  `CONSIGNEE` varchar(255) NOT NULL,
+  `COMPANY` varchar(255) NOT NULL,
+  `DEPARTMENT` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PHONE` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
@@ -10153,13 +10150,6 @@ CREATE TABLE `suppliers` (
   `SUBDISTRICT` varchar(255) NOT NULL,
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `suppliers`
---
-
-INSERT INTO `suppliers` (`ID`, `CONSIGNEE`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'ติ้ว', 'tiw@gmail.com', '024550474', '18สระแก้ว', '206เมืองสระแก้ว', '270101สระแก้ว', '27000');
 
 -- --------------------------------------------------------
 
@@ -10241,7 +10231,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `COMPANY`, `DEPARTMENT`, `SUBDEPARTMENT`, `NAME`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', 'คณะแพทย์ศาสตร์', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200');
+(1, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', 'คณะแพทย์ศาสตร์', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
+(2, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
+(3, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
+(4, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
+(5, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200');
 
 -- --------------------------------------------------------
 
@@ -10311,6 +10305,25 @@ INSERT INTO `warehouse` (`ID`, `BRAND`, `MODULE`, `NAME`) VALUES
 (48, 'AZZA', 'NON-CAMERA', '55W21K-U'),
 (49, 'AZZA', 'NON-CAMERA', '98W11S');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `we`
+--
+
+CREATE TABLE `we` (
+  `ID` int(11) NOT NULL,
+  `COMPANY` varchar(255) NOT NULL,
+  `DEPARTMENT` varchar(255) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
+  `PHONE` varchar(255) NOT NULL,
+  `PROVINCE` varchar(255) NOT NULL,
+  `DISTRICT` varchar(255) NOT NULL,
+  `SUBDISTRICT` varchar(255) NOT NULL,
+  `ZIPCODE` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -10332,12 +10345,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `customer`
   ADD UNIQUE KEY `PK` (`CUSTOMER_ID`);
-
---
--- Indexes for table `dealers`
---
-ALTER TABLE `dealers`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `districts`
@@ -10362,12 +10369,6 @@ ALTER TABLE `module`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `suppliers`
---
-ALTER TABLE `suppliers`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `tbl_master_groupcode`
@@ -10410,12 +10411,6 @@ ALTER TABLE `customer`
   MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `dealers`
---
-ALTER TABLE `dealers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `geographies`
 --
 ALTER TABLE `geographies`
@@ -10434,12 +10429,6 @@ ALTER TABLE `provinces`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
--- AUTO_INCREMENT for table `suppliers`
---
-ALTER TABLE `suppliers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
@@ -10449,7 +10438,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
