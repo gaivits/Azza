@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 11:15 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.24
+-- Generation Time: Dec 07, 2021 at 03:18 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1077,18 +1077,11 @@ CREATE TABLE `customer` (
   `USER` varchar(255) NOT NULL,
   `UNIT` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
-  `CATAGORY` varchar(255) NOT NULL,
+  `CATEGORY` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
   `LOGO` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`REF_NO`, `CUSTOMER_ID`, `CREATE_DATE`, `TIME`, `AMOUNT`, `PROJECT`, `USER`, `UNIT`, `DEALER`, `CATAGORY`, `BRANDNAME`, `SERIES`, `LOGO`) VALUES
-('211230', 1, '21/12/30', '19:27', 23.5, 'job0', 'มหาวิทยาลัย', 'มรภ อุดร', 'ไอเอ็มไอ', '', 'LG', 'VDO-WALL', '0.88mm 55SVH7F');
 
 -- --------------------------------------------------------
 
@@ -10214,28 +10207,16 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
-  `COMPANY` varchar(255) NOT NULL,
   `DEPARTMENT` varchar(255) NOT NULL,
   `SUBDEPARTMENT` varchar(255) NOT NULL,
   `NAME` varchar(255) NOT NULL,
+  `PHONE` varchar(10) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
-  `PHONE` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`ID`, `COMPANY`, `DEPARTMENT`, `SUBDEPARTMENT`, `NAME`, `EMAIL`, `PHONE`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', 'คณะแพทย์ศาสตร์', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
-(2, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
-(3, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
-(4, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200'),
-(5, 'มหาวิทยาลัยเกษตรศาสตร์ ', 'จัดซื้อ', '', 'แมกซ์', 'tiw@gmail.com', '0815567788', '1กรุงเทพมหานคร', '1เขตพระนคร', '100102วังบูรพาภิรมย์', '10200');
 
 -- --------------------------------------------------------
 
@@ -10408,7 +10389,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10438,7 +10419,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
