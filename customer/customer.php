@@ -1,6 +1,3 @@
-
-
-
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	
@@ -709,6 +706,7 @@ $('#SERIES').change(function() {
 
 function creates()
 {
+	
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
 	var USER = $('#USER').val()
@@ -720,6 +718,9 @@ function creates()
 	var LOGO = $('#LOGO').val()
 	var GOODS = $('#GOODS').val()
 	var AMOUNT = $('#AMOUNT').val()
+	
+	
+	
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
@@ -727,20 +728,26 @@ function creates()
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
-		
-    })
-	var DEPARTMENT1 = $('#DEPARTMENT1').val()
-	var SUBDEPARTMENT1 = $('#SUBDEPARTMENT1').val()
-	var NAME1 = $('#NAME1').val()
-	var EMAIL1 = $('#EMAIL1').val()
-	var PHONE1 = $('#PHONE1').val()
-	var PROVINCE1 = $('#provinces1').val()
-	var DISTRICT1 = $('#amphures1').val()
-	var SUBDISTRICT1 = $('#districts1').val()
-	var ZIPCODE1 = $('#zip_code1').val()
+	})
+	var CONSIGNEE = $('#CONSIGNEE').val()
+	var EMAIL = $('#EMAIL').val()
+	var PHONE = $('#PHONE').val()
+	var PROVINCE = $('#provinces0').val()
+	var DISTRICT = $('#amphures0').val()
+	var SUBDISTRICT = $('#districts0').val()
+	var ZIPCODE = $('#zip_code0').val()
 	$.ajax({
         type: "POST",
         url: "create_user.php",
+        data: {"CONSIGNEE":CONSIGNEE,"EMAIL":EMAIL,"PHONE":PHONE,"PROVINCE":PROVINCE,"PROJECT":DISTRICT,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,"ZIPCODE":ZIPCODE},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+		
+    })
+	$.ajax({
+        type: "POST",
+        url: 'create_user.php',
         data: {"DEPARTMENT1":DEPARTMENT1,"SUBDEPARTMENT1":SUBDEPARTMENT1,"NAME1":NAME1,"PHONE1":PHONE1,"EMAIL1":EMAIL1,"PROVINCE1":PROVINCE1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
         success: function(res) {
 		
@@ -748,6 +755,7 @@ function creates()
         },
 		
     })
+	
 }
 $('#viewCustomer').load('customer_show.php')
 
