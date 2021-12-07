@@ -3,6 +3,9 @@
 
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
+	
+    
+   
 	$conn = new Databases;
 	$conn = $conn->__construct();
 	mysqli_query($conn, "SET NAMES 'utf8' ");
@@ -106,15 +109,17 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
     					<div class="col-sm">
       						<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
+                                
         						<span class="input-group-text">วัน</span>
+                               
       						</div>
-      				<input type="text" class="form-control" id="datepicker" name="datepicker" width="105">
+      				<input type="text" autocomplete="off" class="form-control" id="datepicker" name="datepicker" width="105">
     				</div>
    							<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">เวลา</span>
       						</div>
-      				<input type="text" class="form-control" id="timepicker" name="timepicker" width="105">
+      				<input type="text" autocomplete="off" class="form-control" id="timepicker" name="timepicker" width="105">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -131,11 +136,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
     					</div>
     					<div class="col-sm-4">  
                         <h4>USER</h4>
-                        <input type="text" autocomplete="off" id="CONSIGNEE" name="CONSIGNEE"  placeholder="ผู้รับ">
-                        <input type="email" autocomplete="off" id="EMAIL" name="EMAIL"  placeholder="อีเมลล์">
-                        <input type="text" maxlength="10" autocomplete="off" id="PHONE" name="PHONE"  placeholder="โทร">
                         <select id="USER" name="USER">
-    					<option value="">--SELECT USER--</option>
+                        <option value="">--SELECT USER--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
 						while($data = mysqli_fetch_assoc($records))
@@ -144,8 +146,14 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 						}
 						?> 
        					</select>
+                        <input type="text" autocomplete="off" id="DEPARTMENT1" name="DEPARTMENT1"  placeholder="ฝ่าย">
+                        <input type="text" autocomplete="off" id="SUBDEPARTMENT1" name="SUBDEPARTMENT1"  placeholder="หน่วยย่อย">
+                         <input type="text" autocomplete="off" id="NAME1" name="NAME1"  placeholder="ชื่อติดต่อ">
+                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
                         
-                        	<select name="Ref_prov_id0" id="provinces0">
+                        
+                        	<select name="Ref_prov_id1" id="provinces1">
 							<option value="">-กรุณาเลือกจังหวัด-</option>
         						<?php
         							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
@@ -156,18 +164,65 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 								
     							?>  
         					</select>
-        					<select name="Ref_dist_id0" id="amphures0" >
+        					<select name="Ref_dist_id1" id="amphures1" >
        						</select>
         
-        					<select name="Ref_subdist_id0" id="districts0">
+        					<select name="Ref_subdist_id1" id="districts1">
       						</select>
                             
-        					<input type="text" autocomplete="off" name="zip_code0" id="zip_code0" placeholder="รหัสไปรษณีย์">
-                            
+        					<input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
+                                                		<script>
+	
+	$('#provinces1').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location1.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures1').html(data); 
+          $('#districts1').html(''); 
+          $('#districts1').val('');  
+          $('#zip_code1').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures1').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location1.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts1').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts1').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location1.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code1').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
                           </div>
                          <br>
     					<div class="col-sm-4">
                             <h4>DEALER</h4>
+                            
                             <select id="DEALER" name="DEALER">
     					<option value="">--เลือก DEALER--</option>
         				<?php
@@ -178,84 +233,12 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 						}
 						?> 
        					</select>
-                            
-                            <input type="text" autocomplete="off" id="DEPARTMENT" name="DEPARTMENT"  placeholder="ฝ่าย">
-                             <input type="text" autocomplete="off" id="CONTACT" name="CONTACT"  placeholder="ชื่อติดต่อ">
-                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
-                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
-                             
-                        
-                        	<select name="Ref_prov_id1" id="provinces1">
-							<option value="">-กรุณาเลือกจังหวัด-</option>
-        						<?php
-        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
-									while($data = mysqli_fetch_assoc($records))
-       							{
-        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
-								}
-								
-    							?>  
-        					</select>
-        					<select name="Ref_dist_id1" id="amphures1" >
-       						</select>
-        
-        					<select name="Ref_subdist_id1" id="districts1">
-                            
-      						</select>
-                            <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
-                           
-                            </div>
-                        <div class="col-sm-4">
-                            <h4>WE</h4>
-                            <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
-                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
-                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
-                             <select id="DEALER" name="DEALER">
-    					<option value="">--เลือก DEALER--</option>
-        				<?php
-        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
-						while($data = mysqli_fetch_assoc($records))
-        				{
-            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-						}
-						?> 
-       					</select>
-                        
-                        	<select name="Ref_prov_id1" id="provinces1">
-							<option value="">-กรุณาเลือกจังหวัด-</option>
-        						<?php
-        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
-									while($data = mysqli_fetch_assoc($records))
-       							{
-        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
-								}
-								
-    							?>  
-        					</select>
-        					<select name="Ref_dist_id1" id="amphures1" >
-       						</select>
-        
-        					<select name="Ref_subdist_id1" id="districts1">
-                            
-      						</select>
-                            <input type="text" autocomplete="off" name="zip_code1" id="zip_code1" placeholder="รหัสไปรษณีย์">
-                           
-                            </div>
-                        <div class="col-md-4">
-                            <h4>SUPPLIER</h4>
-                            <input type="text" autocomplete="off" id="CONSIGNEE2" name="CONSIGNEE2"  placeholder="ผู้รับ">
+                            <input type="text" autocomplete="off" id="COMPANY2" name="COMPANY2"  placeholder="ชื่อหน่วย">
+                            <input type="text" autocomplete="off" id="DEPARTMENT2" name="DEPARTMENT2"  placeholder="ฝ่าย">
+                         <input type="text" autocomplete="off" id="NAME2" name="NAME2"  placeholder="ชื่อติดต่อ">
                         <input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2"  placeholder="อีเมลล์">
                         <input type="text" maxlength="10" autocomplete="off" id="PHONE2" name="PHONE2"  placeholder="โทร">
-                             <select id="SUPPLIER" name="SUPPLIER">
-    					<option value="">--เลือก SUPPLIER--</option>
-        				<?php
-        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
-						while($data = mysqli_fetch_assoc($records))
-        				{
-            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-						}
-						?> 
-       					</select>
+                             
                         
                         	<select name="Ref_prov_id2" id="provinces2">
 							<option value="">-กรุณาเลือกจังหวัด-</option>
@@ -268,21 +251,239 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 								
     							?>  
         					</select>
+                            
+                            
         					<select name="Ref_dist_id2" id="amphures2" >
        						</select>
         
         					<select name="Ref_subdist_id2" id="districts2">
+                            
       						</select>
                             <input type="text" autocomplete="off" name="zip_code2" id="zip_code2" placeholder="รหัสไปรษณีย์">
+                           		<script>
+	
+	$('#provinces2').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location2.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures2').html(data); 
+          $('#districts2').html(''); 
+          $('#districts2').val('');  
+          $('#zip_code2').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures2').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location2.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts2').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts2').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location2.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code2').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
+                            </div>
+                           
+                        <div class="col-sm-4">
+                            <h4>WE</h4>
+                            <input type="text" autocomplete="off" id="COMPANY3" name="COMPANY3"  placeholder="ชื่อหน่วย">
+                            <input type="text" autocomplete="off" id="DEPARTMENT3" name="DEPARTMENT3"  placeholder="ฝ่าย">
+                         <input type="text" autocomplete="off" id="NAME3" name="NAME3"  placeholder="ชื่อติดต่อ">
+                        <input type="email" autocomplete="off" id="EMAIL3" name="EMAIL3"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE3" name="PHONE3"  placeholder="โทร">
+                       <select id="DEALER" name="DEALER">
+    					<option value="">--เลือก WE--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='WE'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+                        
+                        	<select name="Ref_prov_id3" id="provinces3">
+							<option value="">-กรุณาเลือกจังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+        					<select name="Ref_dist_id3" id="amphures3" >
+       						</select>
+        
+        					<select name="Ref_subdist_id3" id="districts3">
+                            
+      						</select>
+                            <input type="text" autocomplete="off" name="zip_code3" id="zip_code3" placeholder="รหัสไปรษณีย์">
+                           	                		<script>
+	
+	$('#provinces3').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location3.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures3').html(data); 
+          $('#districts3').html(''); 
+          $('#districts3').val('');  
+          $('#zip_code3').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures3').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location3.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts3').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts3').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location3.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code3').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
+	
+                            </div>
+                        <div class="col-md-4">
+                            <h4>SUPPLIER</h4>
+                            <input type="text" autocomplete="off" id="DEPARTMENT4" name="DEPARTMENT4"  placeholder="ฝ่าย">
+                         <input type="text" autocomplete="off" id="NAME4" name="NAME4"  placeholder="ชื่อติดต่อ">
+                        <input type="email" autocomplete="off" id="EMAIL4" name="EMAIL4"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE4" name="PHONE4"  placeholder="โทร">
+                             <select id="SUPPLIER" name="SUPPLIER">
+    					<option value="">--เลือก SUPPLIER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+                        
+                        	<select name="Ref_prov_id4" id="provinces4">
+							<option value="">-กรุณาเลือกจังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+        					<select name="Ref_dist_id4" id="amphures4" >
+       						</select>
+        
+        					<select name="Ref_subdist_id4" id="districts4">
+      						</select>
+                            <input type="text" autocomplete="off" name="zip_code4" id="zip_code4" placeholder="รหัสไปรษณีย์">
+              				<script>
+	
+	$('#provinces4').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location4.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures4').html(data); 
+          $('#districts4').html(''); 
+          $('#districts4').val('');  
+          $('#zip_code4').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures4').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location4.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts4').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts4').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location4.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code4').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
                             </div>
                         <div class="col-sm-3">
                         			<h4>สินค้า</h4>
       								<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
-        						<span class="input-group-text">หมวด</span>
+        						<span class="input-group-text"></span>
       						</div>
-      				<select id="CATEGORY" name="CATEGORY" style="width: 80px;">
-    							<option value="">-หมวด-</option>
+      				<select id="CATEGORY" name="CATEGORY" style="width: 90px;">
+    							<option value="">-เลือก-</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
 								while($data = mysqli_fetch_assoc($records))
@@ -295,24 +496,24 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">กลุ่ม</span>
       						</div>
-      				<select id="SERIES" name="SERIES" style="width: 80px;">
+      				<select id="SERIES" name="SERIES" style="width: 100px;">
     							
   						</select>
                       <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ชนิด</span>
       						</div>
-      				<select id="LOGO" name="LOGO" style="width: 80px;">
+      				<select id="LOGO" name="LOGO" style="width: 85px;">
     							
   						</select>
     				
     				
                         <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
-        						<span class="input-group-text">ประเภท</span>
+        						<span class="input-group-text">ยี่ห้อ</span>
       						</div>
-      				<select id="BRANDNAME" name="BRANDNAME" style="width: 80px;">
-    							<option value="">--เลือกประเภท--</option>
+      				<select id="BRANDNAME" name="BRANDNAME" style="width: 85px;">
+    							<option value="">-ยี่ห้อ-</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
 								while($data = mysqli_fetch_assoc($records))
@@ -327,7 +528,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">รุ่น</span>
       						</div>
-      				<select id="GOODS" name="GOODS" style="width: 80px;">
+      				<select id="GOODS" name="GOODS" style="width: 85px;">
     							
   						</select>
     			
@@ -335,12 +536,12 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">จำนวน</span>
       						</div>
-      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 80px;">
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 85px;">
     				<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">หน่วย</span>
       						</div>
-      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 80px;">
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 85px;">
     				
                     <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
@@ -436,9 +637,10 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
      </div>
   </div>
 </div>
+	
 	<div id="viewCustomer"></div>
     <div id="popCustomer"></div>
-    
+
     <?php
 	$result_db = mysqli_query($conn,"SELECT COUNT(customer_id) FROM customer"); 
 	$row_db = mysqli_fetch_row($result_db);  
@@ -452,25 +654,23 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 	}
 	echo $pagLink . "</ul>";  
 ?>
-	
+	    
+
 
 </body>
+
 </html>
 
 <script>
-	$('#datepicker').datepicker({
+$('#datepicker').datepicker({
     format: 'yy/mm/dd',
     
 });
  $('#timepicker').timepicker({
             uiLibrary: 'bootstrap4'
         });
-
-
-<?= include("script.php")?>
-<?= include("script1.php")?>
-<?= include("script2.php")?>
 </script>
+
 <script>
 $('#CATEGORY').change(function() {
     var CATEGORY = $('#CATEGORY').val()	
@@ -507,7 +707,8 @@ $('#SERIES').change(function() {
     });
   });
 
-function creates(){
+function creates()
+{
 	var DATE = $('#datepicker').val()
 	var TIME = $('#timepicker').val()
 	var USER = $('#USER').val()
@@ -528,23 +729,9 @@ function creates(){
         },
 		
     })
-	var CONSIGNEE = $('#CONSIGNEE').val()
-	var EMAIL = $('#EMAIL').val()
-	var PHONE = $('#PHONE').val()
-	var PROVINCE = $('#provinces0').val()
-	var DISTRICT = $('#amphures0').val()
-	var SUBDISTRICT = $('#districts0').val()
-	var ZIPCODE = $('#zip_code0').val()
-	$.ajax({
-        type: "POST",
-        url: "create_user.php",
-        data: {"CONSIGNEE":CONSIGNEE,"EMAIL":EMAIL,"PHONE":PHONE,"PROVINCE":PROVINCE,"PROJECT":DISTRICT,"DISTRICT":DISTRICT,"SUBDISTRICT":SUBDISTRICT,"ZIPCODE":ZIPCODE},
-        success: function(res) {
-            $('#viewCustomer').load('customer_show.php')
-        },
-		
-    })
-	var CONSIGNEE1 = $('#CONSIGNEE1').val()
+	var DEPARTMENT1 = $('#DEPARTMENT1').val()
+	var SUBDEPARTMENT1 = $('#SUBDEPARTMENT1').val()
+	var NAME1 = $('#NAME1').val()
 	var EMAIL1 = $('#EMAIL1').val()
 	var PHONE1 = $('#PHONE1').val()
 	var PROVINCE1 = $('#provinces1').val()
@@ -553,25 +740,10 @@ function creates(){
 	var ZIPCODE1 = $('#zip_code1').val()
 	$.ajax({
         type: "POST",
-        url: "create_dealer.php",
-        data: {"CONSIGNEE1":CONSIGNEE1,"EMAIL1":EMAIL1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"PROJECT1":DISTRICT1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
+        url: "create_user.php",
+        data: {"DEPARTMENT1":DEPARTMENT1,"SUBDEPARTMENT1":SUBDEPARTMENT1,"NAME1":NAME1,"PHONE1":PHONE1,"EMAIL1":EMAIL1,"PROVINCE1":PROVINCE1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
         success: function(res) {
-            $('#viewCustomer').load('customer_show.php')
-        },
 		
-    })
-	var CONSIGNEE2 = $('#CONSIGNEE2').val()
-	var EMAIL2 = $('#EMAIL2').val()
-	var PHONE2 = $('#PHONE2').val()
-	var PROVINCE2 = $('#provinces2').val()
-	var DISTRICT2 = $('#amphures2').val()
-	var SUBDISTRICT2 = $('#districts2').val()
-	var ZIPCODE2 = $('#zip_code2').val()
-	$.ajax({
-        type: "POST",
-        url: "create_supplier.php",
-        data: {"CONSIGNEE2":CONSIGNEE2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"PROJECT2":DISTRICT2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE2":ZIPCODE2},
-        success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
 		

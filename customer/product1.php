@@ -9,7 +9,7 @@
 	$SERIES=$_POST['SERIES'];
   	$sql = "SELECT * FROM MODULE WHERE SERIES='$SERIES' ";
   	$query = mysqli_query($con, $sql);
-  	echo '<option value="">-การใช้งาน-</option>';
+  	echo '<option value="">-ชนิด-</option>';
   	while ($data = mysqli_fetch_assoc($query)) 
 	{
   		echo "<option value='". $data['MODULE'] ."'>" .$data['MODULE'] ."</option>";

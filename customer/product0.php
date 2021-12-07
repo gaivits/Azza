@@ -10,7 +10,7 @@
 	
   	$sql = "SELECT * FROM CATEGORY WHERE CATEGORY='$CATEGORY' ";
   	$query = mysqli_query($con, $sql);
-  	echo '<option value="">-เลือกประเภท-</option>';
+  	echo '<option value="">-ประเภท-</option>';
   	while ($data = mysqli_fetch_assoc($query)) 
 	{
   		echo "<option value='". $data['MODULE'] ."'>" .$data['MODULE'] ."</option>";
