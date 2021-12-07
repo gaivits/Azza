@@ -1,36 +1,27 @@
 
+
+
 <?php
 	include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn = new Databases;
 	$conn = $conn->__construct();
 	mysqli_query($conn, "SET NAMES 'utf8' ");
-	// define how many results you want per page
-	$results_per_page = 10;
-
-// find out the number of results stored in database
-	$sql='SELECT * FROM customer';
-	$result = mysqli_query($conn, $sql);
-	$number_of_results = mysqli_num_rows($result);
-
-// determine number of total pages available
-	$number_of_pages = ceil($number_of_results/$results_per_page);
-
-// determine which page number visitor is currently on
-	if (!isset($_GET['page'])) 
+	if(!$conn)
 	{
-  	$page = 1;
+		die('Could not Connect My Sql:' .mysql_error());
+	}
+	$limit = 10;  
+	if (isset($_GET["page"])) 
+	{
+		$page  = $_GET["page"]; 
 	} 
 	else
-	{
-  	$page = $_GET['page'];
-	}
-
-// determine the sql LIMIT starting number for the results on the displaying page
-	$this_page_first_result = ($page-1)*$results_per_page;
-
-// retrieve selected results from database and display them on page	
-	$sql="SELECT * FROM customer LIMIT" . $this_page_first_result . ',' .  $results_per_page;
-	$result = mysqli_query($conn, $sql);
+	{ 
+		$page=1;
+	}  
+$start_from = ($page-1) * $limit;  
+$result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LIMIT $start_from, $limit");
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -177,10 +168,7 @@
                          <br>
     					<div class="col-sm-4">
                             <h4>DEALER</h4>
-                            <input type="text" autocomplete="off" id="CONSIGNEE1" name="CONSIGNEE1"  placeholder="ผู้รับ">
-                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
-                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
-                             <select id="DEALER" name="DEALER">
+                            <select id="DEALER" name="DEALER">
     					<option value="">--เลือก DEALER--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
@@ -190,6 +178,12 @@
 						}
 						?> 
        					</select>
+                            
+                            <input type="text" autocomplete="off" id="DEPARTMENT" name="DEPARTMENT"  placeholder="ฝ่าย">
+                             <input type="text" autocomplete="off" id="CONTACT" name="CONTACT"  placeholder="ชื่อติดต่อ">
+                        <input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1"  placeholder="อีเมลล์">
+                        <input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1"  placeholder="โทร">
+                             
                         
                         	<select name="Ref_prov_id1" id="provinces1">
 							<option value="">-กรุณาเลือกจังหวัด-</option>
@@ -317,7 +311,7 @@
       							<div class="input-group-prepend">
         						<span class="input-group-text">ประเภท</span>
       						</div>
-      				<select id="BRANDNAME" name="BRANDNAME" style="width: 85px;">
+      				<select id="BRANDNAME" name="BRANDNAME" style="width: 80px;">
     							<option value="">--เลือกประเภท--</option>
     							<?php
         						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
@@ -331,7 +325,7 @@
                     
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
-        						<span class="input-group-text">สินค้า</span>
+        						<span class="input-group-text">รุ่น</span>
       						</div>
       				<select id="GOODS" name="GOODS" style="width: 80px;">
     							
@@ -445,13 +439,20 @@
 	<div id="viewCustomer"></div>
     <div id="popCustomer"></div>
     
-    
-     <?php  
-		for ($page=1;$page<=$number_of_pages;$page++)
-		{
-  			echo '<a class="btn btn-secondary" style="margin-left:90%;" href="customer.php?page=' . $page . '">' . $page . '</a> ';
-		}
-		?>
+    <?php
+	$result_db = mysqli_query($conn,"SELECT COUNT(customer_id) FROM customer"); 
+	$row_db = mysqli_fetch_row($result_db);  
+	$total_records = $row_db[0];  
+	$total_pages = ceil($total_records / $limit); 
+/* echo  $total_pages; */
+	$pagLink = "<ul class='pagination'>";  
+	for ($i=1; $i<=$total_pages; $i++) 
+	{
+              $pagLink .= "<li style='margin-left:85%;' class='page-item'><a class='page-link' href='customer.php?page=".$i."'>".$i."</a></li>";	
+	}
+	echo $pagLink . "</ul>";  
+?>
+	
 
 </body>
 </html>
@@ -464,11 +465,12 @@
  $('#timepicker').timepicker({
             uiLibrary: 'bootstrap4'
         });
-</script>
-</html>
+
+
 <?= include("script.php")?>
 <?= include("script1.php")?>
 <?= include("script2.php")?>
+</script>
 <script>
 $('#CATEGORY').change(function() {
     var CATEGORY = $('#CATEGORY').val()	
