@@ -27,20 +27,19 @@ $idx=0;
 
 <body>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
-<input type="text" class="btn btn-success" value="add">
 <table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
   <thead align="center" style="font-size:14px;">
     <tr>
       
       
-      <th>ผู้รับ</th>
-      <th>E-MAIL</th>
+    <th>ผู้รับ</th>
       <th>โทร.</th>
+      <th>E-MAIL</th>
+      <th>เลขที่</th>
       <th>จังหวัด</th>
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
       <th>ไปรษณีย์</th>
-      
     
     </tr>
   </thead>
@@ -48,12 +47,13 @@ $idx=0;
     
       <?php
 		
-		while($row = mysqli_fetch_assoc($result)) 
+		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
 		?>
-		<td width="3%" align="center"><nobr><?php echo $row['CONSIGNEE'];?></nobr></td>
-        <td width="3%" align="center"><nobr><?php echo $row['EMAIL'];?></nobr></td>
+		<td width="3%" align="center"><nobr><?php echo $row['NAME'];?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['PHONE'];?></nobr></td>
+        <td width="3%" align="center"><nobr><?php echo $row['EMAIL'];?></nobr></td>
+        <td width="3%" align="center"><nobr><?php echo $row['ADDRNO'];?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['PROVINCE']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>

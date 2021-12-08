@@ -4,7 +4,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $ID = $_GET['ID'];
-$query = "SELECT * FROM users WHERE ID='$ID' ";
+$query = "SELECT * FROM suppliers WHERE ID='$ID' ";
 $result = mysqli_query($conn, $query);
 $idx=0;
 
@@ -32,7 +32,7 @@ $idx=0;
     <tr>
       
       
-      <th>ผู้รับ</th>
+     <th>ผู้รับ</th>
       <th>โทร.</th>
       <th>E-MAIL</th>
       <th>เลขที่</th>
@@ -40,7 +40,6 @@ $idx=0;
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
       <th>ไปรษณีย์</th>
-      
     
     </tr>
   </thead>
