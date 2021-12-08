@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 03:18 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Dec 08, 2021 at 11:24 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1096,6 +1096,7 @@ CREATE TABLE `dealers` (
   `NAME` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PHONE` varchar(255) NOT NULL,
+  `ADDRNO` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
@@ -10138,6 +10139,7 @@ CREATE TABLE `suppliers` (
   `NAME` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PHONE` varchar(255) NOT NULL,
+  `ADDRNO` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
@@ -10212,11 +10214,19 @@ CREATE TABLE `users` (
   `NAME` varchar(255) NOT NULL,
   `PHONE` varchar(10) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
+  `ADDRNO` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `DEPARTMENT`, `SUBDEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `ADDRNO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
+(1, 'ปชส', 'สพฐ15', 'ครูแม้ว', '024550474', 'hhh@gmail.com', '', '29อุดรธานี', '422กุดจับ', '410206เมืองเพีย', '41250');
 
 -- --------------------------------------------------------
 
@@ -10297,8 +10307,9 @@ CREATE TABLE `we` (
   `COMPANY` varchar(255) NOT NULL,
   `DEPARTMENT` varchar(255) NOT NULL,
   `NAME` varchar(255) NOT NULL,
-  `EMAIL` varchar(255) NOT NULL,
   `PHONE` varchar(255) NOT NULL,
+  `EMAIL` varchar(255) NOT NULL,
+  `ADDRNO` varchar(255) NOT NULL,
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
@@ -10419,7 +10430,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
