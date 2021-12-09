@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 11:24 AM
+-- Generation Time: Dec 09, 2021 at 09:21 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -10221,13 +10221,6 @@ CREATE TABLE `users` (
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`ID`, `DEPARTMENT`, `SUBDEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `ADDRNO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
-(1, 'ปชส', 'สพฐ15', 'ครูแม้ว', '024550474', 'hhh@gmail.com', '', '29อุดรธานี', '422กุดจับ', '410206เมืองเพีย', '41250');
-
 -- --------------------------------------------------------
 
 --
@@ -10430,7 +10423,7 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
