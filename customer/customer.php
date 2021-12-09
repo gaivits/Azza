@@ -423,8 +423,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">WE</span>
       						</div>
-      				 <select id="USER" name="USER">
-                        <option value="">--SELECT WE--</option>
+      				 <select id="WE" name="WE">
+                        <option value="AZZA">--SELECT WE--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='WE'");  // Use select query here 
 						while($data = mysqli_fetch_assoc($records))
@@ -438,7 +438,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">ฝ่าย</span>
       						</div>
-      				<input type="text" autocomplete="off" id="SUBDEPARTMENT3" name="SUBDEPARTMENT3" style="width:80px;">
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT3" name="SUBDEPARTMENT3" value="จัดซื้อ" style="width:80px;">
     				</div>
                        <!-- <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -451,26 +451,26 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">ชื่อติดต่อ</span>
       						</div>
-      				<input type="text" autocomplete="off" id="NAME3" name="NAME3"   style="width:80px;">
+      				<input type="text" autocomplete="off" id="NAME3" name="NAME3" value="คุณป๊อป" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">โทร</span>
       						</div>
-      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3" name="PHONE3" style="width:80px;">
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3" value="0993254289" name="PHONE3" style="width:95px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">อีเมลล์</span>
       						</div>
-      				<input type="email" autocomplete="off" id="EMAIL3" name="EMAIL3" style="width:80px;">
+      				<input type="email" autocomplete="off" id="EMAIL3" name="EMAIL3" value="newzeno@yahoo.com" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">เลขที่</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="ADDRNO3" id="ADDRNO3" style="width:80px;">
+        					<input type="text" autocomplete="off" name="ADDRNO3" id="ADDRNO3" value="บรม81" style="width:80px;">
     				</div> 
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -478,7 +478,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       						</div>
                     
       				<select name="Ref_prov_id3" id="provinces3">
-							<option value="">-จังหวัด-</option>
+							<option value="<?=กรุงเทพมหานคร?>">กรุงเทพมหานคร</option>
         						<?php
         							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
 									while($data = mysqli_fetch_assoc($records))
@@ -494,6 +494,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">อำเภอ</span>
       						</div>
       				<select name="Ref_dist_id3" id="amphures3" style="width:80px;">
+                    			<option value="<?=ตลิ่งชัน?>">ตลิ่งชัน</option>
        						</select>
     				</div>
                      <div class="input-group mb-3 input-group-sm">
@@ -501,6 +502,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">ตำบล</span>
       						</div>
       				<select name="Ref_subdist_id3" id="districts3" style="width:80px;">
+                    			<option value="<?=ฉิมพลี?>">ฉิมพลี</option>
       						</select>
     				</div>
                     <div class="input-group mb-3 input-group-sm">
@@ -508,11 +510,11 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">รหัส</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="zip_code3" id="zip_code3" style="width:80px;">
+        					<input type="text" autocomplete="off" name="zip_code3" id="zip_code3" value="10170" style="width:80px;">
     				</div> 
-                           	                		<script>
+                   <script>
 	
-	$('#provinces3').change(function() {
+	/*$('#provinces3').change(function() {
     var id_province = $(this).val();
  	var name_th = $(this).val()
       $.ajax({
@@ -554,7 +556,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       }
     });
   
-  });
+  });*/
 	
 	</script>
 	
