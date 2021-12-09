@@ -424,7 +424,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">WE</span>
       						</div>
       				 <select id="WE" name="WE">
-                        <option value="AZZA">--SELECT WE--</option>
+                        <option value="">--SELECT WE--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='WE'");  // Use select query here 
 						while($data = mysqli_fetch_assoc($records))
@@ -470,7 +470,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">เลขที่</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="ADDRNO3" id="ADDRNO3" value="บรม81" style="width:80px;">
+        					<input type="text" autocomplete="off" name="ADDRNO3" id="ADDRNO3" value="81" style="width:80px;">
     				</div> 
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -962,6 +962,7 @@ function creates()
 	var DEPARTMENT1 = $('#DEPARTMENT1').val()
 	var SUBDEPARTMENT1 = $('#SUBDEPARTMENT1').val()
 	var NAME1 = $('#NAME1').val()
+	var ADDRNO1 = $('#ADDRNO1').val()
 	var EMAIL1 = $('#EMAIL1').val()
 	var PHONE1 = $('#PHONE1').val()
 	var PROVINCE1 = $('#provinces1').val()
@@ -971,15 +972,49 @@ function creates()
 	$.ajax({
         type: "POST",
         url: "create_user.php",
-        data: {"DEPARTMENT1":DEPARTMENT1,"SUBDEPARTMENT1":SUBDEPARTMENT1,"NAME1":NAME1,"EMAIL1":EMAIL1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
+        data: {"DEPARTMENT1":DEPARTMENT1,"SUBDEPARTMENT1":SUBDEPARTMENT1,"NAME1":NAME1,"EMAIL1":EMAIL1,"ADDRNO1":ADDRNO1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
         success: function(res) {
-            alert(res)
+            $('#viewCustomer').load('customer_show.php')
+        },
+	})
+	var DEALER = $('#DEALER').val()
+	var SUBDEPARTMENT2 = $('#SUBDEPARTMENT2').val()
+	var NAME2 = $('#NAME2').val()
+	var EMAIL2 = $('#EMAIL2').val()
+	var PHONE2 = $('#PHONE2').val()
+	var ADDRNO2 = $('#ADDRNO2').val()
+	var PROVINCE2 = $('#provinces2').val()
+	var DISTRICT2 = $('#amphures2').val()
+	var SUBDISTRICT2 = $('#districts2').val()
+	var ZIPCODE2 = $('#zip_code2').val()
+	$.ajax({
+        type: "POST",
+        url: "create_dealer.php",
+        data: {"DEALER":DEALER,"SUBDEPARTMENT2":SUBDEPARTMENT2,"NAME2":NAME2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE1":ZIPCODE2},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
         },
 	})
 	
 	
-	
-	
+	var SUPPLIER = $('#SUPPLIER').val()
+	var SUBDEPARTMENT4 = $('#SUBDEPARTMENT4').val()
+	var NAME4 = $('#NAME4').val()
+	var EMAIL4 = $('#EMAIL4').val()
+	var PHONE4 = $('#PHONE4').val()
+	var ADDRNO4 = $('#ADDRNO4').val()
+	var PROVINCE2 = $('#provinces4').val()
+	var DISTRICT2 = $('#amphures4').val()
+	var SUBDISTRICT2 = $('#districts4').val()
+	var ZIPCODE2 = $('#zip_code4').val()
+	$.ajax({
+        type: "POST",
+        url: "create_supplier.php",
+        data: {"SUPPLIER":SUPPLIER,"SUBDEPARTMENT4":SUBDEPARTMENT4,"NAME4":NAME4,"EMAIL4":EMAIL4,"ADDRNO4":ADDRNO4,"PHONE4":PHONE4,"PROVINCE4":PROVINCE4,"DISTRICT4":DISTRICT4,"SUBDISTRICT4":SUBDISTRICT4,"ZIPCODE4":ZIPCODE4},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+	})
 }
 $('#viewCustomer').load('customer_show.php')
 

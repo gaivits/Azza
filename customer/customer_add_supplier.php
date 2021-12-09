@@ -1,8 +1,21 @@
 <?php
-	include "C:/xampp/htdocs/xampp/Azza/connects.php";
+include "C:/xampp/htdocs/xampp/Azza/connects.php";
+	
 	$conn=new Databases;
 	$conn = $conn->__construct();
-	$ADD_SUPPLIER = $_POST['ADD_SUPPLIER'];
-	$sql = "INSERT INTO tbl_master_groupcode (TYPE,NAME,REMARK) VALUES ('SUPPLIER','$ADD_SUPPLIER','')";	
-	mysqli_query($conn,$sql);
-?>
+	$SUPPLIER = $_POST['SUPPLIER'];
+	
+	$SUBDEPARTMENT = $_POST['SUBDEPARTMENT4'];
+	$NAME = $_POST['NAME4'];
+	$PHONE = $_POST['PHONE4'];
+	$ADDRNO = $_POST['ADDRNO4'];
+	$EMAIL = $_POST['EMAIL4'];
+	$PROVINCE = $_POST['PROVINCE4'];
+	$DISTRICT = $_POST['DISTRICT4'];
+	$SUBDISTRICT = $_POST['SUBDISTRICT4'];
+	$ZIPCODE = $_POST['ZIPCODE4'];
+	
+$sql = "INSERT INTO suppliers (COMPANY,DEPARTMENT,NAME,PHONE,ADDRNO,EMAIL,PROVINCE,DISTRICT,SUBDISTRICT,ZIPCODE) VALUES ('$DEALER','$SUBDEPARTMENT','$NAME','$PHONE','$ADDRNO','$EMAIL','$PROVINCE','$DISTRICT','$SUBDISTRICT','$ZIPCODE')";
+	mysqli_query($conn, $sql);
+	
+	?>
