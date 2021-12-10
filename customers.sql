@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2021 at 11:17 AM
+-- Generation Time: Dec 10, 2021 at 06:01 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,6 +1077,7 @@ CREATE TABLE `customer` (
   `USER` varchar(255) NOT NULL,
   `UNIT` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
+  `SUPPLIER` varchar(255) NOT NULL,
   `CATEGORY` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
@@ -10332,6 +10333,12 @@ ALTER TABLE `customer`
   ADD UNIQUE KEY `PK` (`CUSTOMER_ID`);
 
 --
+-- Indexes for table `dealers`
+--
+ALTER TABLE `dealers`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `districts`
 --
 ALTER TABLE `districts`
@@ -10354,6 +10361,12 @@ ALTER TABLE `module`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `tbl_master_groupcode`
@@ -10396,6 +10409,12 @@ ALTER TABLE `customer`
   MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `dealers`
+--
+ALTER TABLE `dealers`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `geographies`
 --
 ALTER TABLE `geographies`
@@ -10412,6 +10431,12 @@ ALTER TABLE `module`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
