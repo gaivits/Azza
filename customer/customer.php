@@ -702,8 +702,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 	
 	</script>
                             </div>
-                        <div class="col-sm-3">
-                        			<h4>--------</h4>
+                        <!--<div class="col-sm-3">
+                        			<h4>สินค้า</h4>
       								<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text"></span>
@@ -768,7 +768,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">หน่วย</span>
       						</div>
       					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 85px;">
-    				
+    				-->
                     <div class="modal-footer">
           					<button type="button" class="btn btn-success" data-dismiss="modal" id="OK" name="OK" onclick="creates()">OK</button>
           					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

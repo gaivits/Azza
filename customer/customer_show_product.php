@@ -4,7 +4,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $ID = $_GET['ID'];
-$query = "SELECT * FROM products WHERE CUSTOMER_ID = '$ID' ";
+$query = "SELECT * FROM products WHERE CUSTOMER_ID='$ID' ";
 $result = mysqli_query($conn, $query);
 $idx=00;
 
@@ -47,10 +47,13 @@ $idx=00;
         <div class="modal-body">
           	<div class="container">
             	<div class="row">
+                	
                 	<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">เลือก</span>
       						</div>
+                           
+                     
       				<select id="CATEGORY5" name="CATEGORY5" style="width: 85px;">
     							<option value="">-เลือก-</option>
     							<?php
@@ -105,13 +108,14 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">จำนวน</span>
       						</div>
-      				<input type="number" step=0.01 id="AMOUNT" name="AMOUNT">
+      				<input type="number" step=0.01 id="AMOUNT5" name="AMOUNT5">
                 </div>
                 <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">หน่วย</span>
       						</div>
-      				<input type="text" value ="ea" id="PCS" name="PCS">
+      				<input type="text" value ="ea" id="PCS5" name="PCS5">
+                    <input type="hidden" id='CUSTOMER_ID5' name='CUSTOMER_ID5' value="<?=$ID?>">
                 </div>
             </div>
         </div>
@@ -149,7 +153,7 @@ $idx=00;
      </tr>
     
   </thead>
-  <tbody style="font-size:12px;">
+  <tbody style="font-size:16px;">
     
       <?php
 		
@@ -176,8 +180,7 @@ $idx=00;
 </table>
 </center>
 </body>
- 
-<div id="editCustomer"></div>
+
   
 
 </body>
@@ -191,12 +194,14 @@ function submits()
 	var LOGO5 = $('#LOGO5').val()
 	var GOODS5 = $('#GOODS5').val()
 	var AMOUNT5 = $('#AMOUNT5').val()
+	var PCS5 = $('#PCS5').val()
+	var CUSTOMER_ID5 = $('CUSTOMER_ID5').val()
 	$.ajax({
         type: "POST",
         url: "create_product.php",
-        data: {"CATEGORY":CATEGORY5,"BRANDNAME":BRANDNAME5,"SERIES":SERIES5,"LOGO":LOGO5,"GOODS":GOODS5,"AMOUNT":AMOUNT5},
+        data: {"CATEGORY":CATEGORY5,"BRANDNAME":BRANDNAME5,"SERIES":SERIES5,"LOGO":LOGO5,"GOODS":GOODS5,"AMOUNT":AMOUNT5,"PCS5":PCS5,"CUSTOMER_ID5":CUSTOMER_ID5},
         success: function(res) {
-            $('#viewCustomer').load('customer_show_product.php')
+            window.location.reload()
         },
 	})
 }
