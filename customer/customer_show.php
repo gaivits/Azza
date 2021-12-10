@@ -45,7 +45,7 @@ $idx=00;
     </tr>
     <tr align="center">
         <td colspan="4"><h3>เลข</h3></td>
-        <td colspan="3"><h3>SYSTEM</h3></td>
+        <td colspan="4"><h3>SYSTEM</h3></td>
         <td colspan="5"><h3>PRODUCT</h3></td>
         <td colspan="3"><h3>STATUS</h3></td>
         <td colspan="2"><h3>ACTION</h3></td>
@@ -58,6 +58,7 @@ $idx=00;
         	<th>USER</th>
             <th>SUBUSER</th>
             <th>DEALER</th>
+            <th>SUPPLIER</th>
         <th>หมวด</th>   
 		<th>ยี่ห้อ</th>
         <th>โมเดล</th>
@@ -88,6 +89,7 @@ $idx=00;
     	<td width="2%" align="left"><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['USER']; ?></nobr></a></td>
         <td width="7%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
         <td width="3%" align="left"><a href="customer_show_dealer.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['DEALER']; ?></nobr></a></td>
+        <td width="3%" align="left"><a href="customer_show_supplier.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['SUPPLIER']; ?></nobr></a></td>
         <td width="2%" align="center"><nobr><?php echo $row['CATEGORY']?></td>
         <td width="2%" align="center"><nobr><?php echo $row['BRANDNAME']?></td>
         <td width="2%" align="center"><nobr><?php echo $nrow[0]?></td>

@@ -31,8 +31,8 @@ $idx=0;
   <thead align="center" style="font-size:14px;">
     <tr>
       
-      
-     <th>ผู้รับ</th>
+      <th>บริษัท</th>
+      <th>ผู้รับ</th>
       <th>โทร.</th>
       <th>E-MAIL</th>
       <th>เลขที่</th>
@@ -40,6 +40,7 @@ $idx=0;
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
       <th>ไปรษณีย์</th>
+      
     
     </tr>
   </thead>
@@ -50,6 +51,7 @@ $idx=0;
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
 		?>
+        <td width="3%" align="center"><nobr><?php echo $row['COMPANY'];?></nobr></td>
 		<td width="3%" align="center"><nobr><?php echo $row['NAME'];?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['PHONE'];?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['EMAIL'];?></nobr></td>

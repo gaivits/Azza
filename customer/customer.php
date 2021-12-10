@@ -280,7 +280,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">DEALER</span>
       						</div>
-      				 <select id="USER" name="USER">
+      				 <select id="COMPANY2" name="COMPANY2">
                         <option value="">--SELECT DEALER--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
@@ -567,7 +567,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">SUP</span>
       						</div>
-      				 <select id="USER" name="USER">
+      				 <select id="COMPANY4" name="COMPANY4">
                         <option value="">--SELECT SUPPLIER--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
@@ -621,7 +621,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">จังหวัด</span>
       						</div>
                     
-      				<select name="Ref_prov_id1" id="provinces1">
+      				<select name="Ref_prov_id4" id="provinces4">
 							<option value="">-จังหวัด-</option>
         						<?php
         							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
@@ -942,6 +942,7 @@ function creates()
 	var UNIT = $('#UNIT').val()
 	var PROJECT = $('#PROJECT').val()
 	var DEALER = $('#DEALER').val()
+	var SUPPLIER = $('#SUPPLIER').val()
 	var CATEGORY = $('#CATEGORY').val()
 	var BRANDNAME = $('#BRANDNAME').val()
 	var SERIES = $('#SERIES').val()
@@ -954,7 +955,7 @@ function creates()
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"DEALER":DEALER,"CATEGORY":CATEGORY,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"AMOUNT":AMOUNT},
+        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"DEALER":DEALER,"SUPPLIER":SUPPLIER,"CATEGORY":CATEGORY,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"AMOUNT":AMOUNT},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
@@ -977,7 +978,7 @@ function creates()
             $('#viewCustomer').load('customer_show.php')
         },
 	})
-	var DEALER = $('#DEALER').val()
+	var COMPANY2 = $('#COMPANY2').val()
 	var SUBDEPARTMENT2 = $('#SUBDEPARTMENT2').val()
 	var NAME2 = $('#NAME2').val()
 	var EMAIL2 = $('#EMAIL2').val()
@@ -990,27 +991,27 @@ function creates()
 	$.ajax({
         type: "POST",
         url: "create_dealer.php",
-        data: {"DEALER":DEALER,"SUBDEPARTMENT2":SUBDEPARTMENT2,"NAME2":NAME2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE1":ZIPCODE2},
+        data: {"COMPANY2":COMPANY2,"SUBDEPARTMENT2":SUBDEPARTMENT2,"NAME2":NAME2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE1":ZIPCODE2},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
 	})
 	
 	
-	var SUPPLIER = $('#SUPPLIER').val()
+	var COMPANY4 = $('#COMPANY4').val()
 	var SUBDEPARTMENT4 = $('#SUBDEPARTMENT4').val()
 	var NAME4 = $('#NAME4').val()
 	var EMAIL4 = $('#EMAIL4').val()
 	var PHONE4 = $('#PHONE4').val()
 	var ADDRNO4 = $('#ADDRNO4').val()
-	var PROVINCE2 = $('#provinces4').val()
-	var DISTRICT2 = $('#amphures4').val()
-	var SUBDISTRICT2 = $('#districts4').val()
-	var ZIPCODE2 = $('#zip_code4').val()
+	var PROVINCE4 = $('#provinces4').val()
+	var DISTRICT4 = $('#amphures4').val()
+	var SUBDISTRICT4 = $('#districts4').val()
+	var ZIPCODE4 = $('#zip_code4').val()
 	$.ajax({
         type: "POST",
         url: "create_supplier.php",
-        data: {"SUPPLIER":SUPPLIER,"SUBDEPARTMENT4":SUBDEPARTMENT4,"NAME4":NAME4,"EMAIL4":EMAIL4,"ADDRNO4":ADDRNO4,"PHONE4":PHONE4,"PROVINCE4":PROVINCE4,"DISTRICT4":DISTRICT4,"SUBDISTRICT4":SUBDISTRICT4,"ZIPCODE4":ZIPCODE4},
+        data: {"COMPANY4":COMPANY4,"SUBDEPARTMENT4":SUBDEPARTMENT4,"NAME4":NAME4,"EMAIL4":EMAIL4,"ADDRNO4":ADDRNO4,"PHONE4":PHONE4,"PROVINCE4":PROVINCE4,"DISTRICT4":DISTRICT4,"SUBDISTRICT4":SUBDISTRICT4,"ZIPCODE4":ZIPCODE4},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
