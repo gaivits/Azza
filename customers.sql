@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 10:08 AM
+-- Generation Time: Dec 10, 2021 at 11:23 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -10043,8 +10043,18 @@ CREATE TABLE `products` (
   `LOGO` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
   `PCS` varchar(255) NOT NULL,
-  `CUSTOMER_ID` int(11) NOT NULL
+  `CUSTOMER_ID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`CATEGORY`, `BRANDNAME`, `SERIES`, `LOGO`, `AMOUNT`, `PCS`, `CUSTOMER_ID`) VALUES
+('', '', '', ' ', 0, '', ''),
+('VISUAL', 'HISENSE', 'VDO-WALL', '3.5mm 49VL5F', 1, 'ea', ''),
+('VISUAL', 'LG', 'VDO-WALL', '3.5mm 49D35-ll', 1, 'ea', ''),
+('VISUAL', 'HISENSE', 'VDO-WALL', '3.5mm 55VL5F', 1, 'ea', '');
 
 -- --------------------------------------------------------
 
@@ -10373,13 +10383,6 @@ ALTER TABLE `module`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`CUSTOMER_ID`),
-  ADD KEY `fk` (`CUSTOMER_ID`);
-
---
 -- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
@@ -10429,7 +10432,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dealers`
@@ -10448,12 +10451,6 @@ ALTER TABLE `geographies`
 --
 ALTER TABLE `module`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `CUSTOMER_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -10484,16 +10481,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `warehouse`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `FK` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customer` (`CUSTOMER_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
