@@ -703,7 +703,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 	</script>
                             </div>
                         <div class="col-sm-3">
-                        			<h4>สินค้า</h4>
+                        			<h4>--------</h4>
       								<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text"></span>
@@ -720,7 +720,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
   						</select>
                         <div class="input-group mb-3 input-group-sm" >
       							<div class="input-group-prepend">
-        						<span class="input-group-text">กลุ่ม</span>
+        						<span class="input-group-text">หมวด</span>
       						</div>
       				<select id="SERIES" name="SERIES" style="width: 100px;">
     							
@@ -936,26 +936,33 @@ $('#SERIES').change(function() {
 function creates()
 {
 	
-	var DATE = $('#datepicker').val()
-	var TIME = $('#timepicker').val()
-	var USER = $('#USER').val()
-	var UNIT = $('#UNIT').val()
-	var PROJECT = $('#PROJECT').val()
-	var DEALER = $('#DEALER').val()
-	var SUPPLIER = $('#SUPPLIER').val()
 	var CATEGORY = $('#CATEGORY').val()
 	var BRANDNAME = $('#BRANDNAME').val()
 	var SERIES = $('#SERIES').val()
 	var LOGO = $('#LOGO').val()
 	var GOODS = $('#GOODS').val()
 	var AMOUNT = $('#AMOUNT').val()
+	$.ajax({
+        type: "POST",
+        url: "create_product.php",
+        data: {"CATEGORY":CATEGORY,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"AMOUNT":AMOUNT},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+	})
 	
-	
+	var DATE = $('#datepicker').val()
+	var TIME = $('#timepicker').val()
+	var USER = $('#USER').val()
+	var UNIT = $('#UNIT').val()
+	var PROJECT = $('#PROJECT').val()
+	var COMPANY2 = $('#COMPANY2').val()
+	var COMPANY4 = $('#COMPANY4').val()
 	
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"DEALER":DEALER,"SUPPLIER":SUPPLIER,"CATEGORY":CATEGORY,"BRANDNAME":BRANDNAME,"SERIES":SERIES,"LOGO":LOGO,"GOODS":GOODS,"AMOUNT":AMOUNT},
+        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"COMPANY2":COMPANY2,"COMPANY4":COMPANY4},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
