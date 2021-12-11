@@ -4,7 +4,7 @@
 	
 	$conn=new Databases;
 	$conn = $conn->__construct();
-	
+	echo $_POST['CUSTOMER_ID5'];
 	
 	$CATEGORY  = $_POST['CATEGORY'];
 	$BRANDNAME = $_POST['BRANDNAME'];

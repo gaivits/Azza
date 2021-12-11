@@ -44,8 +44,8 @@ $idx=00;
         <th><h2>รายการ</h2></th>
     </tr>
     <tr align="center">
-        <td colspan="4"><h3>เลข</h3></td>
-        <td colspan="4"><h3>SYSTEM</h3></td>
+        <td colspan="5"><h3>เลข</h3></td>
+        <td colspan="5"><h3>SYSTEM</h3></td>
         <td><h3>PRODUCT</h3></td>
         <td colspan="3"><h3>STATUS</h3></td>
         <td colspan="2"><h3>ACTION</h3></td>
@@ -55,9 +55,11 @@ $idx=00;
         <th>งาน</th>
         <th>รก</th>
         <th>REF</th>
+        <th>งาน</th>
         	<th>USER</th>
             <th>SUBUSER</th>
             <th>DEALER</th>
+            <th>WE</th>
             <th>SUPPLIER</th>
         <th>สินค้า</th>   
 		
@@ -82,10 +84,12 @@ $idx=00;
         <td width="1%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
     	<td width="1%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></a></nobr></td>
     	<td width="1%" align="left"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
-    	<td width="1%" align="center"><nobr><?php echo "CR".$row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
+    	<td width="3%" align="center"><nobr><?php echo "CR".$row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
+        <td width="3%" align="center"><nobr><?php echo $row['PROJECT']; ?></a></nobr></td>
     	<td width="2%" align="left"><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['USER']; ?></nobr></a></td>
         <td width="7%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
         <td width="3%" align="left"><a href="customer_show_dealer.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['DEALER']; ?></nobr></a></td>
+        <td width="2%" align="center"><a href="customer_show_we.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['WE']; ?></nobr></a></td>
         <td width="3%" align="left"><a href="customer_show_supplier.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['SUPPLIER']; ?></nobr></a></td>
         <td width="3%" align="left"><a href="customer_show_product.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>
         

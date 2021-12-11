@@ -84,15 +84,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
     </button>
     <div class="dropdown-menu">
   
-  	<button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-user" >ADD-NEW-USER</button>
-  	&nbsp <br> 
-  	<button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-dealer">ADD-NEW-DEALER</button>
-  	&nbsp <br> 
-  	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal-add-we" >ADD-NEW-WE</button>
-  	&nbsp <br> 
-  	<button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal-add-supplier" >ADD-NEW-SUPPLIER</button>
-  	&nbsp <br> 
-  	<button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">เพิ่มสินค้า</button>
+  	
+  	<button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal">เพิ่มรายการ</button>
   	<br>
     </div>
   </div>
@@ -423,7 +416,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       							<div class="input-group-prepend">
         						<span class="input-group-text">WE</span>
       						</div>
-      				 <select id="WE" name="WE">
+      				 <select id="COMPANY3" name="COMPANY3">
                         <option value="">--SELECT WE--</option>
         				<?php
         				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='WE'");  // Use select query here 
@@ -440,24 +433,24 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       						</div>
       				<input type="text" autocomplete="off" id="SUBDEPARTMENT3" name="SUBDEPARTMENT3" value="จัดซื้อ" style="width:80px;">
     				</div>
-                       <!-- <div class="input-group mb-3 input-group-sm">
+                         <!--<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ฝ่าย</span>
       						</div>
       				<input type="text" autocomplete="off" id="DEPARTMENT1" name="DEPARTMENT1" style="width:80px;">
-    				</div> -->
+    				</div>-->
                     
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ชื่อติดต่อ</span>
       						</div>
-      				<input type="text" autocomplete="off" id="NAME3" name="NAME3" value="คุณป๊อป" style="width:80px;">
+      				<input type="text" autocomplete="off" id="NAME3" name="NAME3" value="ธัญพัฒน์" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">โทร</span>
       						</div>
-      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3" value="0993254289" name="PHONE3" style="width:95px;">
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3" name="PHONE3" value="0991515951" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -478,15 +471,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
       						</div>
                     
       				<select name="Ref_prov_id3" id="provinces3">
-							<option value="<?=กรุงเทพมหานคร?>">กรุงเทพมหานคร</option>
-        						<?php
-        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
-									while($data = mysqli_fetch_assoc($records))
-       							{
-        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
-								}
-								
-    							?>  
+							<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+        						
         					</select>
     				</div>
                     <div class="input-group mb-3 input-group-sm">
@@ -494,7 +480,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">อำเภอ</span>
       						</div>
       				<select name="Ref_dist_id3" id="amphures3" style="width:80px;">
-                    			<option value="<?=ตลิ่งชัน?>">ตลิ่งชัน</option>
+                    			<option value="ตลิ่งชัน">ตลิ่งชัน</option>
        						</select>
     				</div>
                      <div class="input-group mb-3 input-group-sm">
@@ -502,7 +488,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">ตำบล</span>
       						</div>
       				<select name="Ref_subdist_id3" id="districts3" style="width:80px;">
-                    			<option value="<?=ฉิมพลี?>">ฉิมพลี</option>
+                    	<option value="ฉิมพลี">ฉิมพลี</option>
       						</select>
     				</div>
                     <div class="input-group mb-3 input-group-sm">
@@ -957,12 +943,13 @@ function creates()
 	var UNIT = $('#UNIT').val()
 	var PROJECT = $('#PROJECT').val()
 	var COMPANY2 = $('#COMPANY2').val()
+	var COMPANY3 = $('#COMPANY3').val()
 	var COMPANY4 = $('#COMPANY4').val()
 	
 	$.ajax({
         type: "POST",
         url: "customer_create.php",
-        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"COMPANY2":COMPANY2,"COMPANY4":COMPANY4},
+        data: {"DATE":DATE,"TIME":TIME,"USER":USER,"UNIT":UNIT,"PROJECT":PROJECT,"COMPANY2":COMPANY2,"COMPANY3":COMPANY3,"COMPANY4":COMPANY4},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
@@ -985,6 +972,7 @@ function creates()
             $('#viewCustomer').load('customer_show.php')
         },
 	})
+	
 	var COMPANY2 = $('#COMPANY2').val()
 	var SUBDEPARTMENT2 = $('#SUBDEPARTMENT2').val()
 	var NAME2 = $('#NAME2').val()
@@ -998,12 +986,30 @@ function creates()
 	$.ajax({
         type: "POST",
         url: "create_dealer.php",
-        data: {"COMPANY2":COMPANY2,"SUBDEPARTMENT2":SUBDEPARTMENT2,"NAME2":NAME2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE1":ZIPCODE2},
+        data: {"COMPANY2":COMPANY2,"SUBDEPARTMENT2":SUBDEPARTMENT2,"NAME2":NAME2,"EMAIL2":EMAIL2,"PHONE2":PHONE2,"PROVINCE2":PROVINCE2,"DISTRICT2":DISTRICT2,"SUBDISTRICT2":SUBDISTRICT2,"ZIPCODE2":ZIPCODE2},
         success: function(res) {
             $('#viewCustomer').load('customer_show.php')
         },
 	})
 	
+	var COMPANY3 = $('#COMPANY3').val()
+	var SUBDEPARTMENT3 = $('#SUBDEPARTMENT3').val()
+	var NAME3 = $('#NAME3').val()
+	var EMAIL3 = $('#EMAIL3').val()
+	var PHONE3 = $('#PHONE3').val()
+	var ADDRNO3 = $('#ADDRNO3').val()
+	var PROVINCE3 = $('#provinces3').val()
+	var DISTRICT3 = $('#amphures3').val()
+	var SUBDISTRICT3 = $('#districts3').val()
+	var ZIPCODE3 = $('#zip_code3').val()
+	$.ajax({
+        type: "POST",
+        url: "create_we.php",
+        data: {"COMPANY3":COMPANY3,"SUBDEPARTMENT3":SUBDEPARTMENT3,"NAME3":NAME3,"EMAIL3":EMAIL3,"PHONE3":PHONE3,"PROVINCE3":PROVINCE3,"DISTRICT3":DISTRICT3,"SUBDISTRICT3":SUBDISTRICT3,"ZIPCODE3":ZIPCODE3},
+        success: function(res) {
+            $('#viewCustomer').load('customer_show.php')
+        },
+	})
 	
 	var COMPANY4 = $('#COMPANY4').val()
 	var SUBDEPARTMENT4 = $('#SUBDEPARTMENT4').val()

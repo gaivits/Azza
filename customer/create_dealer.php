@@ -4,7 +4,6 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 	$conn=new Databases;
 	$conn = $conn->__construct();
 	$DEALER = $_POST['COMPANY2'];
-	
 	$SUBDEPARTMENT = $_POST['SUBDEPARTMENT2'];
 	$NAME = $_POST['NAME2'];
 	$PHONE = $_POST['PHONE2'];

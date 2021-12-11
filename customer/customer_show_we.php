@@ -4,7 +4,7 @@ include "C:/xampp/htdocs/xampp/Azza/connects.php";
 $conn=new Databases;
 $conn = $conn->__construct();
 $ID = $_GET['ID'];
-$query = "SELECT * FROM dealers WHERE CUSTOMER_ID='$ID' ";
+$query = "SELECT * FROM we WHERE CUSTOMER_ID='$ID' ";
 $result = mysqli_query($conn, $query);
 $idx=00;
 
@@ -30,10 +30,10 @@ $idx=00;
 
   <h2></h2>
   <!-- Trigger the modal with a button -->
-  <button style='margin: 3%;' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-4">เพิ่มDealer</button>
+  <button style='margin: 3%;' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-5">เพิ่มWE</button>
 
   <!-- The Modal -->
-  <div class="modal" id="myModal-4">
+  <div class="modal" id="myModal-5">
     <div class="modal-dialog">
       <div class="modal-content">
       
@@ -53,12 +53,12 @@ $idx=00;
         						<span class="input-group-text">เลือก</span>
       						</div>
                             <?php echo $ID?>
-                     <input type="hidden" id="CUSTOMER_ID2d" name="CUSTOMER_ID2d" value='<?php echo $ID?>'>  		
+                     <input type="hidden" id="CUSTOMER_ID3w" name="CUSTOMER_ID3w" value='<?php echo $ID?>'>  		
                      
-      				 <select id="COMPANY2d" name="COMPANY2d">
-                        <option value="">--SELECT DEALER--</option>
+      				 <select id="COMPANY3w" name="COMPANY3w">
+                        <option value="">--SELECT WE--</option>
         				<?php
-        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='WE'");  // Use select query here 
 						while($data = mysqli_fetch_assoc($records))
         				{
             			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
@@ -70,7 +70,7 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">ฝ่าย</span>
       						</div>
-      				<input type="text" autocomplete="off" id="SUBDEPARTMENT2d" name="SUBDEPARTMENT2d" style="width:80px;">
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT3w" name="SUBDEPARTMENT3w" style="width:80px;">
     				</div>
                         <!--<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -83,33 +83,33 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">ชื่อติดต่อ</span>
       						</div>
-      				<input type="text" autocomplete="off" id="NAME2d" name="NAME2d"   style="width:80px;">
+      				<input type="text" autocomplete="off" id="NAME3w" name="NAME3w"   style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">โทร</span>
       						</div>
-      				<input type="text" maxlength="10" autocomplete="off" id="PHONE2d" name="PHONE2d" style="width:80px;">
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3w" name="PHONE3w" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">อีเมลล์</span>
       						</div>
-      				<input type="email" autocomplete="off" id="EMAIL2d" name="EMAIL2d" style="width:80px;">
+      				<input type="email" autocomplete="off" id="EMAIL3w" name="EMAIL3w" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">เลขที่</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="ADDRNO2d" id="ADDRNO2d" style="width:80px;">
+        					<input type="text" autocomplete="off" name="ADDRNO3w" id="ADDRNO3w" style="width:80px;">
     				</div> 
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">จังหวัด</span>
       						</div>
                     
-      				<select name="Ref_prov_id2d" id="provinces2d">
+      				<select name="Ref_prov_id3w" id="provinces3w">
 							<option value="">-จังหวัด-</option>
         						<?php
         							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
@@ -125,14 +125,14 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">อำเภอ</span>
       						</div>
-      				<select name="Ref_dist_id2d" id="amphures2d" style="width:80px;">
+      				<select name="Ref_dist_id3w" id="amphures3w" style="width:80px;">
        						</select>
     				</div>
                      <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ตำบล</span>
       						</div>
-      				<select name="Ref_subdist_id2d" id="districts2d" style="width:80px;">
+      				<select name="Ref_subdist_id3w" id="districts3w" style="width:80px;">
       						</select>
     				</div>
                     <div class="input-group mb-3 input-group-sm">
@@ -140,12 +140,12 @@ $idx=00;
         						<span class="input-group-text">รหัส</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="zip_code2d" id="zip_code2d" style="width:80px;">
+        					<input type="text" autocomplete="off" name="zip_code3w" id="zip_code3w" style="width:80px;">
     				</div> 
                     
                            		<script>
 	
-	$('#provinces2d').change(function() {
+	$('#provinces3w').change(function() {
     var id_province = $(this).val();
  	var name_th = $(this).val()
       $.ajax({
@@ -153,15 +153,15 @@ $idx=00;
       url: "location2.php",
       data: {id:id_province,name_th:name_th,function:'provinces'},
       success: function(data){
-          $('#amphures2d').html(data); 
-          $('#districts2d').html(''); 
-          $('#districts2d').val('');  
-          $('#zip_code2d').val(''); 
+          $('#amphures3w').html(data); 
+          $('#districts3w').html(''); 
+          $('#districts3w').val('');  
+          $('#zip_code3w').val(''); 
       }
     });
   });
  
-  $('#amphures2d').change(function() {
+  $('#amphures3w').change(function() {
     var id_amphures = $(this).val();
  	var name_th = $(this).val();
 	
@@ -170,12 +170,12 @@ $idx=00;
       url: "location2.php",
       data: {id:id_amphures,name_th:name_th,function:'amphures'},
       success: function(data){
-          $('#districts2d').html(data);  
+          $('#districts3w').html(data);  
       }
     });
   });
  
-   $('#districts2d').change(function() {
+   $('#districts3w').change(function() {
     var id_districts= $(this).val();
  
       $.ajax({
@@ -183,7 +183,7 @@ $idx=00;
       url: "location2.php",
       data: {id:id_districts,function:'districts'},
       success: function(data){
-          $('#zip_code2d').val(data)
+          $('#zip_code3w').val(data)
       }
     });
   
@@ -216,8 +216,8 @@ $idx=00;
   <thead align="center" style="font-size:14px;">
     <tr>
       <th>NO.</th>
-      <th>บริษัท</th>
       <th>ติดต่อ</th>
+      <th>ผู้รับ</th>
       <th>โทร.</th>
       <th>E-MAIL</th>
       <th>เลขที่</th>
@@ -236,7 +236,8 @@ $idx=00;
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
 		?>
-        <td width="1%" align="center"><nobr><?php echo $idx;?></nobr></td>
+        <td width="1%" align="center"><nobr><?php echo $idx?></nobr></td>
+        
         <td width="3%" align="center"><nobr><?php echo $row['COMPANY'];?></nobr></td>
 		<td width="3%" align="center"><nobr><?php echo $row['NAME'];?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['PHONE'];?></nobr></td>
@@ -264,25 +265,24 @@ $idx=00;
 <script>
 function submits()
 {
-	var COMPANY2d = $('#COMPANY2d').val()
-	var SUBDEPARTMENT2d = $('#SUBDEPARTMENT2d').val()
-	var NAME2d = $('#NAME2d').val()
-	var EMAIL2d = $('#EMAIL2d').val()
-	var PHONE2d = $('#PHONE2d').val()
-	var ADDRNO2d = $('#ADDRNO2d').val()
-	var PROVINCE2d = $('#provinces2d').val()
-	var DISTRICT2d = $('#amphures2d').val()
-	var SUBDISTRICT2d = $('#districts2d').val()
-	var ZIPCODE2d = $('#zip_code2d').val()
+	var COMPANY3w = $('#COMPANY3w').val()
+	var SUBDEPARTMENT3w = $('#SUBDEPARTMENT3w').val()
+	var NAME3w = $('#NAME3w').val()
+	var EMAIL3w = $('#EMAIL3w').val()
+	var PHONE3w = $('#PHONE3w').val()
+	var ADDRNO3w = $('#ADDRNO3w').val()
+	var PROVINCE3w = $('#provinces3w').val()
+	var DISTRICT3w = $('#amphures3w').val()
+	var SUBDISTRICT3w = $('#districts3w').val()
+	var ZIPCODE3w = $('#zip_code3w').val()
 	$.ajax({
         type: "POST",
-        url: "create_dealer.php",
-        data: {"COMPANY2":COMPANY2d,"SUBDEPARTMENT2":SUBDEPARTMENT2d,"NAME2":NAME2d,"EMAIL2":EMAIL2d,"PHONE2":PHONE2d,"PROVINCE2":PROVINCE2d,"DISTRICT2":DISTRICT2d,"SUBDISTRICT2":SUBDISTRICT2d,"ZIPCODE2":ZIPCODE2d},
+        url: "create_we.php",
+        data: {"COMPANY3":COMPANY3w,"SUBDEPARTMENT3":SUBDEPARTMENT3w,"NAME3":NAME3w,"EMAIL3":EMAIL3w,"PHONE3":PHONE3w,"PROVINCE3":PROVINCE3w,"DISTRICT3":DISTRICT3w,"SUBDISTRICT3":SUBDISTRICT3w,"ZIPCODE3":ZIPCODE3w},
         success: function(res) {
             window.location.reload()
         },
 	})
 }
-
 
 </script>

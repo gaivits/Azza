@@ -30,7 +30,7 @@ $idx=00;
 
   <h2></h2>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-4">เพิ่มสินค้า</button>
+  <button style='margin: 3%;' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-4">เพิ่มสินค้า</button>
 
   <!-- The Modal -->
   <div class="modal" id="myModal-4">
@@ -52,7 +52,8 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">เลือก</span>
       						</div>
-                           
+                            <?php echo $ID?>
+                     <input type="hidden" id="CUSTOMER_ID5" name="CUSTOMER_ID5" value='<?php echo $ID?>'>  		
                      
       				<select id="CATEGORY5" name="CATEGORY5" style="width: 85px;">
     							<option value="">-เลือก-</option>
@@ -115,7 +116,7 @@ $idx=00;
         						<span class="input-group-text">หน่วย</span>
       						</div>
       				<input type="text" value ="ea" id="PCS5" name="PCS5">
-                    <input type="hidden" id='CUSTOMER_ID5' name='CUSTOMER_ID5' value="<?=$ID?>">
+                    
                 </div>
             </div>
         </div>
@@ -137,17 +138,19 @@ $idx=00;
 
 <center>
 <table border='1' style="width:80%;" class="table table-striped table-sm">
-  <thead style="font-size:18px;">
+  <thead style="font-size:16px;">
    <tr>
         
     </tr>
     
     <tr align="center">
-        <th>NO</th>
-        <th>หมวด</th>   
-		<th>ยี่ห้อ</th>
-        <th>โมเดล</th>
-        <th>รุ่น</th>
+        <th>NO.</th>
+        <th>CATEGORY</th>
+        <th>GROUP</th>
+        <th>TYPE</th>   
+		<th>BRAND</th>
+        
+        <th>MODEL</th>
         <th>จำนวน</th>
       	<th>หน่วย(pcs)</th> 
      </tr>
@@ -163,10 +166,11 @@ $idx=00;
 			
 		?>
 		<tr id=<?php echo '';?>>
-        <td width="2%" align="center"><nobr><?php echo $idx;?></td>
+        <td width="1%" align="center"><nobr><?php echo $idx;?></td>
         <td width="2%" align="center"><nobr><?php echo $row['CATEGORY']?></td>
-        <td width="2%" align="center"><nobr><?php echo $row['BRANDNAME']?></td>
+        <td width="2%" align="center"><nobr><?php echo $row['SERIES']?></td>
         <td width="2%" align="center"><nobr><?php echo $nrow[0]?></td>
+        <td width="2%" align="center"><nobr><?php echo $row['BRANDNAME']?></td>
         <td width="2%" align="center"><nobr><?php echo $nrow[1]?></td>
         <td width="2%" align="center"><nobr><?php echo $row['AMOUNT']?></td>
        	<td width="2%" align="center"><nobr><?php echo $row['PCS']?></td>
@@ -195,7 +199,7 @@ function submits()
 	var GOODS5 = $('#GOODS5').val()
 	var AMOUNT5 = $('#AMOUNT5').val()
 	var PCS5 = $('#PCS5').val()
-	var CUSTOMER_ID5 = $('CUSTOMER_ID5').val()
+	var CUSTOMER_ID5 = $('#CUSTOMER_ID5').val()
 	$.ajax({
         type: "POST",
         url: "create_product.php",
