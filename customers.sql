@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 11:23 AM
+-- Generation Time: Dec 11, 2021 at 08:43 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1077,6 +1077,7 @@ CREATE TABLE `customer` (
   `USER` varchar(255) NOT NULL,
   `UNIT` varchar(255) NOT NULL,
   `DEALER` varchar(255) NOT NULL,
+  `WE` varchar(255) NOT NULL,
   `SUPPLIER` varchar(255) NOT NULL,
   `CATEGORY` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
@@ -1101,7 +1102,8 @@ CREATE TABLE `dealers` (
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
-  `ZIPCODE` varchar(255) NOT NULL
+  `ZIPCODE` varchar(255) NOT NULL,
+  `CUSTOMER_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -10037,24 +10039,23 @@ INSERT INTO `module` (`ID`, `CATEGORY`, `SERIES`, `MODULE`) VALUES
 --
 
 CREATE TABLE `products` (
+  `ID` int(10) NOT NULL,
   `CATEGORY` varchar(255) NOT NULL,
   `BRANDNAME` varchar(255) NOT NULL,
   `SERIES` varchar(255) NOT NULL,
   `LOGO` varchar(255) NOT NULL,
   `AMOUNT` float NOT NULL,
   `PCS` varchar(255) NOT NULL,
-  `CUSTOMER_ID` varchar(255) NOT NULL
+  `CUSTOMER_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`CATEGORY`, `BRANDNAME`, `SERIES`, `LOGO`, `AMOUNT`, `PCS`, `CUSTOMER_ID`) VALUES
-('', '', '', ' ', 0, '', ''),
-('VISUAL', 'HISENSE', 'VDO-WALL', '3.5mm 49VL5F', 1, 'ea', ''),
-('VISUAL', 'LG', 'VDO-WALL', '3.5mm 49D35-ll', 1, 'ea', ''),
-('VISUAL', 'HISENSE', 'VDO-WALL', '3.5mm 55VL5F', 1, 'ea', '');
+INSERT INTO `products` (`ID`, `CATEGORY`, `BRANDNAME`, `SERIES`, `LOGO`, `AMOUNT`, `PCS`, `CUSTOMER_ID`) VALUES
+(1, 'VISUAL', 'AZZA', 'VDO-WALL', '3.5mm 46L35B5U', 1, 'ea', 1),
+(2, 'VISUAL', 'AZZA', 'VDO-WALL', '1.8mm 55D18-ll', 2, 'ea', 1);
 
 -- --------------------------------------------------------
 
@@ -10170,7 +10171,8 @@ CREATE TABLE `suppliers` (
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
-  `ZIPCODE` varchar(255) NOT NULL
+  `ZIPCODE` varchar(255) NOT NULL,
+  `CUSTOMER_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -10226,7 +10228,8 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 (39, 'CATEGORY', 'AUDIO', NULL),
 (40, 'CATEGORY', 'CAMERA', NULL),
 (41, 'CATEGORY', 'PERIPHERAL', NULL),
-(42, 'CATEGORY', 'MOUNT', NULL);
+(42, 'CATEGORY', 'MOUNT', NULL),
+(43, 'WE', 'AZZA', NULL);
 
 -- --------------------------------------------------------
 
@@ -10323,7 +10326,7 @@ INSERT INTO `warehouse` (`ID`, `BRAND`, `MODULE`, `NAME`) VALUES
 --
 
 CREATE TABLE `we` (
-  `ID` int(11) NOT NULL,
+  `ID` int(10) NOT NULL,
   `COMPANY` varchar(255) NOT NULL,
   `DEPARTMENT` varchar(255) NOT NULL,
   `NAME` varchar(255) NOT NULL,
@@ -10333,7 +10336,8 @@ CREATE TABLE `we` (
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
-  `ZIPCODE` varchar(255) NOT NULL
+  `ZIPCODE` varchar(255) NOT NULL,
+  `CUSTOMER_ID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -10383,6 +10387,12 @@ ALTER TABLE `module`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
@@ -10410,6 +10420,12 @@ ALTER TABLE `users`
 -- Indexes for table `warehouse`
 --
 ALTER TABLE `warehouse`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `we`
+--
+ALTER TABLE `we`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -10453,6 +10469,12 @@ ALTER TABLE `module`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `provinces`
 --
 ALTER TABLE `provinces`
@@ -10468,7 +10490,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
-  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -10481,6 +10503,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `warehouse`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `we`
+--
+ALTER TABLE `we`
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
