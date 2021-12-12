@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2021 at 08:43 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.24
+-- Generation Time: Dec 12, 2021 at 11:18 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -10030,7 +10030,8 @@ INSERT INTO `module` (`ID`, `CATEGORY`, `SERIES`, `MODULE`) VALUES
 (4, 'VISUAL', 'SIGNAGE', '16/7'),
 (5, 'VISUAL', 'SIGNAGE', '24/7'),
 (6, 'VISUAL', 'INTERACTIVE', 'WITH-CAMERA'),
-(7, 'VISUAL', 'INTERACTIVE', 'NON-CAMERA');
+(7, 'VISUAL', 'INTERACTIVE', 'NON-CAMERA'),
+(8, 'VISUAL', 'INTERACTIVE', 'OPT');
 
 -- --------------------------------------------------------
 
@@ -10048,14 +10049,6 @@ CREATE TABLE `products` (
   `PCS` varchar(255) NOT NULL,
   `CUSTOMER_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`ID`, `CATEGORY`, `BRANDNAME`, `SERIES`, `LOGO`, `AMOUNT`, `PCS`, `CUSTOMER_ID`) VALUES
-(1, 'VISUAL', 'AZZA', 'VDO-WALL', '3.5mm 46L35B5U', 1, 'ea', 1),
-(2, 'VISUAL', 'AZZA', 'VDO-WALL', '1.8mm 55D18-ll', 2, 'ea', 1);
 
 -- --------------------------------------------------------
 
@@ -10251,6 +10244,15 @@ CREATE TABLE `users` (
   `ZIPCODE` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `DEPARTMENT`, `SUBDEPARTMENT`, `NAME`, `PHONE`, `EMAIL`, `ADDRNO`, `PROVINCE`, `DISTRICT`, `SUBDISTRICT`, `ZIPCODE`) VALUES
+(1, '', '', '', '', '', '', '', '', '', ''),
+(2, '', '', '', '', '', '', '', '', '', ''),
+(3, '', '', '', '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -10275,25 +10277,25 @@ INSERT INTO `warehouse` (`ID`, `BRAND`, `MODULE`, `NAME`) VALUES
 (4, 'LG', '1.8mm', '55VM5G'),
 (5, 'LG', '0.88mm', '55SVM5F'),
 (6, 'LG', '0.88mm', '55SVH7F'),
-(7, 'LG', '16/7', '43UL3G'),
-(8, 'LG', '16/7', '50UL3G'),
-(9, 'LG', '16/7', '55UL3G'),
-(10, 'LG', '16/7', '65UL3G'),
-(11, 'LG', '16/7', '75UL3G'),
-(12, 'LG', '16/7', '86UL3G'),
-(13, 'LG', '24/7', '22SM'),
-(14, 'LG', '24/7', '32SM'),
+(7, 'LG', '16/7', '43UL3JB'),
+(8, 'LG', '16/7', '50UL3JB'),
+(9, 'LG', '16/7', '55UL3JB'),
+(10, 'LG', '16/7', '65UL3JB'),
+(11, 'LG', '16/7', '75UL3JB'),
+(12, 'LG', '16/7', '86UL3JB'),
+(13, 'LG', '24/7', '22SMG'),
+(14, 'LG', '24/7', '32SMJB'),
 (15, 'LG', '24/7', '43UH5F'),
 (16, 'LG', '24/7', '49UH5F'),
 (17, 'LG', '24/7', '55UH5F'),
 (18, 'LG', '24/7', '65UH5F'),
-(19, 'LG', '24/7', '75UH5F'),
-(20, 'LG', '24/7', '86UH9F'),
-(21, 'LG', '24/7', '98UH5F'),
-(22, 'LG', 'NON-CAMERA', '55TR3BF'),
-(23, 'LG', 'NON-CAMERA', '65TR3BF'),
-(24, 'LG', 'NON-CAMERA', '75BR3BF'),
-(25, 'LG', 'NON-CAMERA', '86TR3BF'),
+(19, 'LG', '24/7', '75UH5FH'),
+(20, 'LG', '24/7', '86UH9FH'),
+(21, 'LG', '24/7', '98UH5FH'),
+(22, 'LG', 'NON-CAMERA', '55TR3BG'),
+(23, 'LG', 'NON-CAMERA', '65TR3BG'),
+(24, 'LG', 'NON-CAMERA', '75BR3BG'),
+(25, 'LG', 'NON-CAMERA', '86TR3BG'),
 (26, 'HISENSE', '3.5mm', '46L35B5U'),
 (27, 'HISENSE', '3.5mm', '55L35B5U'),
 (28, 'HISENSE', '1.8mm', '55L18H5K'),
@@ -10317,7 +10319,14 @@ INSERT INTO `warehouse` (`ID`, `BRAND`, `MODULE`, `NAME`) VALUES
 (46, 'AZZA', '1.8mm', '55D18-ll'),
 (47, 'AZZA', '0.88mm', '55D09-ll'),
 (48, 'AZZA', 'NON-CAMERA', '55W21K-U'),
-(49, 'AZZA', 'NON-CAMERA', '98W11S');
+(49, 'AZZA', 'NON-CAMERA', '98W11S'),
+(50, 'LG', '24/7', '49UH7FH'),
+(51, 'LG', '24/7', '55UH7F '),
+(52, 'LG', '24/7', '65UH7F'),
+(53, 'HISENSE', 'OPT', 'HMC1A'),
+(54, 'HISENSE', 'OPT', 'WIN10OS'),
+(55, 'HISENSE', 'OPT', 'S02BDS58811E'),
+(56, 'HISENSE', 'OPT', 'S02BDS78A21B');
 
 -- --------------------------------------------------------
 
@@ -10454,7 +10463,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `dealers`
 --
 ALTER TABLE `dealers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `geographies`
@@ -10466,13 +10475,13 @@ ALTER TABLE `geographies`
 -- AUTO_INCREMENT for table `module`
 --
 ALTER TABLE `module`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -10484,7 +10493,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
@@ -10496,19 +10505,19 @@ ALTER TABLE `tbl_master_groupcode`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `warehouse`
 --
 ALTER TABLE `warehouse`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `we`
 --
 ALTER TABLE `we`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
