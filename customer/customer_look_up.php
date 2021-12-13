@@ -5,8 +5,8 @@ $conn=new Databases;
 $conn = $conn->__construct();
 $JOB = $_POST['SEARCH_JOB'];
 $SEARCH_USER = $_POST['SEARCH_USER'];
-$SEARCH_DEALER = $_POST['SEARCH_DEALER'];
-$query = "SELECT * FROM customer WHERE REF_NO LIKE '%$JOB%' AND USER LIKE '%$SEARCH_USER%' AND DEALER LIKE '%$SEARCH_DEALER%'";
+
+$query = "SELECT * FROM customer WHERE REF_NO LIKE '%$JOB%' AND USER LIKE '%$SEARCH_USER%' ";
 $result = mysqli_query($conn, $query);
 
 
@@ -25,56 +25,80 @@ $result = mysqli_query($conn, $query);
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> 
 <title>Customer</title>
 </head>
-
+<style>
+	.dels
+	{
+		height: 15px;
+		width:15px;
+	}
+	.edits
+	{
+		height: 15px;
+		width:15px;
+	}
+</style>
 <body>
+
+<br>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
-<table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
-  <thead align="center" style="font-size:14px;">
-    <tr>
-      
-      <th>USER</th>
-      <th>เวลา</th>
-      <th>จังหวัด</th>
-      <th>เขต/อำเภอ</th>
-      <th>แขวง/ตำบล</th>
-      <th>ไปรษณีย์</th>
-      <th>ติดต่อ</th>
-      <th>ฝ่าย/แผนก</th>
-      <th>ชนิด</th>
-      <th>งาน</th>
-      <th>ผู้รับ</th>
-      <th>โทร</th>
-      <th>E-MAIL</th>
-      <th>เรา</th>
-      <th>SUPPLIER</th>
-      
-    
+<table border='1' style="width:99%;" class="table table-striped table-sm">
+  <thead style="font-size:14px;">
+   
+    <tr align="center">
+        <td colspan="5"><h3>เลข</h3></td>
+        <td colspan="5"><h3>SYSTEM</h3></td>
+        <td><h3>PRODUCT</h3></td>
+        <td colspan="3"><h3>STATUS</h3></td>
+        <td colspan="2"><h3>ACTION</h3></td>
     </tr>
+    <tr align="center">
+        <th>วัน</th>
+        <th>งาน</th>
+        <th>รก</th>
+        <th>REF</th>
+        <th>ชื่องาน</th>
+        	<th>USER</th>
+            <th>SUBUSER</th>
+            <th>DEALER</th>
+            <th>WE</th>
+            <th>SUPPLIER</th>
+        <th>สินค้า</th>   
+		
+      	   <th>รอ</th>
+           <th>ไม่รับ</th>
+           <th>รับ</th>
+     			<th>ลบ</th>
+            	<th>แก้ไข</th>
+     </tr>
+    
   </thead>
-  <tbody>
+  <tbody style="font-size:12px;">
     
       <?php
 		
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
+			$nrow=explode(" ",$row['LOGO']);
+			
 		?>
-		
-        <td width="6%" align="center"><nobr><?php echo $row['USER'] ;?></nobr></td>
-        <td width="6%" align="center"><nobr><?php echo $row['TIME'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['PROVINCE']) ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['ZIPCODE'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['CONTACT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['DEPARTMENT'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['SERIES'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['PROJECT']; ?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['NAME'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['PHONE'] ;?></nobr></td>
-        <td width="5%" align="center"><nobr><?php echo $row['EMAIL'] ;?></nobr></td>
-        <td width="4%" align="left"><nobr><?php echo $row['WE'] ;?></nobr></td>
-        <td width="3%" align="center"><nobr><?php echo $row['SUPPLIER'] ;?></nobr></td>
+		<tr id=<?php echo $row["CUSTOMER_ID"];?>>
+        <td width="1%" align="center"><nobr><?php echo $row['CREATE_DATE'];?></nobr></td>
+    	<td width="1%" align="center"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></a></nobr></td>
+    	<td width="1%" align="left"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
+    	<td width="3%" align="center"><nobr><?php echo "CR".$row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
+        <td width="3%" align="center"><nobr><?php echo $row['PROJECT']; ?></a></nobr></td>
+    	<td width="2%" align="left"><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['USER']; ?></nobr></a></td>
+        <td width="7%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
+        <td width="3%" align="left"><a href="customer_show_dealer.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['DEALER']; ?></nobr></a></td>
+        <td width="2%" align="center"><a href="customer_show_we.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['WE']; ?></nobr></a></td>
+        <td width="3%" align="left"><a href="customer_show_supplier.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['SUPPLIER']; ?></nobr></a></td>
+        <td width="3%" align="left"><a href="customer_show_product.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>
         
+        <td width="1%" style="cursor: pointer;" id="U2D"></td>
+        <td width="1%" style="cursor: pointer;" id="D2W"></td>
+        <td width="1%" style="cursor: pointer;" id="W2S"></td>
+        <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
+        <td width="1%" align="center" ><button class="btn btn-info edits" id="edits" name="edits" data-toggle="modal" data-target="#myModal-2" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
         
 		</tr>
         <?php
@@ -86,5 +110,9 @@ $result = mysqli_query($conn, $query);
 		
 </body>
  
+<div id="editCustomer"></div>
+  
+
 </body>
+
 </html>

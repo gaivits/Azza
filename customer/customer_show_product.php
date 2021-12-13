@@ -30,7 +30,7 @@ $idx=00;
 
   <h2></h2>
   <!-- Trigger the modal with a button -->
-  <button style='margin: 3%;' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-4">เพิ่มสินค้า</button>
+  
 
   <!-- The Modal -->
   <div class="modal" id="myModal-4">
@@ -135,7 +135,7 @@ $idx=00;
 <br>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
 <br><br>
-
+<button style='margin-left:15%;' type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal-4">เพิ่มสินค้า</button>
 <center>
 <table border='1' style="width:80%;" class="table table-striped table-sm">
   <thead style="font-size:16px;">
@@ -153,6 +153,7 @@ $idx=00;
         <th>MODEL</th>
         <th>จำนวน</th>
       	<th>หน่วย(pcs)</th> 
+        <th>ลบ</th> 
      </tr>
     
   </thead>
@@ -165,7 +166,7 @@ $idx=00;
 			$nrow=explode(" ",$row['LOGO']);
 			
 		?>
-		<tr id=<?php echo '';?>>
+		
         <td width="1%" align="center"><nobr><?php echo $idx;?></td>
         <td width="2%" align="center"><nobr><?php echo $row['CATEGORY']?></td>
         <td width="2%" align="center"><nobr><?php echo $row['SERIES']?></td>
@@ -174,7 +175,7 @@ $idx=00;
         <td width="2%" align="center"><nobr><?php echo $nrow[1]?></td>
         <td width="2%" align="center"><nobr><?php echo $row['AMOUNT']?></td>
        	<td width="2%" align="center"><nobr><?php echo $row['PCS']?></td>
-        
+        <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row['ID'];?>)" ></button></td>
 		</tr>
         <?php
 		}
@@ -243,5 +244,20 @@ $('#SERIES5').change(function() {
       }
     });
   });
-
+function dels(ID)
+{
+	if(confirm('คุณต้องการลบหรือไม่?') )
+	{
+		$.ajax({
+			url : "customer_del_product.php",
+			type:"POST",
+			data : {"REF_NO":ID},
+			success:function(res){
+					$("#delete"+ID).hide()
+					
+				}
+			})
+	}
+	window.location.reload()
+}
 </script>

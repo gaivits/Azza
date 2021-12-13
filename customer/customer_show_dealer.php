@@ -30,7 +30,7 @@ $idx=00;
 
   <h2></h2>
   <!-- Trigger the modal with a button -->
-  <button style='margin: 3%;' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-4">เพิ่มDealer</button>
+  
 
   <!-- The Modal -->
   <div class="modal" id="myModal-4">
@@ -209,10 +209,12 @@ $idx=00;
 
 <br>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
-<br><br>
+
+<button style='margin-left: 15%;' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal-4">เพิ่มDealer</button>
 
 <center>
-<table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
+
+<table border='1' style="width:80%; margin-left:1.5%" class="table table-striped table-sm">
   <thead align="center" style="font-size:14px;">
     <tr>
       <th>NO.</th>
@@ -246,7 +248,7 @@ $idx=00;
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['ZIPCODE'];?></nobr></td>
-        
+        <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["ID"];?>)" ></button></td>
 		</tr>
         <?php
 		}
@@ -274,14 +276,31 @@ function submits()
 	var DISTRICT2d = $('#amphures2d').val()
 	var SUBDISTRICT2d = $('#districts2d').val()
 	var ZIPCODE2d = $('#zip_code2d').val()
+	var CUSTOMER2d = $('#CUSTOMER_ID2d').val()
 	$.ajax({
         type: "POST",
         url: "create_dealer.php",
-        data: {"COMPANY2":COMPANY2d,"SUBDEPARTMENT2":SUBDEPARTMENT2d,"NAME2":NAME2d,"EMAIL2":EMAIL2d,"PHONE2":PHONE2d,"PROVINCE2":PROVINCE2d,"DISTRICT2":DISTRICT2d,"SUBDISTRICT2":SUBDISTRICT2d,"ZIPCODE2":ZIPCODE2d},
+        data: {"COMPANY2":COMPANY2d,"SUBDEPARTMENT2":SUBDEPARTMENT2d,"NAME2":NAME2d,"EMAIL2":EMAIL2d,"PHONE2":PHONE2d,"ADDRNO2":ADDRNO2d,"PROVINCE2":PROVINCE2d,"DISTRICT2":DISTRICT2d,"SUBDISTRICT2":SUBDISTRICT2d,"ZIPCODE2":ZIPCODE2d,"CUSTOMER_ID2":CUSTOMER2d},
         success: function(res) {
             window.location.reload()
         },
 	})
+}
+function dels(ID)
+{
+	if(confirm('คุณต้องการลบหรือไม่?') )
+	{
+		$.ajax({
+			url : "customer_del_dealer.php",
+			type:"POST",
+			data : {"REF_NO":ID},
+			success:function(res){
+					$("#delete"+ID).hide()
+					
+				}
+			})
+	}
+	window.location.reload()
 }
 
 

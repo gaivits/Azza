@@ -30,7 +30,7 @@ $idx=00;
 
   <h2></h2>
   <!-- Trigger the modal with a button -->
-  <button style='margin: 3%;' type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-5">เพิ่มWE</button>
+  
 
   <!-- The Modal -->
   <div class="modal" id="myModal-5">
@@ -209,10 +209,9 @@ $idx=00;
 
 <br>
 <a style="margin-left:85%" class="btn btn-link" href="customer.php">กลับ</a>
-<br><br>
-
+<button style='margin-left: 15%;' type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal-5">เพิ่มWE</button>
 <center>
-<table border='1' style="width:99%; margin-left:1.5%" class="table table-striped table-sm">
+<table border='1' style="width:80%; margin-left:1.5%" class="table table-striped table-sm">
   <thead align="center" style="font-size:14px;">
     <tr>
       <th>NO.</th>
@@ -225,7 +224,7 @@ $idx=00;
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
       <th>ไปรษณีย์</th>
-      
+      <th>ลบ</th>
     
     </tr>
   </thead>
@@ -247,7 +246,7 @@ $idx=00;
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['ZIPCODE'];?></nobr></td>
-        
+        <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["ID"];?>)" ></button></td>
 		</tr>
         <?php
 		}
@@ -275,14 +274,30 @@ function submits()
 	var DISTRICT3w = $('#amphures3w').val()
 	var SUBDISTRICT3w = $('#districts3w').val()
 	var ZIPCODE3w = $('#zip_code3w').val()
+	var CUSTOMER_ID3w = $('#CUSTOMER_ID3w').val()
 	$.ajax({
         type: "POST",
         url: "create_we.php",
-        data: {"COMPANY3":COMPANY3w,"SUBDEPARTMENT3":SUBDEPARTMENT3w,"NAME3":NAME3w,"EMAIL3":EMAIL3w,"PHONE3":PHONE3w,"PROVINCE3":PROVINCE3w,"DISTRICT3":DISTRICT3w,"SUBDISTRICT3":SUBDISTRICT3w,"ZIPCODE3":ZIPCODE3w},
+        data: {"COMPANY3":COMPANY3w,"SUBDEPARTMENT3":SUBDEPARTMENT3w,"NAME3":NAME3w,"EMAIL3":EMAIL3w,"PHONE3":PHONE3w,"ADDRNO3":ADDRNO3w,"PROVINCE3":PROVINCE3w,"DISTRICT3":DISTRICT3w,"SUBDISTRICT3":SUBDISTRICT3w,"ZIPCODE3":ZIPCODE3w,"CUSTOMER_ID3w":CUSTOMER_ID3w},
         success: function(res) {
             window.location.reload()
         },
 	})
 }
-
+function dels(ID)
+{
+	if(confirm('คุณต้องการลบหรือไม่?') )
+	{
+		$.ajax({
+			url : "customer_del_we.php",
+			type:"POST",
+			data : {"REF_NO":ID},
+			success:function(res){
+					$("#delete"+ID).hide()
+					
+				}
+			})
+	}
+	window.location.reload()
+}
 </script>

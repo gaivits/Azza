@@ -53,10 +53,10 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
   <h2>CUSTOMER-REGISTRATION</h2>
   <!-- Trigger the modal with a button -->
   
-      <input type="text" placeholder="ค้นหาid,รายการ,ref" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
+      <input type="text" placeholder="ค้นหาจากREF" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
       
       <select id="SEARCH_USER">
-      <option value="">--SEARCH USER--</option>
+      <option value="">ค้นจากUSER</option>
     	<?php
         $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
 		while($data = mysqli_fetch_assoc($records))
@@ -65,16 +65,7 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
 		}	
     	?>  
   		</select>
-      <select id="SEARCH_DEALER">
-      <option value="">--SEARCH DEALER--</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-		}	
-    	?>  
-  		</select>
+      
       <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
      <br>
      <br>
