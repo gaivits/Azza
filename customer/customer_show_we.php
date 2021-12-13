@@ -70,7 +70,7 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">ฝ่าย</span>
       						</div>
-      				<input type="text" autocomplete="off" id="SUBDEPARTMENT3w" name="SUBDEPARTMENT3w" style="width:80px;">
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT3w" name="SUBDEPARTMENT3w" value="จัดซื้อ" style="width:80px;">
     				</div>
                         <!--<div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -83,26 +83,26 @@ $idx=00;
       							<div class="input-group-prepend">
         						<span class="input-group-text">ชื่อติดต่อ</span>
       						</div>
-      				<input type="text" autocomplete="off" id="NAME3w" name="NAME3w"   style="width:80px;">
+      				<input type="text" autocomplete="off" id="NAME3w" name="NAME3w" value="ธัญพัฒน์" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">โทร</span>
       						</div>
-      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3w" name="PHONE3w" style="width:80px;">
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3w" name="PHONE3w" value="0993254289" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">อีเมลล์</span>
       						</div>
-      				<input type="email" autocomplete="off" id="EMAIL3w" name="EMAIL3w" style="width:80px;">
+      				<input type="email" autocomplete="off" id="EMAIL3w" name="EMAIL3w" value="newzeno@yahoo.com" style="width:80px;">
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">เลขที่</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="ADDRNO3w" id="ADDRNO3w" style="width:80px;">
+        					<input type="text" autocomplete="off" name="ADDRNO3w" id="ADDRNO3w" value="81" style="width:80px;">
     				</div> 
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
@@ -110,22 +110,16 @@ $idx=00;
       						</div>
                     
       				<select name="Ref_prov_id3w" id="provinces3w">
-							<option value="">-จังหวัด-</option>
-        						<?php
-        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
-									while($data = mysqli_fetch_assoc($records))
-       							{
-        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
-								}
-								
-    							?>  
-        					</select>
+							
+        						<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+        			</select>
     				</div>
                     <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">อำเภอ</span>
       						</div>
       				<select name="Ref_dist_id3w" id="amphures3w" style="width:80px;">
+                    	<option value="ตลิ่งชัน">ตลิ่งชัน</option>
        						</select>
     				</div>
                      <div class="input-group mb-3 input-group-sm">
@@ -133,6 +127,7 @@ $idx=00;
         						<span class="input-group-text">ตำบล</span>
       						</div>
       				<select name="Ref_subdist_id3w" id="districts3w" style="width:80px;">
+                    	<option value="ฉิมพลี">ฉิมพลี</option>
       						</select>
     				</div>
                     <div class="input-group mb-3 input-group-sm">
@@ -140,7 +135,7 @@ $idx=00;
         						<span class="input-group-text">รหัส</span>
       						</div>
       				 
-        					<input type="text" autocomplete="off" name="zip_code3w" id="zip_code3w" style="width:80px;">
+        					<input type="text" autocomplete="off" name="zip_code3w" id="zip_code3w" value="10170" style="width:80px;">
     				</div> 
                     
                            		<script>

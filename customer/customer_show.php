@@ -86,7 +86,7 @@ $idx=00;
     	<td width="1%" align="left"><nobr><?php echo sprintf("%02d",$row['CUSTOMER_ID']); ?></nobr></td>
     	<td width="2%" align="center"><nobr><?php echo "CR".$row['REF_NO'].sprintf("%02d",$row['CUSTOMER_ID']).sprintf("%02d",$row['CUSTOMER_ID']);?></a></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['PROJECT']; ?></a></nobr></td>
-    	<td width="2%" align="left"><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr><?php echo $row['USER']; ?></nobr></a></td>
+    	<td width="2%" align="left"><a href="customer_show_user.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>
         <td width="7%" align="left"><nobr><?php echo $row['UNIT']; ?></nobr></td>
         <td width="3%" align="left"><a href="customer_show_dealer.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>
         <td width="2%" align="center"><a href="customer_show_we.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>

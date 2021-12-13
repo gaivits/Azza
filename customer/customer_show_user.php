@@ -228,7 +228,7 @@ $idx=00;
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
       <th>ไปรษณีย์</th>
-      
+      <th>ลบ</th>
     
     </tr>
   </thead>
@@ -268,20 +268,21 @@ $idx=00;
 <script>
 function submits()
 {
-	var DEPARTMENT1 = $('#DEPARTMENT1').val()
-	var SUBDEPARTMENT1 = $('#SUBDEPARTMENT1').val()
-	var NAME1 = $('#NAME1').val()
-	var ADDRNO1 = $('#ADDRNO1').val()
-	var EMAIL1 = $('#EMAIL1').val()
-	var PHONE1 = $('#PHONE1').val()
-	var PROVINCE1 = $('#provinces1').val()
-	var DISTRICT1 = $('#amphures1').val()
-	var SUBDISTRICT1 = $('#districts1').val()
-	var ZIPCODE1 = $('#zip_code1').val()
+	var DEPARTMENT1 = $('#DEPARTMENT1u').val()
+	var SUBDEPARTMENT1 = $('#SUBDEPARTMENT1u').val()
+	var NAME1 = $('#NAME1u').val()
+	var ADDRNO1 = $('#ADDRNO1u').val()
+	var EMAIL1 = $('#EMAIL1u').val()
+	var PHONE1 = $('#PHONE1u').val()
+	var PROVINCE1 = $('#provinces1u').val()
+	var DISTRICT1 = $('#amphures1u').val()
+	var SUBDISTRICT1 = $('#districts1u').val()
+	var ZIPCODE1 = $('#zip_code1u').val()
+	var CUSTOMER_ID1 = $('#CUSTOMER_ID1u').val()
 	$.ajax({
         type: "POST",
         url: "create_user.php",
-        data: {"DEPARTMENT1":DEPARTMENT1,"SUBDEPARTMENT1":SUBDEPARTMENT1,"NAME1":NAME1,"EMAIL1":EMAIL1,"ADDRNO1":ADDRNO1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1},
+        data: {"DEPARTMENT1":DEPARTMENT1,"SUBDEPARTMENT1":SUBDEPARTMENT1,"NAME1":NAME1,"EMAIL1":EMAIL1,"ADDRNO1":ADDRNO1,"PHONE1":PHONE1,"PROVINCE1":PROVINCE1,"DISTRICT1":DISTRICT1,"SUBDISTRICT1":SUBDISTRICT1,"ZIPCODE1":ZIPCODE1,"CUSTOMER_ID":CUSTOMER_ID1},
         success: function(res) {
             window.location.reload()
         },
