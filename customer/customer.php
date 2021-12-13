@@ -408,14 +408,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
         						<span class="input-group-text">WE</span>
       						</div>
       				 <select id="COMPANY3" name="COMPANY3">
-                        <option value="">--SELECT WE--</option>
-        				<?php
-        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='WE'");  // Use select query here 
-						while($data = mysqli_fetch_assoc($records))
-        				{
-            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-						}
-						?> 
+                        <option value="AZZA">AZZA</option>
+        				
        					</select>
     				</div>
                        <div class="input-group mb-3 input-group-sm">
