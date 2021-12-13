@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 09:16 AM
+-- Generation Time: Dec 13, 2021 at 10:06 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -10248,7 +10248,8 @@ CREATE TABLE `users` (
   `PROVINCE` varchar(255) NOT NULL,
   `DISTRICT` varchar(255) NOT NULL,
   `SUBDISTRICT` varchar(255) NOT NULL,
-  `ZIPCODE` varchar(255) NOT NULL
+  `ZIPCODE` varchar(255) NOT NULL,
+  `CUSTOMER_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -10493,7 +10494,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_ID` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `dealers`
@@ -10517,7 +10518,7 @@ ALTER TABLE `module`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `provinces`
