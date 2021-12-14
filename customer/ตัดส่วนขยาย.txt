@@ -1,0 +1,625 @@
+<div class="col-sm-4">  
+                        <h4>USER</h4>
+                        <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">USER</span>
+      						</div>
+      				 <select id="USER" name="USER">
+                        <option value="">--SELECT USER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+    				</div>
+                       <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">หน่วย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT1" name="SUBDEPARTMENT1" style="width:80px;">
+    				</div>
+                        <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="DEPARTMENT1" name="DEPARTMENT1" style="width:80px;">
+    				</div>
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชื่อติดต่อ</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="NAME1" name="NAME1"   style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">โทร</span>
+      						</div>
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE1" name="PHONE1" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อีเมลล์</span>
+      						</div>
+      				<input type="email" autocomplete="off" id="EMAIL1" name="EMAIL1" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">เลขที่</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="ADDRNO1" id="ADDRNO1" style="width:80px;">
+    				</div> 
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">จังหวัด</span>
+      						</div>
+                    
+      				<select name="Ref_prov_id1" id="provinces1">
+							<option value="">-จังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อำเภอ</span>
+      						</div>
+      				<select name="Ref_dist_id1" id="amphures1" style="width:80px;">
+       						</select>
+    				</div>
+                     <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ตำบล</span>
+      						</div>
+      				<select name="Ref_subdist_id1" id="districts1" style="width:80px;">
+      						</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">รหัส</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="zip_code1" id="zip_code1" style="width:80px;">
+    				</div> 
+   <script>
+					$('#provinces1').change(function() {
+    				var id_province = $(this).val();
+ 					var name_th = $(this).val()
+      				$.ajax({
+      				type: "POST",
+      				url: "location1.php",
+      				data: {id:id_province,name_th:name_th,function:'provinces'},
+      				success: function(data){
+          			$('#amphures1').html(data); 
+          			$('#districts1').html(''); 
+          			$('#districts1').val('');  
+          			$('#zip_code1').val(''); 
+      				}
+    				});
+  				});
+ 
+  $('#amphures1').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location1.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts1').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts1').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location1.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code1').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
+                          </div>
+                         
+    					
+                        <div class="col-sm-4">
+                            <h4>DEALER</h4>
+                            	<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">DEALER</span>
+      						</div>
+      				 <select id="COMPANY2" name="COMPANY2">
+                        <option value="">--SELECT DEALER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+    				</div>
+                       <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT2" name="SUBDEPARTMENT2" style="width:80px;">
+    				</div>
+                        <!--<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="DEPARTMENT1" name="DEPARTMENT1" style="width:80px;">
+    				</div>-->
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชื่อติดต่อ</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="NAME2" name="NAME2"   style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">โทร</span>
+      						</div>
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE2" name="PHONE2" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อีเมลล์</span>
+      						</div>
+      				<input type="email" autocomplete="off" id="EMAIL2" name="EMAIL2" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">เลขที่</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="ADDRNO2" id="ADDRNO2" style="width:80px;">
+    				</div> 
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">จังหวัด</span>
+      						</div>
+                    
+      				<select name="Ref_prov_id2" id="provinces2">
+							<option value="">-จังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อำเภอ</span>
+      						</div>
+      				<select name="Ref_dist_id2" id="amphures2" style="width:80px;">
+       						</select>
+    				</div>
+                     <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ตำบล</span>
+      						</div>
+      				<select name="Ref_subdist_id2" id="districts2" style="width:80px;">
+      						</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">รหัส</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="zip_code2" id="zip_code2" style="width:80px;">
+    				</div> 
+                    
+                           		<script>
+	
+	$('#provinces2').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location2.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures2').html(data); 
+          $('#districts2').html(''); 
+          $('#districts2').val('');  
+          $('#zip_code2').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures2').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location2.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts2').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts2').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location2.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code2').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
+                            </div> 
+                            
+                           
+                        <div class="col-sm-4">
+                            <h4>WE</h4>
+                            <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">WE</span>
+      						</div>
+      				 <select id="COMPANY3" name="COMPANY3">
+                        <option value="AZZA">AZZA</option>
+        				
+       					</select>
+    				</div>
+                       <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT3" name="SUBDEPARTMENT3" value="จัดซื้อ" style="width:80px;">
+    				</div>
+                         <!--<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="DEPARTMENT1" name="DEPARTMENT1" style="width:80px;">
+    				</div>-->
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชื่อติดต่อ</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="NAME3" name="NAME3" value="ธัญพัฒน์" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">โทร</span>
+      						</div>
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE3" name="PHONE3" value="0991515951" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อีเมลล์</span>
+      						</div>
+      				<input type="email" autocomplete="off" id="EMAIL3" name="EMAIL3" value="newzeno@yahoo.com" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">เลขที่</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="ADDRNO3" id="ADDRNO3" value="81" style="width:80px;">
+    				</div> 
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">จังหวัด</span>
+      						</div>
+                    
+      				<select name="Ref_prov_id3" id="provinces3">
+							<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+        						
+        					</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อำเภอ</span>
+      						</div>
+      				<select name="Ref_dist_id3" id="amphures3" style="width:80px;">
+                    			<option value="ตลิ่งชัน">ตลิ่งชัน</option>
+       						</select>
+    				</div>
+                     <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ตำบล</span>
+      						</div>
+      				<select name="Ref_subdist_id3" id="districts3" style="width:80px;">
+                    	<option value="ฉิมพลี">ฉิมพลี</option>
+      						</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">รหัส</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="zip_code3" id="zip_code3" value="10170" style="width:80px;">
+    				</div> 
+                   <script>
+	
+	/*$('#provinces3').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location3.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures3').html(data); 
+          $('#districts3').html(''); 
+          $('#districts3').val('');  
+          $('#zip_code3').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures3').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location3.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts3').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts3').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location3.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code3').val(data)
+      }
+    });
+  
+  });*/
+	
+	</script>
+	
+                            </div>
+                        <div class="col-md-4">
+                            <h4>SUPPLIER</h4>
+                            <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">SUP</span>
+      						</div>
+      				 <select id="COMPANY4" name="COMPANY4">
+                        <option value="">--SELECT SUPPLIER--</option>
+        				<?php
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='SUPPLIER'");  // Use select query here 
+						while($data = mysqli_fetch_assoc($records))
+        				{
+            			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+						}
+						?> 
+       					</select>
+    				</div>
+                       <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="SUBDEPARTMENT4" name="SUBDEPARTMENT4" style="width:80px;">
+    				</div>
+                         <!--<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ฝ่าย</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="DEPARTMENT1" name="DEPARTMENT1" style="width:80px;">
+    				</div>-->
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชื่อติดต่อ</span>
+      						</div>
+      				<input type="text" autocomplete="off" id="NAME4" name="NAME4"   style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">โทร</span>
+      						</div>
+      				<input type="text" maxlength="10" autocomplete="off" id="PHONE4" name="PHONE4" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อีเมลล์</span>
+      						</div>
+      				<input type="email" autocomplete="off" id="EMAIL4" name="EMAIL4" style="width:80px;">
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">เลขที่</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="ADDRNO4" id="ADDRNO4" style="width:80px;">
+    				</div> 
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">จังหวัด</span>
+      						</div>
+                    
+      				<select name="Ref_prov_id4" id="provinces4">
+							<option value="">-จังหวัด-</option>
+        						<?php
+        							$records = mysqli_query($conn, "Select * from provinces");  // Use select query here 
+									while($data = mysqli_fetch_assoc($records))
+       							{
+        			    		echo "<option value='". $data['id'],$data['name_th'] ."'>" .$data['name_th'] ."</option>";  // displaying data in option menu
+								}
+								
+    							?>  
+        					</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">อำเภอ</span>
+      						</div>
+      				<select name="Ref_dist_id4" id="amphures4" style="width:80px;">
+       						</select>
+    				</div>
+                     <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ตำบล</span>
+      						</div>
+      				<select name="Ref_subdist_id4" id="districts4" style="width:80px;">
+      						</select>
+    				</div>
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">รหัส</span>
+      						</div>
+      				 
+        					<input type="text" autocomplete="off" name="zip_code4" id="zip_code4" style="width:80px;">
+    				</div> 
+              				<script>
+	
+	$('#provinces4').change(function() {
+    var id_province = $(this).val();
+ 	var name_th = $(this).val()
+      $.ajax({
+      type: "POST",
+      url: "location4.php",
+      data: {id:id_province,name_th:name_th,function:'provinces'},
+      success: function(data){
+          $('#amphures4').html(data); 
+          $('#districts4').html(''); 
+          $('#districts4').val('');  
+          $('#zip_code4').val(''); 
+      }
+    });
+  });
+ 
+  $('#amphures4').change(function() {
+    var id_amphures = $(this).val();
+ 	var name_th = $(this).val();
+	
+      $.ajax({
+      type: "POST",
+      url: "location4.php",
+      data: {id:id_amphures,name_th:name_th,function:'amphures'},
+      success: function(data){
+          $('#districts4').html(data);  
+      }
+    });
+  });
+ 
+   $('#districts4').change(function() {
+    var id_districts= $(this).val();
+ 
+      $.ajax({
+      type: "POST",
+      url: "location4.php",
+      data: {id:id_districts,function:'districts'},
+      success: function(data){
+          $('#zip_code4').val(data)
+      }
+    });
+  
+  });
+	
+	</script>
+                            </div> 
+                        <!--<div class="col-sm-3">
+                        			<h4>สินค้า</h4>
+      								<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text"></span>
+      						</div>
+      				<select id="CATEGORY" name="CATEGORY" style="width: 90px;">
+    							<option value="">-เลือก-</option>
+    							<?php
+        						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='CATEGORY'");  // Use select query here 
+								while($data = mysqli_fetch_assoc($records))
+       						 	{
+            						echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+								}	
+    						?>  
+  						</select>
+                        <div class="input-group mb-3 input-group-sm" >
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">หมวด</span>
+      						</div>
+      				<select id="SERIES" name="SERIES" style="width: 100px;">
+    							
+  						</select>
+                      <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชนิด</span>
+      						</div>
+      				<select id="LOGO" name="LOGO" style="width: 85px;">
+    							
+  						</select>
+    				
+    				
+                        <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ยี่ห้อ</span>
+      						</div>
+      				<select id="BRANDNAME" name="BRANDNAME" style="width: 85px;">
+    							<option value="">-ยี่ห้อ-</option>
+    							<?php
+        						$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='BRANDNAME'");  // Use select query here 
+								while($data = mysqli_fetch_assoc($records))
+       						 	{
+            						echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
+								}	
+    						?>  
+  						</select>
+                        
+                    
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">รุ่น</span>
+      						</div>
+      				<select id="GOODS" name="GOODS" style="width: 85px;">
+    							
+  						</select>
+    			
+                    <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">จำนวน</span>
+      						</div>
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 85px;">
+    				<div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">หน่วย</span>
+      						</div>
+      					<input type="number" step=0.01 id="AMOUNT" name="AMOUNT" style="width: 85px;">
+    		-->

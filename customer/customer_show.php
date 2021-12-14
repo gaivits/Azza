@@ -76,7 +76,7 @@ $idx=00;
 		
 		while($row = mysqli_fetch_array($result)) 
 		{$idx=$idx+1;
-			$nrow=explode(" ",$row['LOGO']);
+			//$nrow=explode(" ",$row['LOGO']);
 			
 		?>
 		<tr id=<?php echo $row["CUSTOMER_ID"];?>>
@@ -93,9 +93,11 @@ $idx=00;
         <td width="3%" align="left"><a href="customer_show_supplier.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>
         <td width="3%" align="left"><a href="customer_show_product.php?ID=<?=$row['CUSTOMER_ID'];?>"><nobr>รายละเอียด</nobr></a></td>
         
-        <td width="1%" style="cursor: pointer;" id="U2D"></td>
-        <td width="1%" style="cursor: pointer;" id="D2W"></td>
-        <td width="1%" style="cursor: pointer;" id="W2S"></td>
+        <td width="1%" style="cursor: pointer;" id="U2D"><input type="color" id="WAITS">
+        </td>
+        <td width="1%" style="cursor: pointer;" id="D2W"><input type="color" id="CANCELS"></td>
+        	
+        <td width="1%" style="cursor: pointer;" id="W2S"><input type="color" id="ACCEPTS"></td>
         <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
         <td width="1%" align="center" ><button class="btn btn-info edits" id="edits" name="edits" data-toggle="modal" data-target="#myModal-2" onclick="edits(<?php echo $row["CUSTOMER_ID"];?>)" ></button></td>
         
@@ -115,29 +117,6 @@ $idx=00;
 </body>
 </html>
 <script>
-var box = document.getElementById('U2D'),
-    colors = ['white', 'yellow', 'green', 'red'];
-box.onclick = function () {
-    color = colors.shift();
-    colors.push(color);
-    box.style.background = color;
-}
-
-var box2 = document.getElementById('D2W'),
-    colors = ['white', 'yellow', 'green', 'red'];
-box2.onclick = function () {
-    color = colors.shift();
-    colors.push(color);
-    box2.style.background = color;
-}
-
-var box3 = document.getElementById('W2S'),
-    colors = ['white', 'yellow', 'green', 'red'];
-box3.onclick = function () {
-    color = colors.shift();
-    colors.push(color);
-    box3.style.background = color;
-}
 
 function dels(ID)
 {

@@ -58,7 +58,7 @@ $idx=00;
       				 <select id="COMPANY2d" name="COMPANY1u">
                         <option value="">--SELECT USER--</option>
         				<?php
-        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='DEALER'");  // Use select query here 
+        				$records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
 						while($data = mysqli_fetch_assoc($records))
         				{
             			echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu

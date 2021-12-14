@@ -225,7 +225,7 @@ $idx=00;
       <th>เขต/อำเภอ</th>
       <th>แขวง/ตำบล</th>
       <th>ไปรษณีย์</th>
-      
+      <th>ลบ</th>
     
     </tr>
   </thead>
@@ -247,7 +247,7 @@ $idx=00;
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['DISTRICT']) ;?></nobr></td>
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['ZIPCODE'];?></nobr></td>
-        
+        <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["ID"];?>)" ></button></td>
 		</tr>
         <?php
 		}
@@ -275,15 +275,31 @@ function submits()
 	var DISTRICT4s = $('#amphures4s').val()
 	var SUBDISTRICT4s = $('#districts4s').val()
 	var ZIPCODE4s = $('#zip_code4s').val()
+	var CUSTOMER_ID4s = $('#CUSTOMER_ID4s').val()
 	$.ajax({
         type: "POST",
-        url: "create_we.php",
-        data: {"COMPANY3":COMPANY4s,"SUBDEPARTMENT3":SUBDEPARTMENT4s,"NAME3":NAME4s,"EMAIL3":EMAIL4s,"PHONE3":PHONE4s,"PROVINCE3":PROVINCE4s,"DISTRICT3":DISTRICT4s,"SUBDISTRICT3":SUBDISTRICT4s,"ZIPCODE3":ZIPCODE4s},
+        url: "create_supplier.php",
+        data: {"COMPANY4":COMPANY4s,"SUBDEPARTMENT4":SUBDEPARTMENT4s,"NAME4":NAME4s,"EMAIL4":EMAIL4s,"PHONE4":PHONE4s,"PROVINCE4":PROVINCE4s,"DISTRICT4":DISTRICT4s,"SUBDISTRICT4":SUBDISTRICT4s,"ZIPCODE4":ZIPCODE4s,"CUSTOMER_ID":CUSTOMER_ID4s},
         success: function(res) {
             window.location.reload()
         },
 	})
 }
-
+function dels(ID)
+{
+	if(confirm('คุณต้องการลบหรือไม่?') )
+	{
+		$.ajax({
+			url : "customer_del.php",
+			type:"POST",
+			data : {"REF_NO":ID},
+			success:function(res){
+					$("#delete"+ID).hide()
+					
+				}
+			})
+	}
+	window.location.href = "customer.php"
+}
 
 </script>
