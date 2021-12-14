@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2021 at 10:50 AM
+-- Generation Time: Dec 14, 2021 at 06:50 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -1073,17 +1073,8 @@ CREATE TABLE `customer` (
   `CUSTOMER_ID` int(10) NOT NULL,
   `CREATE_DATE` varchar(255) NOT NULL,
   `TIME` varchar(255) NOT NULL,
-  `AMOUNT` float NOT NULL,
-  `PROJECT` varchar(255) NOT NULL,
-  `USER` varchar(255) NOT NULL,
   `UNIT` varchar(255) NOT NULL,
-  `DEALER` varchar(255) NOT NULL,
-  `WE` varchar(255) NOT NULL,
-  `SUPPLIER` varchar(255) NOT NULL,
-  `CATEGORY` varchar(255) NOT NULL,
-  `BRANDNAME` varchar(255) NOT NULL,
-  `SERIES` varchar(255) NOT NULL,
-  `LOGO` varchar(255) DEFAULT NULL
+  `PROJECT` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -10229,7 +10220,8 @@ INSERT INTO `tbl_master_groupcode` (`ID`, `TYPE`, `NAME`, `REMARK`) VALUES
 (40, 'CATEGORY', 'CAMERA', NULL),
 (41, 'CATEGORY', 'PERIPHERAL', NULL),
 (42, 'CATEGORY', 'MOUNT', NULL),
-(43, 'WE', 'AZZA', NULL);
+(43, 'WE', 'AZZA', NULL),
+(44, 'DEALER', 'gable', NULL);
 
 -- --------------------------------------------------------
 
@@ -10536,7 +10528,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `tbl_master_groupcode`
 --
 ALTER TABLE `tbl_master_groupcode`
-  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `ID` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `users`
