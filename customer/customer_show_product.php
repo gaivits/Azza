@@ -74,15 +74,7 @@ $idx=00;
     							
   						</select>
                 </div>
-                <div class="input-group mb-3 input-group-sm">
-      							<div class="input-group-prepend">
-        						<span class="input-group-text">ชนิด</span>
-      						</div>
-      				<select id="LOGO5" name="LOGO5" style="width: 85px;">
-    							
-  						</select>
-                </div>
-                <div class="input-group mb-3 input-group-sm">
+                 <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">ยี่ห้อ</span>
       						</div>
@@ -97,6 +89,15 @@ $idx=00;
     						?>  
   						</select>
                 </div>
+                <div class="input-group mb-3 input-group-sm">
+      							<div class="input-group-prepend">
+        						<span class="input-group-text">ชนิด</span>
+      						</div>
+      				<select id="LOGO5" name="LOGO5" style="width: 85px;">
+    							
+  						</select>
+                </div>
+               
                 <div class="input-group mb-3 input-group-sm">
       							<div class="input-group-prepend">
         						<span class="input-group-text">รุ่น</span>

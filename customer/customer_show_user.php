@@ -251,6 +251,7 @@ $idx=00;
         <td width="5%" align="center"><nobr><?php echo preg_replace('/[0-9]+/', '', $row['SUBDISTRICT']) ;?></nobr></td>
         <td width="3%" align="center"><nobr><?php echo $row['ZIPCODE'];?></nobr></td>
         <td width="1%" align="center"><button class="btn btn-danger dels" id="dels" name="dels" onclick="dels(<?php echo $row["ID"];?>)" ></button></td>
+        
 		</tr>
         <?php
 		}
