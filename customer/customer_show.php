@@ -125,7 +125,7 @@ function dels(ID)
 		$.ajax({
 			url : "customer_del.php",
 			type:"POST",
-			data : {"REF_NO":REF_NO},
+			data : {"REF_NO":ID},
 			success:function(res){
 					$("#delete"+ID).hide()
 					

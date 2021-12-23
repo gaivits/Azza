@@ -53,18 +53,8 @@ $result = mysqli_query($conn,"SELECT * FROM customer ORDER BY customer_id ASC LI
   <h2>CUSTOMER-REGISTRATION</h2>
   <!-- Trigger the modal with a button -->
   
-      <input type="text" placeholder="ค้นหาจากREF" autocomplete="off" id="SEARCH_JOB" name="SEARCH_JOB">
+      <input type="text" placeholder="ค้นหาจากชื่องาน" autocomplete="off" id="SEARCH_PROJECT" name="SEARCH_PROJECT">
       
-      <select id="SEARCH_USER">
-      <option value="">ค้นจากUSER</option>
-    	<?php
-        $records = mysqli_query($conn, "Select * from tbl_master_groupcode WHERE type='USER'");  // Use select query here 
-		while($data = mysqli_fetch_assoc($records))
-        {
-            echo "<option value='". $data['NAME'] ."'>" .$data['NAME'] ."</option>";  // displaying data in option menu
-		}	
-    	?>  
-  		</select>
       
       <button type="button" class="btn btn-primary btn-sm" onclick="searches()">SEARCH</button>
      <br>
@@ -417,13 +407,12 @@ $('#viewCustomer').load('customer_show.php')
 
 function searches(){
 	
-	var SEARCH_JOB = $('#SEARCH_JOB').val()
-	var SEARCH_USER = $('#SEARCH_USER').val()
-	var SEARCH_DEALER = $('#SEARCH_DEALER').val()
+	var SEARCH_PROJECT = $('#SEARCH_PROJECT').val()
+	
 	$.ajax({
         type: "POST",
         url: "customer_look_up.php",
-        data: {"SEARCH_JOB":SEARCH_JOB,SEARCH_USER:SEARCH_USER,SEARCH_DEALER:SEARCH_DEALER},
+        data: {"SEARCH_PROJECT":SEARCH_PROJECT},
         success: function(res) {
            $('#popCustomer').html(res)
 		   $('#viewCustomer').load('customer_show.php').hide()

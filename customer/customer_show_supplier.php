@@ -290,7 +290,7 @@ function dels(ID)
 	if(confirm('คุณต้องการลบหรือไม่?') )
 	{
 		$.ajax({
-			url : "customer_del.php",
+			url : "customer_del_supplier.php",
 			type:"POST",
 			data : {"REF_NO":ID},
 			success:function(res){
@@ -299,7 +299,7 @@ function dels(ID)
 				}
 			})
 	}
-	window.location.href = "customer.php"
+	window.location.reload()
 }
 
 </script>

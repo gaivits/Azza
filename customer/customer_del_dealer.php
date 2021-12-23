@@ -3,7 +3,7 @@
 	$conn=new Databases;
 	$conn = $conn->__construct();
 	$ID = $_POST["REF_NO"];
-	$sql = "DELETE FROM delaers WHERE ID='$ID'";	
+	$sql = "DELETE FROM dealers WHERE ID='$ID'";	
 	mysqli_query($conn, $sql);
 	
 ?>
